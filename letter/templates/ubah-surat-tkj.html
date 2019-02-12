@@ -1,0 +1,67 @@
+{% extends "layout_admin/base.html" %}
+
+{% block content %}
+<section class="form-input">
+  <div class="container">
+    <div class="row">
+      <div class="col l12">
+        <h4>Ubah Data PKL - TKJ: {{ surat.nama_siswa.nama }}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l6">
+        {% if msg %}
+        <div class="card-panel teal lighten-5">
+          <i class="material-icons left">check</i>
+          {{ msg }}
+        </div>
+        {% endif %}
+
+        <form action="/pkl/tkj/ubah/{{ surat.id }}" method="post">
+          {% csrf_token %}
+          <div class="input-field">
+            <select name="nama_siswa" class="this-select-siswa" required>
+              <option value="{{ surat.nama_siswa.id }}">{{ surat.nama_siswa.NIS }} &#8212; {{ surat.nama_siswa }}</option>
+              <optgroup label="XII.TKJ-1">
+                {% for tkj1 in students_tkj_1 %}
+                <option value="{{ tkj1.id }}">{{ tkj1.NIS }} &#8212; {{ tkj1.nama }} </option>
+                {% endfor %}
+              </optgroup>
+              <optgroup label="XII.TKJ-2">
+                {% for tkj2 in students_tkj_2 %}
+                <option value="{{ tkj2.id }}">{{ tkj2.NIS }} &#8212; {{ tkj2.nama }} </option>
+                {% endfor %}
+              </optgroup>
+              <optgroup label="XII.TKJ-3">
+                {% for tkj3 in students_tkj_3 %}
+                <option value="{{ tkj3.id }}">{{ tkj3.NIS }} &#8212; {{ tkj3.nama }} </option>
+                {% endfor %}
+              </optgroup>
+              <optgroup label="XII.TKJ-4">
+                {% for tkj4 in students_tkj_4 %}
+                <option value="{{ tkj4.id }}">{{ tkj4.NIS }} &#8212; {{ tkj4.nama }} </option>
+                {% endfor %}
+              </optgroup>
+            </select>
+          </div>
+          <div class="input-field">
+            <select name="nama_instansi" class="this-select-instansi" required>
+                <option value="{{ surat.nama_instansi.id }}">{{ surat.nama_instansi }}</option>
+              {% for company in instansi %}
+              <option value="{{ company.id }}">{{ company.nama }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="input-field">
+            <button type="submit" class="btn waves-effect">
+              <i class="material-icons left">save</i>
+              Simpan
+            </button>
+            <a href="/pkl/tkj" class="btn waves-effect">Kembali</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

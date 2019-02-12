@@ -1,0 +1,42 @@
+<script src="/static/vendor/jquery-3.3.1.min.js"></script>
+
+<!-- dataTable -->
+<script src="/static/vendor/dataTables/jquery.dataTables.min.js"></script>
+<script src="/static/vendor/dataTables/dataTables.material.min.js"></script>
+
+<!-- select2 -->
+<script src="/static/vendor/select/select2.min.js"></script>
+
+<script src="/static/vendor/materialize/js/materialize.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // sidenav
+    $('.sidenav').sidenav();
+
+    // collapse.untuk.sidenav
+    $('.collapsible').collapsible();
+
+    // dataTable
+    $('#myTable').DataTable();
+
+    // dropdown.untuk.opsi
+    $('.dropdown-triger').dropdown();
+
+    // select2
+    $('.this-select').select2({
+      placeholder: 'Pilih...'
+    });
+    $('.this-select-siswa').select2({
+      placeholder: 'Pilih Siswa'
+    });
+    $('.this-select-instansi').select2({
+      placeholder: 'Pilih Instansi'
+    });
+
+    // modal
+    $('.modal').modal();
+
+    // tooltip
+    $('.tooltipped').tooltip();
+  });
+</script>

@@ -1,0 +1,46 @@
+{% extends 'layout_admin/base.html' %}
+
+{% block content %}
+<section class="form-input">
+  <div class="container">
+    <div class="row">
+      <div class="col l6">
+        <h4>Ubah Pembimbing: {{ pembimbing.nama }}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l6">
+        {% if msg %}
+        <div class="card-panel teal lighten-5">
+          <i class="material-icons left">check</i>
+          {{ msg }}
+        </div>
+        {% endif %}
+
+        <form action="/pembimbing/ubah/{{ pembimbing.id }}" method="post">
+          {% csrf_token %}
+          <div class="input-field">
+            <label for="{{ form.nama.label }}">{{ form.nama.label }}</label>
+            <input type="text" name="nama" id="nama" class="validate" value="{{ pembimbing.nama }}" required>
+          </div>
+          <div class="input-field">
+            <!-- <label for="{{ form.jurusan.label }}">{{ form.jurusan.label }}</label> -->
+            <select name="jurusan" id="" class="this-select">
+              <option value="{{ pembimbing.jurusan }}">{{ pembimbing.jurusan }}</option>
+              <option value="TKJ">TKJ</option>
+              <option value="RPL">RPL</option>
+            </select>
+          </div>
+          <div class="input-field">
+            <button type="submit" class="btn waves-effect">
+              <i class="material-icons left">save</i>
+              Simpan
+            </button>
+            <a href="/pembimbing" class="btn waves-effect">Kembali</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends "layout_admin/base.html" %}
+
+{% block content %}
+<section class="form-input">
+  <div class="container">
+    <div class="row">
+      <div class="col l12">
+        <h4>Ubah Data PKL - RPL: {{ surat.nama_siswa.nama }}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l6">
+        {% if msg %}
+        <div class="card-panel teal lighten-5">
+          <i class="material-icons left">check</i>
+          {{ msg }}
+        </div>
+        {% endif %}
+
+        <form action="/pkl/rpl/ubah/{{ surat.id }}" method="post">
+          {% csrf_token %}
+          <div class="input-field">
+            <select name="nama_siswa" class="this-select-siswa" required>
+              <option value="{{ surat.nama_siswa.id }}">{{ surat.nama_siswa.NIS }} &#8212; {{ surat.nama_siswa }}</option>
+              <optgroup label="XII.RPL-1">
+                {% for rpl1 in students_rpl_1 %}
+                <option value="{{ rpl1.id }}">{{ rpl1.NIS }} &#8212; {{ rpl1.nama }} </option>
+                {% endfor %}
+              </optgroup>
+              <optgroup label="XII.RPL-2">
+                {% for rpl2 in students_rpl_2 %}
+                <option value="{{ rpl2.id }}">{{ rpl2.NIS }} &#8212; {{ rpl2.nama }} </option>
+                {% endfor %}
+              </optgroup>
+              <optgroup label="XII.RPL-3">
+                {% for rpl3 in students_rpl_3 %}
+                <option value="{{ rpl3.id }}">{{ rpl3.NIS }} &#8212; {{ rpl3.nama }} </option>
+                {% endfor %}
+              </optgroup>
+            </select>
+          </div>
+          <div class="input-field">
+            <select name="nama_instansi" class="this-select-instansi" required>
+              <option value="{{ surat.nama_instansi.id }}">{{ surat.nama_instansi }}</option>
+              {% for company in instansi %}
+              <option value="{{ company.id }}">{{ company.nama }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="input-field">
+            <button type="submit" class="btn waves-effect">
+              <i class="material-icons left">save</i>
+              Simpan
+            </button>
+            <a href="/pkl/rpl" class="btn waves-effect">Kembali</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

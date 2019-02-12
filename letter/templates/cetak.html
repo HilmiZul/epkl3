@@ -1,0 +1,147 @@
+{% extends "layout_cetak/base.html" %}
+
+{% block content %}
+  <style>
+  html, body {
+  font-family: 'Times New Roman', Times, serif;
+  margin: 1cm;
+  }
+  .font-1 {
+    font-size: 21px;
+  }
+  .font-2 {
+    font-size: 19px;
+  }
+  .font-3 {
+    font-size: 15px;
+  }
+  .tebal.gede {
+    font-size: 23px;
+  }
+  .tebal.miring {
+    font-style: italic;
+    font-weight: bold;
+  }
+  .alamat {
+    font-size: 16px;
+  }
+  .logo {
+    width: 100px;
+  }
+  </style>
+    <table width="100%">
+      <tr>
+        <td align="center" width="20%"><img src="/static/assets/img/prov-logo.png" class="logo"> </td>
+        <td align="center" width="75%">
+          <p class="spasi">
+            <p class="font-2">PEMERINTAH PROVINSI JAWA BARAT</p>
+            <p class="font-1">DINAS PENDIDIKAN</p>
+            <p class="font-3">CABANG DINAS PENDIDIKAN WILAYAH XII</p>
+            <p class="tebal gede">SMK NEGERI 4 TASIKMALAYA</p>
+            <p class="alamat">Jl. Depok Kel. Sukamenak Kec. Purbaratu (0265) 312059</p>
+            <p class="alamat">Website : www.smkn4-tsm.sch.id Email : info@smkn4-tsm.sch.id</p>
+            <p class="alamat">Kota Tasikmalaya 46196</p>
+          </p>
+        </td>
+        <td align="center" width="5%">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="3"><div class="line">&nbsp;</div></td>
+      </tr>
+    </table>
+
+    <table width="50%">
+      <tr>
+        <td >Nomor</td>
+        <td>:</td>
+        <td>420/443/SMKN.4.Cabdin.Wil-XII</td>
+      </tr>
+      <tr>
+        <td>Lampiran</td>
+        <td>:</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>Perihal</td>
+        <td>:</td>
+        <td>Permohonan Bantuan Pelaksanaan</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>Praktik Kerja Lapangan</td>
+      </tr>
+    </table>
+
+    <div class="for">
+      <div>Yth.Kepala/Pimpinan</div>
+      <div>{{ instansi.nama }}</div>
+      <div>di</div>
+      <div>{{ instansi.alamat }}</div>
+    </div>
+
+    <div class="konten">
+      <p>
+        Berdasarkan tujuan kurikulum Sekolah Menengah Kejuruan, diharapkan lembaga menyiapkan tamatan yang mampu:
+        <ol>
+          <li>Memasuki lapangan kerja serta dapat mengembangkan sikap profesional sesuai dengan program keahliannya.</li>
+          <li>Memiliki karier, berkompetensi dan mengembangkan diri.</li>
+          <li>Menjadi tenaga kerja tingkat menengah untuk mengisi kebutuhan dunia usaha dan industri pada saat ini maupun masa yang akan datang.</li>
+          <li>Menjadi warga negara yang produktif, adaptif, dan kreatif.</li>
+        </ol>
+      </p>
+      <p>
+        Maka untuk menunjang pencapaian tujuan tersebut dan mengaplikasi antara pengetahuan dan keterampilan yang telah didapat
+        siswa di sekolah dengan realita dunia kerja, SMK Negeri 4 Tasikmalaya akan melaksanakan Program Praktik Kerja Lapangan.
+        Program ini wajib diikuti oleh seluruh siswa kelas XII pada semester V ( Lima ).
+      </p>
+      <p>
+        Berkaitan dengan pelaksanaan tersebut di atas, kami mohon bantuan kerja sama Bapak /Ibu untuk berkenan memberikan kesempatan kepada
+        siswa kami untuk melaksanakan program tersebut di dinas / jawatan / perusahaan yang Bapak / Ibu pimpin.
+        Mulai bulan <b><i>16 Juli sampai dengan 16 Oktober 2019</i></b>.
+        Siswa yang akan melaksanakan Praktik Kerja Lapangan di dinas/jawatan/perusahaan Bapak / Ibu sebagai berikut:
+      </p>
+
+      <table class="tabel-peserta">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Nama</th>
+            <th>NIS</th>
+            <th>Kelas</th>
+            <th>Program Keahlian</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for peserta in surat %}
+            <tr>
+              <td align="center">{{ forloop.counter }}.</td>
+              <td align="left" class="nama">{{ peserta.nama_siswa }}</td>
+              <td align="center">{{ peserta.nama_siswa.NIS }}</td>
+              <td align="center">{{ peserta.nama_siswa.kelas }}</td>
+              <td>{{ peserta.nama_siswa.program_ahli }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <p class="penutup">Atas kesedian dan kerjasama Bapak / Ibu, kami mengucapkan terima kasih.</p>
+
+      <table class="footer">
+        <tr>
+          <td width="75%"></td>
+          <td width="25%">
+            Tasikmalaya,&nbsp; &nbsp; &nbsp; April 2019<br>
+            Kepala Sekolah,
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <span class="tebal">Drs. H. DESNUERI</span><br>
+            NIP. 196112301986031009
+          </td>
+        </tr>
+      </table>
+{% endblock %}

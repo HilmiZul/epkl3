@@ -1,0 +1,67 @@
+{% extends "layout_admin/base.html" %}
+
+{% block content %}
+<section class="form-table">
+  <div class="container">
+    <div class="row">
+      <div class="col l12">
+        <h4>Instansi untuk RPL</h4>
+
+        {% if msg %}
+        <div class="card-panel teal lighten-5">
+          {{ msg }}
+          <i class="material-icons left">check</i>
+        </div>
+        {% endif %}
+
+        <table class="responsive-table" id="myTable">
+          <thead>
+            <tr>
+              <th>NO.</th>
+              <th>NAMA</th>
+              <th>ALAMAT</th>
+              <th>AKSI</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for company in instansi %}
+            <tr>
+              <td>{{ forloop.counter }}.</td>
+              <td><a href="/instansi/rpl/ubah/{{ company.id }}">{{ company.nama }}</a></td>
+              <td>{{ company.alamat }}</td>
+              <td>
+                <a href="https://www.google.com/maps/search/?api=1&query={{ company.alamat }}" target="_blank" class="btn teal lighten-1 waves-effect waves-light modal-trigger tooltipped"
+                  data-position="bottom" data-tooltip="Lihat peta">
+                  <i class="material-icons">map</i>
+                </a>
+                <a href="#instansi-{{ company.id }}" class="btn red lighten-1 waves-effect waves-light modal-trigger
+                  tooltipped" data-position="bottom" data-tooltip="Hapus">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
+            </tr>
+            <div class="modal" id="instansi-{{ company.id }}">
+              <div class="modal-content">
+                <p>
+                  Kalo kamu hapus <b>{{ company.nama|upper }}</b>, maka data di <b>PKL & Surat</b>
+                  yang bersangkutan akan ikut terhapus. <br> <b>YAKIN MAU HAPUS?</b>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <a href="/instansi/rpl/hapus/{{ company.id }}" class="btn-flat waves-effect">Ya, Hapus</a>
+                <a href="#!" class="btn waves-effect modal-close">ENGGA</a>
+              </div>
+            </div>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="tombol-add">
+          <a href="/instansi/rpl/tambah/" class="btn-floating btn-large waves-effect grey darken-1 pulse">
+            <i class="material-icons">add</i>
+          </a>
+        </div>
+      </div> <!-- ./col -->
+    </div> <!-- ./row -->
+  </div>
+</section>
+{% endblock %}

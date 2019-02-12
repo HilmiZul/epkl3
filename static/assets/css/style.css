@@ -1,0 +1,145 @@
+/*
+ * style.css
+ * 6 Februari 2019
+ * own style
+ * Zul Hilmi
+ * https://github.com/hilmizul
+ */
+
+
+/* PERSIAPAN */
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  color: #424242;
+  background: #f5f5f5;
+}
+
+.btn {
+  background: #616161 !important;
+}
+
+table,
+table tr,
+table tr th,
+table tr td {
+  border: 1px solid #e0e0e0;
+}
+
+table thead {
+  background: #e9e9e9;
+}
+
+table tbody {
+  background: #fafafa;
+  font-size: 13px;
+}
+
+.input-field {
+  margin-bottom: 2em;
+}
+
+
+/* .btn:hover {
+  background: #424242 !important;
+} */
+
+/* LOGIN */
+.login {
+  width: 100%;
+  height: 100%;
+  padding-top: 100px;
+  display: table;
+  background: url('../img/bg-login.jpg') no-repeat center center;
+  display: table;
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+}
+
+.login .title {
+  color: #ffffff;
+  font-size: 33px;
+  font-weight: 200;
+  margin-bottom: 1em;
+}
+
+.login .card {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+/* MAIN MENU */
+.main-menu {
+  background: #616161;
+  padding: 0.5em 0 0.5em 0;
+}
+
+.main-menu>a {
+  color: #ffffff;
+}
+
+.main-menu .nama-app {
+  padding: 1em;
+  font-size: 20px;
+}
+
+.main-menu .collapsible .collapsible-header>a,
+.main-menu .collapsible .collapsible-body ul li>a {
+  color: #616161;
+}
+
+.main-menu .dropdown-triger {
+  padding-right: 2em;
+}
+
+.main-menu .brand-logo {
+  text-align: center;
+}
+
+/* DASHBOARD */
+.dashboard {
+  width: 100%;
+  height: auto;
+  padding-top: 1em;
+}
+
+.dashboard .count {
+  font-size: 40px;
+  font-weight: normal;
+}
+
+.dashboard .label {
+  font-weight: lighter;
+}
+
+
+/* FORM-TABLE */
+.form-table {
+  width: 100%;
+  height: auto;
+}
+
+.form-table .tombol-add {
+  position: fixed !important;
+  right: 5em;
+  bottom: 5em;
+}
+
+
+/* FORM-INPUT */
+.form-input {
+  width: 100%;
+  height: auto;
+}
+
+.form-input select option {
+  color: #ffffff;
+}
+

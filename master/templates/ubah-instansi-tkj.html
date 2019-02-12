@@ -1,0 +1,41 @@
+{% extends "layout_admin/base.html" %}
+
+{% block content %}
+<section class="form-input">
+  <div class="container">
+    <div class="row">
+      <div class="col l12">
+        <h4>Ubah Instansi: {{ instansi.nama }}</h4>
+      </div>
+    </div> <!-- ./row -->
+    <div class="row">
+      <div class="col l6">
+        {% if msg %}
+          <div class="card-panel teal lighten-5">
+            <i class="material-icons left">check</i>
+            {{ msg }}
+          </div>
+        {% endif %}
+        <form action="/instansi/tkj/ubah/{{ instansi.id }}" method="post">
+          {% csrf_token %}
+          <div class="input-field">
+            <label for="">Nama Instansi</label>
+            <input type="text" class="validate" name="nama" value="{{ instansi.nama }}" autofocus required>
+          </div>
+          <div class="input-field">
+            <label for="alamat">Alamat</label>
+            <textarea name="alamat" id="alamat" class="materialize-textarea" required>{{ instansi.alamat }}</textarea>
+          </div>
+          <div class="input-field">
+            <button class="btn waves-effect waves-light" type="submit">
+              Simpan
+              <i class="material-icons left">save</i>
+            </button>
+            <a href="/instansi/tkj" class="btn waves-effect waves-light">Kembali</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

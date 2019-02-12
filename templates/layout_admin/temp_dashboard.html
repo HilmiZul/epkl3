@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DASHBOARD.</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="materialize/css/materialize.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div class="main-menu">
+    <a href="#" data-target="mobile-nav" class="sidenav-trigger btn-flat">MENU<i class="material-icons left">menu</i></a>
+    <ul class="sidenav" id="mobile-nav">
+      <li>
+        <div class="nama-app white-text grey darken-2 center-align">
+          e-PKL.
+        </div>
+      </li>
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header">
+            <a href="#!">
+              <i class="material-icons left">dashboard</i>DASHBOARD
+            </a>
+          </div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+        <li>
+          <div class="collapsible-header">
+            <i class="material-icons">account_balance</i>INSTANSI
+          </div>
+          <div class="collapsible-body">
+            <ul>
+              <li>
+                <a href="#">
+                  Tambah
+                  <i class="material-icons">add</i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  TKJ
+                  <i class="material-icons">wifi</i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  RPL
+                  <i class="material-icons">code</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+        <li>
+          <div class="collapsible-header">
+            <i class="material-icons">mail</i>PKL & SURAT
+          </div>
+          <div class="collapsible-body">
+            <ul>
+              <li>
+                <a href="#">
+                  TKJ
+                  <i class="material-icons">wifi</i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  RPL
+                  <i class="material-icons">code</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+        <li>
+          <div class="collapsible-header"><i class="material-icons">group</i>PEMBIMBING</div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+        <li>
+          <div class="collapsible-header"><i class="material-icons">insert_drive_file</i>KARYA ILMIAH</div>
+          <div class="collapsible-body">
+            <ul>
+              <li>
+                <a href="#">
+                  TKJ
+                  <i class="material-icons">wifi</i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  RPL
+                  <i class="material-icons">code</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+        <li>
+          <div class="collapsible-header"><i class="material-icons">chat</i>BIMBINGAN</div>
+          <div class="collapsible-body">
+            <ul>
+              <li>
+                <a href="#">
+                  TKJ
+                  <i class="material-icons">wifi</i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  RPL
+                  <i class="material-icons">code</i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Timeline/Progress
+                  <i class="material-icons">timeline</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+        <li>
+          <div class="collapsible-header"><i class="material-icons">gavel</i>SIDANG</div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+
+        <li>
+          <div class="divider"></div>
+        </li>
+
+        <li>
+          <div class="collapsible-header"><i class="material-icons">mood</i>Hi, Zul Hilmi</div>
+          <div class="collapsible-body">
+            <ul>
+              <li>
+                <a href="#">
+                  Ubah Katasandi
+                  <i class="material-icons">locked</i>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  Keluar
+                  <i class="material-icons">logout</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+      </ul>
+    </ul>
+  </div>
+  <!-- ./NAV -->
+
+  <section class="dashboard">
+    <div class="container">
+      <div class="row">
+        <div class="col l12">
+          <div class="card-panel grey darken-2 white-text center-align z-depth-3">
+            <i class="medium material-icons">group</i>
+            <div class="count">
+              251 Total Siswa
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col l6">
+          <div class="card-panel grey darken-2 z-depth-3">
+            <span class="new badge blue" data-badge-caption="TKJ"></span>
+            <div class="count white-text">
+              <i class="medium material-icons left">group</i>
+              150 <span class="label">Siswa</span>
+            </div>
+          </div> <!-- ./card -->
+        </div> <!-- ./col -->
+
+        <div class="col l6">
+          <div class="card-panel grey darken-2 z-depth-3">
+            <span class="new badge green" data-badge-caption="RPL"></span>
+            <div class="count white-text">
+              <i class="medium material-icons left">group</i>
+              101 <span class="label">Siswa</span>
+            </div>
+          </div> <!-- ./card -->
+        </div> <!-- ./col -->
+      </div> <!-- ./row -->
+
+      <div class="row">
+        <div class="col l6">
+          <div class="card-panel grey darken-2 z-depth-3">
+            <span class="new badge blue" data-badge-caption="TKJ"></span>
+            <div class="count white-text">
+              <i class="medium material-icons left">account_balance</i>
+              90 <span class="label">Siap PKL</span>
+            </div>
+          </div> <!-- ./card -->
+        </div> <!-- ./col -->
+
+        <div class="col l6">
+          <div class="card-panel grey darken-2 z-depth-3">
+            <span class="new badge green" data-badge-caption="RPL"></span>
+            <div class="count white-text">
+              <i class="medium material-icons left">account_balance</i>
+              89 <span class="label">Siap PKL</span>
+            </div>
+          </div> <!-- ./card -->
+        </div> <!-- ./col -->
+      </div> <!-- ./row -->
+    </div>
+  </section>
+
+  <script src="jquery-3.3.1.min.js"></script>
+  <script src="materialize/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.sidenav').sidenav();
+
+      $('.collapsible').collapsible();
+    });
+  </script>
+</body>
+
+</html>

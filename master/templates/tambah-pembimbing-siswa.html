@@ -1,0 +1,42 @@
+{% extends 'layout_admin/base.html' %}
+
+{% block content %}
+<section class="form-input">
+  <div class="container">
+    <div class="row">
+      <div class="col l6">
+        <h4>Tambah Pembimbing Siswa</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l6">
+        {% if msg %}
+        <div class="card-panel teal lighten-5">
+          <i class="material-icons left">check</i>
+          {{ msg }}
+        </div>
+        {% endif %}
+
+        <form action="/pembimbing/siswa/tambah/" method="post">
+          {% csrf_token %}
+          <div class="input-field">
+            <!-- <label for="{{ form.pembimbing.label }}">{{ form.pembimbing.label }}</label> -->
+            {{ form.pembimbing }}
+          </div>
+          <div class="input-field">
+            <!-- <label for="{{ form.jurusan.label }}">{{ form.jurusan.label }}</label> -->
+            {{ form.siswa }}
+          </div>
+          <div class="input-field">
+            <button type="submit" class="btn waves-effect">
+              <i class="material-icons left">save</i>
+              Simpan
+            </button>
+            <a href="/pembimbing/siswa" class="btn waves-effect">Kembali</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

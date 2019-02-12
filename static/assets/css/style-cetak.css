@@ -1,0 +1,157 @@
+/*
+ * style.css
+ * PRAKERIN 2k18
+ * zul hilmi <netspytux@gmail.com>
+ * hilmizul.github.io
+ */
+
+/* DEFAULT SETUP */
+body {
+  font-family: 'Arial';
+  font-size: 10pt;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  min-width: 100%;
+}
+
+.header {
+
+}
+
+.header .left-logo {
+
+}
+
+.row.hr {
+  border-bottom: 2px solid #000;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.row .col-md-8 p {
+  padding: 0;
+  margin: 0;
+}
+
+.row .col-md-2 .logo,
+.row .col-md-2 .logo,
+.logo {
+  width: 90px;
+}
+
+.row .col-md-8 p {
+  font-size: 9pt;
+}
+
+.row .col-md-8 p.tebal {
+  font-weight: bold;
+}
+
+table tr td.nama {
+  padding-left: 10px;
+}
+
+table tr td p {
+  padding: 0;
+  margin: 0;
+}
+
+table tr td p.tebal {
+  font-weight: bold;
+}
+
+table tr td .line {
+  border-bottom: 2px solid #000;
+  margin-bottom: 10px;
+}
+
+.for {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.for div {
+  margin-bottom: 5px;
+}
+
+.konten {
+  text-align: justify;
+}
+
+.konten .tebal {
+  font-weight: bold;
+}
+
+.konten .miring {
+  font-style: italic;
+}
+
+.konten .tabel-peserta {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.konten .tabel-peserta, .konten th {
+  text-align: center;
+}
+
+.konten .tabel-peserta, .konten th, .konten td {
+  border: 1px solid #000;
+}
+
+.konten .footer {
+  border-collapse: none;
+  margin-top: 30px;
+}
+
+.konten table.footer td {
+  border: 0;
+}
+
+.penutup {
+  margin-top: 10px;
+}
+
+.container {
+  font-family: Futura;
+  margin-top: 30px;
+}
+
+.btn,
+.panel{
+  border-radius: 0px;
+}
+
+.btn.btn-primary {
+  color: rgb(50, 150, 200, 1);
+  border: 2px solid rgb(50, 150, 200, 1);
+  background-color: transparent;
+  transition: all .3s ease-in-out;
+}
+
+.btn.btn-primary:hover {
+  color: rgb(255, 255, 255);
+  border: 2px solid rgb(50, 150, 200, 1);
+  background-color: rgb(50, 150, 200, 1);
+}
+
+.form-control {
+}
+
+.form-control:focus {
+  border: 2px solid rgb(50, 150, 200, 1);
+  outline: 0;
+}
+
+.tebal.gede {
+  font-size: 15pt;
+}
+
+
+.spasi {
+  margin: 0;
+  padding: 0;
+}

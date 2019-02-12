@@ -1,0 +1,64 @@
+{% extends "layout_admin/base.html" %}
+
+{% block content %}
+<section class="form-table">
+  <div class="container">
+    <div class="row">
+      <div class="col l12">
+        <h4>Pembimbing</h4>
+
+        {% if msg %}
+        <div class="card-panel teal lighten-5">
+          {{ msg }}
+          <i class="material-icons left">check</i>
+        </div>
+        {% endif %}
+
+        <table class="responsive-table" id="myTable">
+          <thead>
+            <tr>
+              <th>NO.</th>
+              <th>NAMA</th>
+              <th>JURUSAN</th>
+              <th>AKSI</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for mentor in pembimbing %}
+            <tr>
+              <td>{{ forloop.counter }}.</td>
+              <td><a href="/pembimbing/ubah/{{ mentor.id }}">{{ mentor.nama }}</a></td>
+              <td>{{ mentor.jurusan }}</td>
+              <td>
+                <a href="#mentor-{{ mentor.id }}" class="btn red lighten-1 waves-effect waves-light modal-trigger
+                  tooltipped" data-position="bottom" data-tooltip="Hapus">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
+            </tr>
+            <div class="modal" id="mentor-{{ mentor.id }}">
+              <div class="modal-content">
+                <h4>HAPUS?</h4>
+                <p>
+                  Kalo kamu hapus Mentor <b>{{ mentor.nama|upper }}</b>, maka data di <b>KARYA ILMIAH</b>
+                  dan <b>BIMBINGAN</b> yang bersangkutan akan ikut terhapus. <br> <b>YAKIN MAU HAPUS?</b>
+                </p>
+              </div>
+              <div class="modal-footer">
+                <a href="/pembimbing/hapus/{{ mentor.id }}" class="btn-flat waves-effect">Ya, Hapus</a>
+                <a href="#!" class="btn waves-effect modal-close">ENGGA</a>
+              </div>
+            </div>
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="tombol-add">
+          <a href="/pembimbing/tambah/" class="btn-floating btn-large waves-effect grey darken-1 pulse">
+            <i class="material-icons">add</i>
+          </a>
+        </div>
+      </div> <!-- ./col -->
+    </div> <!-- ./row -->
+  </div>
+</section>
+{% endblock %}
