@@ -9,6 +9,6 @@ urlpatterns = [
   
   path('siswa/', pembimbing_siswa),
   path('siswa/tambah/', tambah_pembimbing_siswa),
-  # path('siswa/ubah/<int:id>', ubah_pembimbing),
+  # path('siswa/ubah/<int:id>', ubah_pembimbing_siswa),
   path('siswa/hapus/<int:id>', hapus_pembimbing_siswa),
 ]

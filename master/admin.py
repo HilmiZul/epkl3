@@ -4,8 +4,8 @@ from .models import Siswa, Instansi, Pembimbing, PembimbingSiswa
 
 # Register your models here.
 class SiswaAdmin(admin.ModelAdmin):
-    list_display = ['NIS', 'nama', 'kelas', 'pkl']
-    list_filter = ('kelas', 'program_ahli', 'pkl')
+    list_display = ['NIS', 'nama', 'kelas', 'pkl', 'pembimbing']
+    list_filter = ('kelas', 'program_ahli', 'pkl', 'status_judul', 'pembimbing')
     search_fields = ['NIS', 'nama']
     list_per_page = 20
 
@@ -29,7 +29,7 @@ class PembimbingAdmin(admin.ModelAdmin):
     list_per_page = 20
 
 class PembimbingSiswaAdmin(admin.ModelAdmin):
-    list_display = ['pembimbing', 'siswa', 'siswa']
+    list_display = ['pembimbing', 'siswa']
     list_filter = ('siswa__kelas', 'siswa__program_ahli',)
     search_fields = ['pembimbing', 'siswa']
     list_per_page = 20

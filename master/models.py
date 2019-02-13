@@ -23,6 +23,7 @@ class Siswa(models.Model):
     program_ahli = models.CharField(max_length=30, choices=program_choices)
     pkl = models.BooleanField(default=False)
     status_judul = models.BooleanField(default=False)
+    pembimbing = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nama

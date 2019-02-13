@@ -36,7 +36,8 @@
               <td>{{ forloop.counter }}.</td>
               <td><a href="/pkl/tkj/ubah/{{ letter.id }}" class="tooltipped" data-position="bottom" data-tooltip="Klik untuk ubah">{{ letter.nama_siswa }}</a></td>
               <td>{{ letter.nama_siswa.kelas }}</td>
-              <td><a href="/pkl/tkj/cetak/{{ letter.nama_instansi.id }}" class="tooltipped" data-position="bottom" data-tooltip="Klik untuk cetak" target="_blank">{{ letter.nama_instansi }}</a></td>
+              <td><a href="/pkl/tkj/cetak/{{ letter.nama_instansi.id }}" class="tooltipped" data-position="bottom"
+                  data-tooltip="Klik untuk cetak" target="_blank">{{ letter.nama_instansi }}</a></td>
               <td>{{ letter.nama_instansi.alamat }}</td>
               <td>
                 <a href="https://www.google.com/maps/search/?api=1&query={{ letter.nama_instansi.alamat }}" target="_blank"
@@ -52,9 +53,9 @@
             </tr>
             <div class="modal" id="instansi-{{ letter.id }}">
               <div class="modal-content">
+                <h4>Hapus?</h4>
                 <p>
-                  Kalo kamu hapus, maka data di <b>Instansi</b>
-                  yang bersangkutan akan ikut terhapus. <br> <b>YAKIN MAU HAPUS?</b>
+                  <b>Yakin Mau Hapus?</b>
                 </p>
               </div>
               <div class="modal-footer">

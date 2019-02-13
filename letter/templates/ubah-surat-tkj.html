@@ -20,9 +20,9 @@
         <form action="/pkl/tkj/ubah/{{ surat.id }}" method="post">
           {% csrf_token %}
           <div class="input-field">
-            <select name="nama_siswa" class="this-select-siswa" required>
+            <select name="nama_siswa" class="this-select-siswa">
               <option value="{{ surat.nama_siswa.id }}">{{ surat.nama_siswa.NIS }} &#8212; {{ surat.nama_siswa }}</option>
-              <optgroup label="XII.TKJ-1">
+              <!-- <optgroup label="XII.TKJ-1">
                 {% for tkj1 in students_tkj_1 %}
                 <option value="{{ tkj1.id }}">{{ tkj1.NIS }} &#8212; {{ tkj1.nama }} </option>
                 {% endfor %}
@@ -41,7 +41,7 @@
                 {% for tkj4 in students_tkj_4 %}
                 <option value="{{ tkj4.id }}">{{ tkj4.NIS }} &#8212; {{ tkj4.nama }} </option>
                 {% endfor %}
-              </optgroup>
+              </optgroup> -->
             </select>
           </div>
           <div class="input-field">

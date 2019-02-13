@@ -21,11 +21,21 @@
           {% csrf_token %}
           <div class="input-field">
             <!-- <label for="{{ form.pembimbing.label }}">{{ form.pembimbing.label }}</label> -->
-            {{ form.pembimbing }}
+            <select name="pembimbing" id="" class="this-select" required>
+              <option value=""></option>
+              {% for p in pembimbing %}
+              <option value="{{ p.id }}">{{ p.nama }}</option>
+              {% endfor %}
+            </select>
           </div>
           <div class="input-field">
             <!-- <label for="{{ form.jurusan.label }}">{{ form.jurusan.label }}</label> -->
-            {{ form.siswa }}
+            <select name="siswa" id="" class="this-select" required>
+              <option value=""></option>
+              {% for s in siswa %}
+              <option value="{{ s.id }}">{{ s.NIS }} &#8212; {{ s.nama }} &#8212; {{ s.kelas }}</option>
+              {% endfor %}
+            </select>
           </div>
           <div class="input-field">
             <button type="submit" class="btn waves-effect">

@@ -20,9 +20,9 @@
         <form action="/pkl/rpl/ubah/{{ surat.id }}" method="post">
           {% csrf_token %}
           <div class="input-field">
-            <select name="nama_siswa" class="this-select-siswa" required>
+            <select name="nama_siswa" class="this-select-siswa" readonly>
               <option value="{{ surat.nama_siswa.id }}">{{ surat.nama_siswa.NIS }} &#8212; {{ surat.nama_siswa }}</option>
-              <optgroup label="XII.RPL-1">
+              <!-- <optgroup label="XII.RPL-1">
                 {% for rpl1 in students_rpl_1 %}
                 <option value="{{ rpl1.id }}">{{ rpl1.NIS }} &#8212; {{ rpl1.nama }} </option>
                 {% endfor %}
@@ -36,7 +36,7 @@
                 {% for rpl3 in students_rpl_3 %}
                 <option value="{{ rpl3.id }}">{{ rpl3.NIS }} &#8212; {{ rpl3.nama }} </option>
                 {% endfor %}
-              </optgroup>
+              </optgroup> -->
             </select>
           </div>
           <div class="input-field">

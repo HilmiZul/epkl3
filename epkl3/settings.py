@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'akun',
     'dashboard',
     'pesan',
+    'karya_ilmiah',
 ]
 
 MIDDLEWARE = [
