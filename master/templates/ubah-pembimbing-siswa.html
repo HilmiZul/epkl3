@@ -1,0 +1,52 @@
+{% extends 'layout_admin/base.html' %}
+
+{% block content %}
+<section class="form-input">
+  <div class="container">
+    <div class="row">
+      <div class="col l6">
+        <h4>Ubah Pembimbing Siswa: {{ pembimbing }}</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col l6">
+        {% if msg %}
+        <div class="card-panel teal lighten-5">
+          <i class="material-icons left">check</i>
+          {{ msg }}
+        </div>
+        {% endif %}
+
+        <form action="/pembimbing/siswa/ubah/{{ pembimbing.id }}" method="post">
+          {% csrf_token %}
+          <div class="input-field">
+            <!-- <label for="{{ form.pembimbing.label }}">{{ form.pembimbing.label }}</label> -->
+            <select name="pembimbing" id="" class="this-select" required>
+              <option value="{{ pembimbing.pembimbing.id }}">{{ pembimbing.pembimbing }}</option>
+              {% for p in pembimbing_jamak %}
+              <option value="{{ p.id }}">{{ p.pembimbing.nama }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="input-field">
+            <!-- <label for="{{ form.jurusan.label }}">{{ form.jurusan.label }}</label> -->
+            <select name="siswa" id="" class="this-select" required>
+              <option value="{{ pembimbing.siswa.id }}">{{ pembimbing.siswa.nama }}</option>
+              {% for s in siswa %}
+              <option value="{{ s.id }}">{{ s.nama }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="input-field">
+            <button type="submit" class="btn waves-effect">
+              <i class="material-icons left">save</i>
+              Simpan
+            </button>
+            <a href="/pembimbing/siswa" class="btn waves-effect">Kembali</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
