@@ -2,7 +2,11 @@
 
 <body>
 
-  {% include "layout_admin/nav.html" %}
+  {% if request.session.level == 'admin' %}
+    {% include "layout_admin/nav.html" %}
+  {% elif request.session.level == 'pembimbing' %}
+    {% include "layout_admin/nav-pembimbing.html" %}
+  {% endif %}
 
   {% block content %}
   {% endblock %}

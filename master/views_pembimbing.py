@@ -83,7 +83,7 @@ def tambah_pembimbing_siswa(request):
       Siswa.objects.filter(id=request.POST['siswa']).update(
         pembimbing = True
       )
-      pembimbing = Pembimbing.objects.all().order_by('jurusan')
+      pembimbing = Pembimbing.objects.all().order_by('nama')
       siswa = Siswa.objects.filter(pembimbing=False).order_by('kelas')
       msg = "Data Berhasil disimpan"
       return render(request, 'tambah-pembimbing-siswa.html', 
@@ -94,7 +94,7 @@ def tambah_pembimbing_siswa(request):
         }
       )
   else:
-    pembimbing = Pembimbing.objects.all().order_by('jurusan')
+    pembimbing = Pembimbing.objects.all().order_by('nama')
     siswa = Siswa.objects.filter(pembimbing=False).order_by('kelas')
     form = FormPembimbingSiswa()
   return render(request, 'tambah-pembimbing-siswa.html', 

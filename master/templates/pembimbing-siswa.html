@@ -18,7 +18,8 @@
           <thead>
             <tr>
               <th>NO.</th>
-              <th>PEMBIMBING</th>
+              <th>PEMBIMBING SATU</th>
+              <th>PEMBIMBING DUA</th>
               <th>NAMA SISWA</th>
               <th>KELAS</th>
               <th>AKSI</th>
@@ -28,7 +29,8 @@
             {% for mentor in ps %}
             <tr>
               <td>{{ forloop.counter }}.</td>
-              <td>{{ mentor.pembimbing }}</td>
+              <td>{{ mentor.pembimbing_satu }}</td>
+              <td>{{ mentor.pembimbing_dua }}</td>
               <td>{{ mentor.siswa }}</td>
               <td>{{ mentor.siswa.kelas }}</td>
               <td>

@@ -20,18 +20,27 @@
         <form action="/pembimbing/siswa/tambah/" method="post">
           {% csrf_token %}
           <div class="input-field">
-            <!-- <label for="{{ form.pembimbing.label }}">{{ form.pembimbing.label }}</label> -->
-            <select name="pembimbing" id="" class="this-select" required>
-              <option value=""></option>
+            <label for="{{ form.pembimbing_satu.label }}">{{ form.pembimbing_satu.label }}</label>
+            <select name="pembimbing_satu" id="" class="this-select" required>
+              <option >Pilih Pembimbing 1</option>
               {% for p in pembimbing %}
               <option value="{{ p.id }}">{{ p.nama }}</option>
               {% endfor %}
             </select>
           </div>
           <div class="input-field">
-            <!-- <label for="{{ form.jurusan.label }}">{{ form.jurusan.label }}</label> -->
+            <!-- <label for="{{ form.pembimbing.label }}">{{ form.pembimbing.label }}</label> -->
+            <select name="pembimbing_dua" id="" class="this-select" required>
+              <option >Pilih Pembimbing 2</option>
+              {% for p in pembimbing %}
+              <option value="{{ p.id }}">{{ p.nama }}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="input-field">
+            <label for="{{ form.siswa.label }}">{{ form.siswa.label }}</label>
             <select name="siswa" id="" class="this-select" required>
-              <option value=""></option>
+              <option >Pilih Siswa</option>
               {% for s in siswa %}
               <option value="{{ s.id }}">{{ s.NIS }} &#8212; {{ s.nama }} &#8212; {{ s.kelas }}</option>
               {% endfor %}

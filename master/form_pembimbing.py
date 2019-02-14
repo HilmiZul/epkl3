@@ -28,16 +28,22 @@ class FormPembimbing(ModelForm):
 class FormPembimbingSiswa(ModelForm):
   class Meta:
     model = PembimbingSiswa
-    fields = ['pembimbing', 'siswa']
+    fields = ['pembimbing_satu', 'pembimbing_dua', 'siswa']
 
     labels = {
-      'pembimbing': 'Pembimbing',
+      'pembimbing_satu': 'Pembimbing Satu',
+      'pembimbing_dua': 'Pembimbing Dua',
       'siswa': 'Siswa',
     }
 
     widgets = {
-      'pembimbing': forms.Select(attrs={
-        'id': 'pembimbing',
+      'pembimbing_satu': forms.Select(attrs={
+        'id': 'pembimbing_satu',
+        'class':'validate this-select',
+        'required':'required',
+      }),
+      'pembimbing_dua': forms.Select(attrs={
+        'id': 'pembimbing_dua',
         'class':'validate this-select',
         'required':'required',
       }),
