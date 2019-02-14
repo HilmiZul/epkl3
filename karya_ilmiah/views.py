@@ -1,15 +1,16 @@
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import SubmissionJudul
 from akun.models import AkunSiswa
 from master.models import PembimbingSiswa
 
 @login_required(login_url=settings.LOGIN_URL)
-def submission_judul(request):
+def submit_judul(request):
+  get_siswa = AkunSiswa.objects.get(id=request.session['id'])
+  get_pembimbing = PembimbingSiswa.objects.get(siswa=get_siswa.profil)
   if request.POST:
-    get_siswa = AkunSiswa.objects.get(id=request.session['id'])
-    get_pembimbing = PembimbingSiswa.objects.get(siswa=get_siswa.profil)
     SubmissionJudul(
       judul = request.POST['judul'],
       submit_status = True,
@@ -17,16 +18,25 @@ def submission_judul(request):
       siswa = get_siswa,
       pembimbing = get_pembimbing,
     ).save()
-    msg = "Judul berhasil dikirim."
-    judul = SubmissionJudul.objects.get(siswa__id=request.session['id'])
-    return render(request, 'submission-judul.html', {'msg':msg, 'judul':judul})
+    # msg = "Judul berhasil dikirim."
+    # messages.add_message(request, messages.INFO, 'Judul berhasil dikirim.')
+    # judul = SubmissionJudul.objects.get(siswa__id=request.session['id'])
+    # return render(request, 'submit-judul.html', {'msg':msg, 'judul':judul})
+    return redirect('/karya-ilmiah/judul')
   else:
-    judul = SubmissionJudul.objects.get(siswa__id=request.session['id'])
-  return render(request, 'submission-judul.html', {'judul':judul})
+    try:
+      karil = SubmissionJudul.objects.get(siswa__id=request.session['id'])
+      if karil.submit_status:
+        redir = redirect('/karya-ilmiah/judul')
+      else:
+        redir = render(request, 'submit-judul.html')
+    except:
+      redir = render(request, 'submit-judul.html')
+  return redir
 
 
 @login_required(login_url=settings.LOGIN_URL)
-def show_submit_judul(request):
+def show_judul(request):
   judul = SubmissionJudul.objects.filter(siswa__id=request.session['id'])
   return render(request, 'judul.html', {'judul':judul})
 
@@ -42,4 +52,9 @@ def ubah_judul(request, id):
     return render(request, 'ubah-judul.html', {'msg':msg, 'karil':karil})
   else:
     karil = SubmissionJudul.objects.get(siswa__id=request.session['id'])
+    # jika status sudah disetujui, judul haram diubah. :D
+    if karil.status == 'Disetujui':
+      return redirect('/karya-ilmiah/show-submit-judul/')
+    else:
+      pass
   return render(request, 'ubah-judul.html', {'karil':karil})

@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <div class="col l12">
-        <h4>Submission Judul</h4>
+        <h4>Pengajuan Judul</h4>
 
         {% if msg %}
         <div class="card-panel teal lighten-5">
@@ -27,7 +27,15 @@
             {% for karil in judul %}
             <tr>
               <td>{{ forloop.counter }}.</td>
-              <td><a href="/karya-ilmiah/judul/ubah/{{ karil.id }}">{{ karil.judul }}</a></td>
+              <td>
+                {% if karil.status == 'Ditolak' %}
+                  <a href="/karya-ilmiah/judul/ubah/{{ karil.id }}">{{ karil.judul }}</a>
+                {% elif karil.status == 'Menunggu' %}
+                  {{ karil.judul }}
+                {% elif karil.status == 'Disetujui' %}
+                  {{ karil.judul }}
+                {% endif %}
+              </td>
               <td>{{ karil.siswa.profil }}</td>
               <td>{{ karil.siswa.profil.kelas }}</td>
               <td>

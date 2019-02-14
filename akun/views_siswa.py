@@ -18,6 +18,7 @@ def masuk_siswa(request):
           request.session['uname'] = request.POST['uname']
           request.session['nama'] = akun.profil.nama
           request.session['id'] = akun.id
+          request.session['id_siswa'] = akun.profil.id
         except:
           messages.add_message(request, messages.INFO, 'Login Gagal :(')
         return redirect('/')
