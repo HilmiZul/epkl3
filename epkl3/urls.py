@@ -8,6 +8,8 @@ urlpatterns = [
     # akun
     path('akun/', include('akun.urls')),
 
+    path('siswa/', include('akun.urls')),
+
     # dashboard
     path('', dashboard),
     path('dashboard/', include('dashboard.urls')),
@@ -20,4 +22,8 @@ urlpatterns = [
 
     # pembimbing
     path('pembimbing/', include('master.urls_pembimbing')),
+
+    # karya ilmiah
+    # submission judul
+    path('karya-ilmiah/', include('karya_ilmiah.urls')),
 ]

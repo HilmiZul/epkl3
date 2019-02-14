@@ -1,6 +1,8 @@
   {% extends 'layout_admin/base.html' %}
 
   {% block content %}
+  
+  {% if request.session.level is not empty %}
   <section class="dashboard">
     <div class="container">
       <div class="row">
@@ -58,4 +60,6 @@
       </div> <!-- ./row -->
     </div>
   </section>
+  {% endif %}
+  
   {% endblock %}

@@ -6,6 +6,8 @@
     {% include "layout_admin/nav.html" %}
   {% elif request.session.level == 'pembimbing' %}
     {% include "layout_admin/nav-pembimbing.html" %}
+  {% else %}
+    {% include "layout_admin/nav-siswa.html" %}
   {% endif %}
 
   {% block content %}
