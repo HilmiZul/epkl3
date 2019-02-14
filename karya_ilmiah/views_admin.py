@@ -4,12 +4,12 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import SubmissionJudul
 from akun.models import AkunSiswa
-from master.models import PembimbingSiswa
+from master.models import PembimbingSiswa, Siswa
 from datetime import datetime
 
 
 @login_required(login_url=settings.LOGIN_URL)
-def show_submission_judul(request):
+def pengajuan_judul(request):
   judul = SubmissionJudul.objects.filter(
     Q(pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(pembimbing__pembimbing_dua__nama=request.session['nama']) 
   )
@@ -22,6 +22,10 @@ def setuju_submission_judul(request, id):
     tanggal_acc = datetime.now(),
     status = "Disetujui",
   )
+  # ubah status judul di Siswa
+  # ambil id siswa dulu, gimana caranya?
+  # Siswa.objects.filter(id=request.session['id_siswa']).update(status_judul=True)
+  
   msg = "Judul berhasil disetujui."
   judul = SubmissionJudul.objects.filter(
     Q(pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(pembimbing__pembimbing_dua__nama=request.session['nama']) 
