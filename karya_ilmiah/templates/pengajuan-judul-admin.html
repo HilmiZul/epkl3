@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <div class="col l12">
-        <h4>Pengajuan Judul {{ request.session.id_siswa }}</h4>
+        <h4>Submission Judul</h4>
 
         {% if msg %}
         <div class="card-panel teal lighten-5">
@@ -21,33 +21,44 @@
               <th>NAMA</th>
               <th>KELAS</th>
               <th>STATUS</th>
+              <th>AKSI</th>
             </tr>
           </thead>
           <tbody>
             {% for karil in judul %}
             <tr>
               <td>{{ forloop.counter }}.</td>
-              <td>
-                {% if karil.status == 'Ditolak' %}
-                  <a href="/karya-ilmiah/judul/ubah/{{ karil.id }}">{{ karil.judul }}</a>
-                {% elif karil.status == 'Menunggu' %}
-                  {{ karil.judul }}
-                {% elif karil.status == 'Disetujui' %}
-                  {{ karil.judul }}
-                {% endif %}
-              </td>
+              <td>{{ karil.judul }}</td>
               <td>{{ karil.siswa.profil }}</td>
               <td>{{ karil.siswa.profil.kelas }}</td>
               <td>
                 {% if karil.status == 'Menunggu' %}
                   <span class="btn red lighten-2">{{ karil.status }}</span>
                 {% elif karil.status == 'Ditolak' %}
-                <span class="btn red lighten-2">{{ karil.status }}</span>
+                  <span class="btn red lighten-2">{{ karil.status }}</span>
                 {% else %}
                   <span class="btn purple darken-1">{{ karil.status }}</span>
                 {% endif %}
               </td>
+              <td>
+                <a href="#setuju-{{ karil.id }}" class="btn grey darken-2 waves-effect waves-light modal-trigger">
+                  <i class="material-icons">done</i>
+                </a>
+              </td>
             </tr>
+            <div class="modal" id="setuju-{{ karil.id }}">
+              <div class="modal-content">
+                <h4>Setujui?</h4>
+                <p>
+                  Apakah Anda yakin akan menyetujui Judul Karya Ilmiah ini?
+                </p>
+              </div>
+              <div class="modal-footer">
+                <a href="/karya-ilmiah/rpl/pengajuan-judul/setuju/{{ karil.id }}" class="btn waves-effect">Ya, Setujui</a>
+                <a href="/karya-ilmiah/rpl/pengajuan-judul/tolak/{{ karil.id }}" class="modal-close btn-flat waves-effect">Tolak dan Kembalikan</a>
+                <a href="#!" class="modal-close btn-flat waves-effect">BATAL</a>
+              </div>
+            </div>
             {% endfor %}
           </tbody>
         </table>

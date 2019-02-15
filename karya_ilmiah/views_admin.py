@@ -15,6 +15,11 @@ def pengajuan_judul(request):
   )
   return render(request, 'show-submission-judul.html', {'judul':judul})
 
+@login_required(login_url=settings.LOGIN_URL)
+def pengajuan_judul_admin(request):
+  judul = SubmissionJudul.objects.all().order_by('siswa__profil__kelas')
+  return render(request, 'pengajuan-judul-admin.html', {'judul':judul})
+
 
 @login_required(login_url=settings.LOGIN_URL)
 def setuju_submission_judul(request, id):
@@ -24,8 +29,8 @@ def setuju_submission_judul(request, id):
   )
   # ubah status judul di Siswa
   # ambil id siswa dulu, gimana caranya?
-  # Siswa.objects.filter(id=request.session['id_siswa']).update(status_judul=True)
-  
+  Siswa.objects.get(id=request.session['id_siswa']).update(status_judul=True)
+
   msg = "Judul berhasil disetujui."
   judul = SubmissionJudul.objects.filter(
     Q(pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(pembimbing__pembimbing_dua__nama=request.session['nama']) 
