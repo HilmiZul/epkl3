@@ -26,7 +26,7 @@ def tambah_pembimbing(request):
 
 @login_required(login_url=settings.LOGIN_URL)
 def pembimbing(request):
-  pembimbing = Pembimbing.objects.all().order_by('jurusan')
+  pembimbing = Pembimbing.objects.all().order_by('nama')
   return render(request, 'pembimbing.html', {'pembimbing':pembimbing})
 
 

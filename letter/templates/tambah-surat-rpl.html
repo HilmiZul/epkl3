@@ -22,17 +22,17 @@
           <div class="input-field">
             <select name="nama_siswa" class="this-select-siswa" required>
               <option value=""></option>
-              <optgroup label="XII.RPL-1">
+              <optgroup label="XI.RPL-1">
                 {% for rpl1 in students_rpl_1 %}
                 <option value="{{ rpl1.id }}">{{ rpl1.NIS }} &#8212; {{ rpl1.nama }} </option>
                 {% endfor %}
               </optgroup>
-              <optgroup label="XII.RPL-2">
+              <optgroup label="XI.RPL-2">
                 {% for rpl2 in students_rpl_2 %}
                 <option value="{{ rpl2.id }}">{{ rpl2.NIS }} &#8212; {{ rpl2.nama }} </option>
                 {% endfor %}
               </optgroup>
-              <optgroup label="XII.RPL-3">
+              <optgroup label="XI.RPL-3">
                 {% for rpl3 in students_rpl_3 %}
                 <option value="{{ rpl3.id }}">{{ rpl3.NIS }} &#8212; {{ rpl3.nama }} </option>
                 {% endfor %}

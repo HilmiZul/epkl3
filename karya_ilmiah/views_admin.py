@@ -13,7 +13,7 @@ def pengajuan_judul(request):
   judul = SubmissionJudul.objects.filter(
     Q(pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(pembimbing__pembimbing_dua__nama=request.session['nama']) 
   )
-  return render(request, 'show-submission-judul.html', {'judul':judul})
+  return render(request, 'pengajuan-judul-pembimbing.html', {'judul':judul})
 
 @login_required(login_url=settings.LOGIN_URL)
 def pengajuan_judul_admin(request):

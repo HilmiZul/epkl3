@@ -11,10 +11,12 @@ urlpatterns = [
   path('rpl/cetak/<int:id_instansi>', cetak_surat_rpl),
   path('rpl/hapus/<int:id_surat>', hapus_surat_rpl),
   path('rpl/ubah/<int:id_surat>', ubah_surat_rpl),
+  path('rpl/cetak/ready', cetak_pkl_rpl),
 
   path('tkj/cetak/<int:id_instansi>', cetak_surat_tkj),
   path('tkj/', surat_tkj),
   path('tkj/tambah/', tambah_surat_tkj),
   path('tkj/hapus/<int:id_surat>', hapus_surat_tkj),
   path('tkj/ubah/<int:id_surat>', ubah_surat_tkj),
+  path('tkj/cetak/ready', cetak_pkl_tkj),
 ]

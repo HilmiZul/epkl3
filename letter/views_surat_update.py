@@ -17,9 +17,9 @@ def ubah_surat_rpl(request, id_surat):
     msg = "Data berhasil diperbaharui."
 
     surat = Permohonan.objects.get(id=id_surat)
-    students_rpl_1 = Siswa.objects.filter(kelas='XII.RPL-1').order_by('kelas')
-    students_rpl_2 = Siswa.objects.filter(kelas='XII.RPL-2').order_by('kelas')
-    students_rpl_3 = Siswa.objects.filter(kelas='XII.RPL-3').order_by('kelas')
+    students_rpl_1 = Siswa.objects.filter(kelas='XI.RPL-1').order_by('kelas')
+    students_rpl_2 = Siswa.objects.filter(kelas='XI.RPL-2').order_by('kelas')
+    students_rpl_3 = Siswa.objects.filter(kelas='XI.RPL-3').order_by('kelas')
     instansi = Instansi.objects.filter(grup='RPL').order_by('nama')
     return render(request, 'ubah-surat-rpl.html', 
       {
@@ -33,9 +33,9 @@ def ubah_surat_rpl(request, id_surat):
     )
   else:
     surat = Permohonan.objects.get(id=id_surat)
-    students_rpl_1 = Siswa.objects.filter(kelas='XII.RPL-1').order_by('kelas')
-    students_rpl_2 = Siswa.objects.filter(kelas='XII.RPL-2').order_by('kelas')
-    students_rpl_3 = Siswa.objects.filter(kelas='XII.RPL-3').order_by('kelas')
+    students_rpl_1 = Siswa.objects.filter(kelas='XI.RPL-1').order_by('kelas')
+    students_rpl_2 = Siswa.objects.filter(kelas='XI.RPL-2').order_by('kelas')
+    students_rpl_3 = Siswa.objects.filter(kelas='XI.RPL-3').order_by('kelas')
     instansi = Instansi.objects.filter(grup='RPL').order_by('nama')
   return render(request, 'ubah-surat-rpl.html', 
     {
@@ -61,10 +61,10 @@ def ubah_surat_tkj(request, id_surat):
     msg = "Data berhasil diperbaharui."
 
     surat = Permohonan.objects.get(id=id_surat)
-    students_tkj_1 = Siswa.objects.filter(kelas='XII.TKJ-1').order_by('kelas')
-    students_tkj_2 = Siswa.objects.filter(kelas='XII.TKJ-2').order_by('kelas')
-    students_tkj_3 = Siswa.objects.filter(kelas='XII.TKJ-3').order_by('kelas')
-    students_tkj_4 = Siswa.objects.filter(kelas='XII.TKJ-4').order_by('kelas')
+    students_tkj_1 = Siswa.objects.filter(kelas='XI.TKJ-1').order_by('kelas')
+    students_tkj_2 = Siswa.objects.filter(kelas='XI.TKJ-2').order_by('kelas')
+    students_tkj_3 = Siswa.objects.filter(kelas='XI.TKJ-3').order_by('kelas')
+    students_tkj_4 = Siswa.objects.filter(kelas='XI.TKJ-4').order_by('kelas')
     instansi = Instansi.objects.filter(grup='TKJ').order_by('nama')
     return render(request, 'ubah-surat-tkj.html', 
       {
@@ -79,10 +79,10 @@ def ubah_surat_tkj(request, id_surat):
     )
   else:
     surat = Permohonan.objects.get(id=id_surat)
-    students_tkj_1 = Siswa.objects.filter(kelas='XII.TKJ-1').order_by('kelas')
-    students_tkj_2 = Siswa.objects.filter(kelas='XII.TKJ-2').order_by('kelas')
-    students_tkj_3 = Siswa.objects.filter(kelas='XII.TKJ-3').order_by('kelas')
-    students_tkj_4 = Siswa.objects.filter(kelas='XII.TKJ-4').order_by('kelas')
+    students_tkj_1 = Siswa.objects.filter(kelas='XI.TKJ-1').order_by('kelas')
+    students_tkj_2 = Siswa.objects.filter(kelas='XI.TKJ-2').order_by('kelas')
+    students_tkj_3 = Siswa.objects.filter(kelas='XI.TKJ-3').order_by('kelas')
+    students_tkj_4 = Siswa.objects.filter(kelas='XI.TKJ-4').order_by('kelas')
     instansi = Instansi.objects.filter(grup='TKJ').order_by('nama')
   return render(request, 'ubah-surat-tkj.html', 
     {

@@ -5,7 +5,12 @@
   <div class="container">
     <div class="row">
       <div class="col l12">
-        <h4>DU/DI & Siswa - TKJ</h4>
+        <h4>
+          Instansi & Siswa - TKJ
+          <a href="/pkl/tkj/cetak/ready" class="btn waves-effect">
+            <i class="material-icons">print</i>
+          </a>
+        </h4>
 
         {% if msg %}
         <div class="card-panel teal lighten-5">
@@ -34,7 +39,8 @@
             {% for letter in surat %}
             <tr>
               <td>{{ forloop.counter }}.</td>
-              <td><a href="/pkl/tkj/ubah/{{ letter.id }}" class="tooltipped" data-position="bottom" data-tooltip="Klik untuk ubah">{{ letter.nama_siswa }}</a></td>
+              <td><a href="/pkl/tkj/ubah/{{ letter.id }}" class="tooltipped" data-position="bottom" data-tooltip="Klik untuk ubah">
+                  {{ letter.nama_siswa }}</a></td>
               <td>{{ letter.nama_siswa.kelas }}</td>
               <td><a href="/pkl/tkj/cetak/{{ letter.nama_instansi.id }}" class="tooltipped" data-position="bottom"
                   data-tooltip="Klik untuk cetak" target="_blank">{{ letter.nama_instansi }}</a></td>
