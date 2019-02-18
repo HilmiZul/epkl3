@@ -1,6 +1,6 @@
 {% extends "layout_admin/base.html" %}
 
-{% block content %}
+{% block siswa %}
 <section class="form-input">
   <div class="container">
     <div class="row">
@@ -9,11 +9,44 @@
       </div>
     </div>
     <div class="row">
-      {% if karil.submit_status %}
-        {% include "judul.html" %}
-      {% else %}
-        {% include "form-submit.html" %}
-      {% endif %}
+      <div class="col l6">
+        <!-- {% if messages %}
+            <div class="card-panel teal lighten-5">
+              <i class="material-icons left">check</i>
+              {{ messages }}
+            </div>
+            {% endif %} -->
+
+        <form action="/karya-ilmiah/judul/submit/" method="post">
+          {% csrf_token %}
+          <div class="input-field">
+            <label for="judul">Ketik judul disini...</label>
+            <textarea name="judul" id="judul" class="materialize-textarea" required></textarea>
+          </div>
+          <div class="input-field">
+            <button type="submit" class="btn waves-effect">
+              <i class="material-icons right">send</i>
+              Kirim
+            </button>
+            <a href="/karya-ilmiah/judul" class="btn waves-effect">Lihat</a>
+          </div>
+        </form>
+      </div>
+      <div class="col l6">
+        <div class="card z-depth-3">
+          <div class="card-content grey lighten-5 grey-text">
+            <h5>
+              Tips Membuat Judul Karya Ilmiah
+            </h5>
+            <ol>
+              <li>Cari di google</li>
+              <li>Cari di google</li>
+              <li>dan Cari di google</li>
+              <li>dah gitu aja.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

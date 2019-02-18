@@ -2,7 +2,7 @@
 
 <body>
 
-  {% if request.session.level == 'admin' %}
+  {% if request.session.level == 'admin'  %}
     {% include "layout_admin/nav.html" %}
   {% elif request.session.level == 'pembimbing' %}
     {% include "layout_admin/nav-pembimbing.html" %}
@@ -11,6 +11,9 @@
   {% endif %}
 
   {% block content %}
+  {% endblock %}
+
+  {% block siswa %}
   {% endblock %}
 
   {% include "layout_admin/js.html" %}

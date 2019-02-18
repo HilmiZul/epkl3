@@ -29,13 +29,18 @@ def setuju_submission_judul(request, id):
   )
   # ubah status judul di Siswa
   # ambil id siswa dulu, gimana caranya?
-  Siswa.objects.get(id=request.session['id_siswa']).update(status_judul=True)
+  # ambil data submissionjudul dari id yg disetujui
+  # lalu ambil id_siswa dengan melakukan blusukan a.k.a relational mapping :D
+  get_currnet_judul = SubmissionJudul.objects.get(id=id)
+  id_siswa = get_currnet_judul.siswa.profil.id
+  Siswa.objects.filter(id=id_siswa).update(status_judul=True)
 
   msg = "Judul berhasil disetujui."
   judul = SubmissionJudul.objects.filter(
     Q(pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(pembimbing__pembimbing_dua__nama=request.session['nama']) 
   )
-  return render(request, 'show-submission-judul.html', {'judul':judul})
+  # return render(request, 'show-submission-judul.html', {'judul':judul})
+  return redirect('/karya-ilmiah/pengajuan-judul/')
 
 
 @login_required(login_url=settings.LOGIN_URL)
