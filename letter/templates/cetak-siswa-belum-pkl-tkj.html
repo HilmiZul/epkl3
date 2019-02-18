@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/static/vendor/css/bootstrap.min.css" media="print">
+  </head>
+  <body>
+    <table width="100%">
+      <tr>
+        <td align="center" width="20%"><img src="/static/assets/img/prov-logo.png" width="90px"> </td>
+        <td align="center" width="60%">
+          <p class="spasi">
+            <strong>PEMERINTAH PROVINSI JAWA BARAT<br>
+            DINAS PENDIDIKAN<br>
+            CABANG DINAS PENDIDIKAN WILAYAH XII<br>
+            <span class="tebal gede">SMK NEGERI 4 TASIKMALAYA</span><br></strong>
+            Jl. Depok Kel. Sukamenak Kec. Purbaratu (0265) 312059<br>
+            Website : www.smkn4-tsm.sch.id Email : smkn4tsm@gmail.com<br>
+            Kota Tasikmalaya 46196
+          </p>
+        </td>
+        <td align="center" width="20%">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="3"><div style="border-bottom:2px solid #7f7f7f; padding-top:0; margin-top:0">&nbsp;</div></td>
+      </tr>
+    </table>
+
+    <table width="100%">
+      <tr>
+        <td colspan="3">&nbsp;</td>
+      </tr>
+      <tr>
+        <td align="center" colspan="3"><strong>Daftar Siswa Yang Belum Mendapatkan Tempat PKL</strong></td>
+      </tr>
+      <tr>
+        <td width="20%">Kelas</td>
+        <td width="80%">: XII TKJ</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>Tahun Pelajaran</td>
+        <td>: 2017/2018</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>Jumlah</td>
+        <td>: {{ count }}</td>
+        <td>&nbsp;</td>
+      </tr>
+    </table>
+    <br>
+    <table class="table table-bordered table-striped" width="100%">
+      <thead>
+        <tr>
+          <th>NO.</th>
+          <th>NIS</th>
+          <th>NAMA</th>
+          <th>KELAS</th>
+          <th>KETERANGAN</th>
+        </tr>
+      </thead>
+      <tbody style="font-size:10px">
+        {% for s in siswa %}
+          <tr>
+            <td>{{ forloop.counter }}.</td>
+            <td>{{ s.NIS }}</td>
+            <td>{{ s.nama }}</td>
+            <td>{{ s.kelas }}</td>
+            <td>&nbsp;</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

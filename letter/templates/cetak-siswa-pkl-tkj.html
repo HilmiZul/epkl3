@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="/static/vendor/css/bootstrap.min.css" media="print">
+  <style>
+    body {
+      margin: 1cm;
+      font-family: 'Times New Roman', Times, serif;
+    }
+  </style>
+</head>
+
+<body>
+  <table width="100%">
+    <tr>
+      <td align="center" width="20%"><img src="/static/assets/img/prov-logo.png" width="90px"> </td>
+      <td align="center" width="60%">
+        <p class="spasi">
+          <strong>PEMERINTAH PROVINSI JAWA BARAT<br>
+            DINAS PENDIDIKAN<br>
+            CABANG DINAS PENDIDIKAN WILAYAH XII<br>
+            <span class="tebal gede">SMK NEGERI 4 TASIKMALAYA</span><br></strong>
+          Jl. Depok Kel. Sukamenak Kec. Purbaratu (0265) 312059<br>
+          Website : www.smkn4-tsm.sch.id Email : smkn4tsm@gmail.com<br>
+          Kota Tasikmalaya 46196
+        </p>
+      </td>
+      <td align="center" width="20%">&nbsp;</td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <div style="border-bottom:2px solid #7f7f7f; padding-top:0; margin-top:0">&nbsp;</div>
+      </td>
+    </tr>
+  </table>
+
+  <table width="100%">
+    <tr>
+      <td colspan="3">&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="center" colspan="3"><strong>Daftar Siswa Yang Telah Mendapatkan Tempat PKL</strong></td>
+    </tr>
+    <tr>
+      <td width="20%">Program Keahlian</td>
+      <td width="80%">: {{ program_ahli }}</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Tahun Pelajaran</td>
+      <td>: 2018/2019</td>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+  <br>
+  <table class="table table-bordered table-striped" width="100%">
+    <thead>
+      <tr>
+        <th>NO.</th>
+        <th>NAMA</th>
+        <th>KELAS</th>
+        <th>INSTANSI</th>
+        <th>ALAMAT</th>
+      </tr>
+    </thead>
+    <tbody style="font-size:10px">
+      {% for s in surat %}
+      <tr>
+        <td>{{ forloop.counter }}.</td>
+        <td>{{ s.nama_siswa }}</td>
+        <td>{{ s.nama_siswa.kelas }}</td>
+        <td>{{ s.nama_instansi }}</td>
+        <td>{{ s.nama_instansi.alamat }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <table class="footer">
+    <tr>
+      <td width="75%"></td>
+      <td width="25%">
+        Tasikmalaya, {{ tanggal }}<br>
+        Kepala Sekolah,
+        <br>
+        <br>
+        <br>
+        <br>
+        <span class="tebal">Drs. H. DESNUERI</span><br>
+        NIP. 196112301986031009
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
