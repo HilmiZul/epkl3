@@ -17,6 +17,7 @@ def submit_judul(request):
       status = "Menunggu",
       siswa = get_siswa,
       pembimbing = get_pembimbing,
+      catatan = "",
     ).save()
     # msg = "Judul berhasil dikirim."
     # messages.add_message(request, messages.INFO, 'Judul berhasil dikirim.')
@@ -45,7 +46,8 @@ def ubah_judul(request, id):
   if request.POST:
     SubmissionJudul.objects.filter(id=id).update(
       judul = request.POST['judul'],
-      status = "Menunggu"
+      status = "Menunggu",
+      catatan = "",
     )
     karil = SubmissionJudul.objects.get(siswa__id=request.session['id'])
     msg = "Judul telah diperbaharui dan dikirim ulang ke Pembimbing."

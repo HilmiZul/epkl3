@@ -3,13 +3,17 @@ from django.db import models
 # Create your models here.
 class Siswa(models.Model):
     kelas_choices = (
-        ('XI.RPL-1', 'XI.RPL-1'),
-        ('XI.RPL-2', 'XI.RPL-2'),
-        ('XI.RPL-3', 'XI.RPL-3'),
-        ('XI.TKJ-1', 'XI.TKJ-1'),
-        ('XI.TKJ-2', 'XI.TKJ-2'),
-        ('XI.TKJ-3', 'XI.TKJ-3'),
-        ('XI.TKJ-4', 'XI.TKJ-4'),
+        ('RPL', (
+            ('XI.RPL-1', 'XI.RPL-1'),
+            ('XI.RPL-2', 'XI.RPL-2'),
+            ('XI.RPL-3', 'XI.RPL-3'),
+        )),
+        ('TKJ', (
+            ('XI.TKJ-1', 'XI.TKJ-1'),
+            ('XI.TKJ-2', 'XI.TKJ-2'),
+            ('XI.TKJ-3', 'XI.TKJ-3'),
+            ('XI.TKJ-4', 'XI.TKJ-4'),
+        )),
     )
 
     program_choices = (

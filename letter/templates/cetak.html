@@ -116,7 +116,7 @@
           {% for peserta in surat %}
             <tr>
               <td align="center">{{ forloop.counter }}.</td>
-              <td align="left" class="nama">{{ peserta.nama_siswa }}</td>
+              <td align="left" class="nama">{{ peserta.nama_siswa |upper }}</td>
               <td align="center">{{ peserta.nama_siswa.NIS }}</td>
               <td align="center">{{ peserta.nama_siswa.kelas }}</td>
               <td>{{ peserta.nama_siswa.program_ahli }}</td>

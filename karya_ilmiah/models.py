@@ -13,6 +13,7 @@ class SubmissionJudul(models.Model):
                                                       # apabila judul sesuai dan ilmiah, status akan "Diterima"
   siswa = models.ForeignKey(AkunSiswa, on_delete=models.CASCADE)
   pembimbing = models.ForeignKey(PembimbingSiswa, on_delete=models.CASCADE)
+  catatan = models.TextField(null=True)
 
   def __str__(self):
     return self.judul

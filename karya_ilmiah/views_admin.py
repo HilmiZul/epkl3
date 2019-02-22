@@ -52,9 +52,15 @@ def dikembalikan_submission_judul(request, id):
     SubmissionJudul.objects.filter(id=id).update(
       tanggal_acc = datetime.now(),
       status = "Ditolak",
+      catatan = request.POST['catatan'],
     )
     msg = "Judul ditolak dan telah dikembalikan."
   judul = SubmissionJudul.objects.filter(
     Q(pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(pembimbing__pembimbing_dua__nama=request.session['nama']) 
   )
-  return render(request, 'show-submission-judul.html', {'judul':judul})
+  return render(request, 'pengajuan-judul-pembimbing.html', 
+    {
+      'judul':judul, 
+      'msg':msg, 
+    }
+  )
