@@ -6,7 +6,7 @@
     <div class="row">
       <div class="col l12">
         <h4>
-          Instansi & Siswa - RPL
+          Instansi & Siswa &#8212; RPL
           <a href="/pkl/rpl/cetak/ready" class="btn waves-effect">
             <i class="material-icons">print</i>
           </a>
@@ -41,14 +41,13 @@
               <td>{{ forloop.counter }}.</td>
               <td><a href="/pkl/rpl/ubah/{{ letter.id }}" class="tooltipped" data-position="bottom" data-tooltip="Klik untuk ubah">{{ letter.nama_siswa }}</a></td>
               <td>{{ letter.nama_siswa.kelas }}</td>
-              <td><a href="/pkl/rpl/cetak/{{ letter.nama_instansi.id }}" class="tooltipped" data-position="bottom" data-tooltip="Klik untuk cetak" target="_blank">{{ letter.nama_instansi }}</a></td>
-              <td>{{ letter.nama_instansi.alamat }}</td>
+              <td><a href="/pkl/rpl/cetak/{{ letter.nama_instansi.id }}" class="tooltipped" data-position="bottom" data-tooltip="Cetak surat permohonan" target="_blank">{{ letter.nama_instansi }}</a></td>
               <td>
-                <a href="https://www.google.com/maps/search/?api=1&query={{ letter.nama_instansi.alamat }}" target="_blank"
-                  class="btn teal lighten-1 waves-effect waves-light modal-trigger tooltipped" data-position="bottom"
-                  data-tooltip="Lihat peta">
-                  <i class="material-icons">map</i>
+                <a href="https://www.google.com/maps/search/?api=1&query={{ letter.nama_instansi.alamat }}" class="tooltipped" target="_blank" data-position="bottom" data-tooltip="Lihat peta">
+                  {{ letter.nama_instansi.alamat }}
                 </a>
+              </td>
+              <td>
                 <a href="#instansi-{{ letter.id }}" class="btn red lighten-1 waves-effect waves-light modal-trigger tooltipped"
                   data-position="bottom" data-tooltip="Hapus">
                   <i class="material-icons">delete</i>
