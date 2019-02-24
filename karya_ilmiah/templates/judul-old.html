@@ -1,0 +1,58 @@
+{% extends "layout_admin/base.html" %}
+
+{% block siswa %}
+<section class="form-table">
+  <div class="container">
+    <div class="row">
+      <div class="col l12">
+        <h4>Pengajuan Judul</h4>
+
+        {% if msg %}
+        <div class="card-panel teal lighten-5">
+          {{ msg }}
+          <i class="material-icons left">check</i>
+        </div>
+        {% endif %}
+        <table class="responsive-table" id="myTable">
+          <thead>
+            <tr>
+              <th>NO.</th>
+              <th>JUDUL</th>
+              <th>NAMA</th>
+              <th>KELAS</th>
+              <th>STATUS</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for karil in judul %}
+            <tr>
+              <td>{{ forloop.counter }}.</td>
+              <td>
+                {% if karil.status == 'Ditolak' %}
+                  <a href="/karya-ilmiah/judul/ubah/{{ karil.id }}">{{ karil.judul }}</a>
+                {% elif karil.status == 'Menunggu' %}
+                  {{ karil.judul }}
+                {% elif karil.status == 'Disetujui' %}
+                  {{ karil.judul }}
+                {% endif %}
+              </td>
+              <td>{{ karil.siswa.profil }}</td>
+              <td>{{ karil.siswa.profil.kelas }}</td>
+              <td>
+                {% if karil.status == 'Menunggu' %}
+                  <span class="btn red lighten-2">{{ karil.status }}</span>
+                {% elif karil.status == 'Ditolak' %}
+                <span class="btn red lighten-2">{{ karil.status }}</span>
+                {% else %}
+                  <span class="btn purple darken-1">{{ karil.status }}</span>
+                {% endif %}
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div> <!-- ./col -->
+    </div> <!-- ./row -->
+  </div>
+</section>
+{% endblock %}
