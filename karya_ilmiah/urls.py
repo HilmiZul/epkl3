@@ -9,9 +9,9 @@ urlpatterns = [
   path('judul/ubah/<int:id>', ubah_judul),
 
   # area.mentor
-  path('rpl/pengajuan-judul/', pengajuan_judul),
-  path('rpl/pengajuan-judul/setuju/<int:id>', setuju_submission_judul),
-  path('rpl/pengajuan-judul/tolak/<int:id>', dikembalikan_submission_judul),
+  path('pengajuan-judul/', pengajuan_judul),
+  path('pengajuan-judul/setuju/<int:id>', setuju_submission_judul),
+  path('pengajuan-judul/tolak/<int:id>', dikembalikan_submission_judul),
 
   # area.admin
   path('pengajuan-judul/', pengajuan_judul_admin),

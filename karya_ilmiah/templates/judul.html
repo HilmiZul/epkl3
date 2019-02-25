@@ -1,58 +1,124 @@
 {% extends "layout_admin/base.html" %}
 
 {% block siswa %}
-<section class="form-table">
+
+{% if karil %}
+{% for k in karil %}
+
+<section class="karil-header z-depth-3">
   <div class="container">
     <div class="row">
-      <div class="col l12">
-        <h4>Pengajuan Judul</h4>
+      {% if k.status == 'Menunggu' %}
+      <div class="col l2 center-align red-text">
+        <i class="material-icons large">pause_circle_filled</i>
+        <div>{{ k.status }}</div>
+      </div> <!-- ./col l2 -->
+      {% elif k.status == 'Ditolak' %}
+      <div class="col l2 center-align red-text">
+        <i class="material-icons large">cancel</i>
+        <div>{{ k.status }}</div>
+        <a href="/karya-ilmiah/judul/ubah/{{ k.id }}" class="teal-text">Perbaiki Judul</a>
+      </div> <!-- ./col l2 -->
+      {% elif k.status == 'Disetujui' %}
+      <div class="col l2 center-align teal-text">
+        <i class="material-icons large">check_circle</i>
+        <div>{{ k.status }}</div>
+      </div> <!-- ./col l2 -->
+      {% endif %}
 
-        {% if msg %}
-        <div class="card-panel teal lighten-5">
-          {{ msg }}
-          <i class="material-icons left">check</i>
+      <div class="col l10">
+        <h4>{{ k.judul }}</h4>
+        <div class="progress">
+          <div class="determinate" style="width: 20%"></div>
         </div>
-        {% endif %}
-        <table class="responsive-table" id="myTable">
-          <thead>
-            <tr>
-              <th>NO.</th>
-              <th>JUDUL</th>
-              <th>NAMA</th>
-              <th>KELAS</th>
-              <th>STATUS</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for karil in judul %}
-            <tr>
-              <td>{{ forloop.counter }}.</td>
-              <td>
-                {% if karil.status == 'Ditolak' %}
-                  <a href="/karya-ilmiah/judul/ubah/{{ karil.id }}">{{ karil.judul }}</a>
-                {% elif karil.status == 'Menunggu' %}
-                  {{ karil.judul }}
-                {% elif karil.status == 'Disetujui' %}
-                  {{ karil.judul }}
-                {% endif %}
-              </td>
-              <td>{{ karil.siswa.profil }}</td>
-              <td>{{ karil.siswa.profil.kelas }}</td>
-              <td>
-                {% if karil.status == 'Menunggu' %}
-                  <span class="btn red lighten-2">{{ karil.status }}</span>
-                {% elif karil.status == 'Ditolak' %}
-                <span class="btn red lighten-2">{{ karil.status }}</span>
-                {% else %}
-                  <span class="btn purple darken-1">{{ karil.status }}</span>
-                {% endif %}
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div> <!-- ./col -->
+        <div class="grey-text">Progess Bimbingan: 20%</div>
+        <div class="grey-text">Pembimbing 1: {{ k.pembimbing }}</div>
+        <div class="grey-text">Pembimbing 2: {{ k.pembimbing.pembimbing_dua }}</div>
+      </div>
     </div> <!-- ./row -->
   </div>
 </section>
+{% endfor %}
+
+<section class="karil-body">
+  <div class="container">
+    <div class="row">
+      <div class="col l2">
+        <div class="tanggal grey-text right-align">
+          24 Februari 2019
+        </div>
+      </div>
+      <div class="col l10">
+        <div class="history">
+          <div class="status teal-text">
+            <i class="material-icons left">check_circle</i>
+            Selesai
+          </div>
+          BAB I: Pendahuluan
+          <a href="#!" class="btn waves-effect waves-light"><i class="material-icons left">file_download</i>Unduh</a>
+        </div>
+      </div>
+    </div> <!-- ./row-->
+
+    <div class="row">
+      <div class="col l2">
+        <div class="tanggal grey-text right-align">
+          26 Februari 2019
+        </div>
+      </div>
+      <div class="col l10">
+        <div class="history">
+          <div class="status teal-text">
+            <i class="material-icons left">check_circle</i>
+            Selesai
+          </div>
+          BAB II: Instansi
+          <a href="#!" class="btn waves-effect waves-light"><i class="material-icons left">file_download</i>Unduh</a>
+        </div>
+      </div>
+    </div> <!-- ./row-->
+
+    <div class="row">
+      <div class="col l2">
+        <div class="tanggal grey-text right-align">
+          29 Februari 2019
+        </div>
+      </div>
+      <div class="col l10">
+        <div class="history">
+          <div class="status grey-text">
+            <i class="material-icons left">cancel</i>
+            Pending
+          </div>
+          BAB III: Landasan Teori
+        </div>
+      </div>
+    </div> <!-- ./row-->
+    <hr>
+    <div class="row">
+      <div class="col l2">
+        <div class="tanggal grey-text right-align">
+          3 Januari 2020
+        </div>
+      </div>
+      <div class="col l10">
+        <div class="history">
+          <div class="status teal-text">
+            <i class="material-icons left">check_circle</i>
+            Lengkap
+          </div>
+          <p><em>Progress</em> bimbingan dan semua berkas telah berhasil diselesaikan.
+            Dengan ini kami nyatakan <b>YUDIS</b> siap Sidang.</p>
+        </div>
+      </div>
+    </div> <!-- ./row-->
+
+  </div>
+</section>
+{% else %}
+<div class="center-align">
+  <h3>Kamu belum mengajukan judul 😔</h3>
+  <a href="/karya-ilmiah/judul/submit/" class="btn waves-effect waves-light">Ajukan Judul Sekarang</a>
+</div>
+{% endif %}
 {% endblock %}

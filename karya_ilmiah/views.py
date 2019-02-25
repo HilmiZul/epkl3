@@ -38,8 +38,8 @@ def submit_judul(request):
 
 @login_required(login_url=settings.LOGIN_URL)
 def show_judul(request):
-  judul = SubmissionJudul.objects.filter(siswa__id=request.session['id'])
-  return render(request, 'judul.html', {'judul':judul})
+  karil = SubmissionJudul.objects.filter(siswa__id=request.session['id'])
+  return render(request, 'judul.html', {'karil':karil})
 
 @login_required(login_url=settings.LOGIN_URL)
 def ubah_judul(request, id):
@@ -47,7 +47,6 @@ def ubah_judul(request, id):
     SubmissionJudul.objects.filter(id=id).update(
       judul = request.POST['judul'],
       status = "Menunggu",
-      catatan = "",
     )
     karil = SubmissionJudul.objects.get(siswa__id=request.session['id'])
     msg = "Judul telah diperbaharui dan dikirim ulang ke Pembimbing."
@@ -56,7 +55,7 @@ def ubah_judul(request, id):
     karil = SubmissionJudul.objects.get(siswa__id=request.session['id'])
     # jika status sudah disetujui, judul haram diubah. :D
     if karil.status == 'Disetujui':
-      return redirect('/karya-ilmiah/show-submit-judul/')
+      return redirect('/karya-ilmiah/judul/')
     else:
       pass
   return render(request, 'ubah-judul.html', {'karil':karil})

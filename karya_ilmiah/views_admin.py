@@ -13,7 +13,7 @@ def pengajuan_judul(request):
   judul = SubmissionJudul.objects.filter(
     Q(pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(pembimbing__pembimbing_dua__nama=request.session['nama']) 
   )
-  return render(request, 'pengajuan-judul-pembimbing.html', {'judul':judul})
+  return render(request, 'pengajuan-judul-admin.html', {'judul':judul})
 
 @login_required(login_url=settings.LOGIN_URL)
 def pengajuan_judul_admin(request):
@@ -49,16 +49,20 @@ def dikembalikan_submission_judul(request, id):
   if get_judul.status == "Disetujui":
     msg = "Judul sudah disetujui. Tidak bisa diubah dan dikembalikan."
   else:
+    if request.POST['catatan'] is not None:
+      catatan = request.POST['catatan']
+    else:
+      catatan = "Tidak ada catatan."
     SubmissionJudul.objects.filter(id=id).update(
       tanggal_acc = datetime.now(),
       status = "Ditolak",
-      catatan = request.POST['catatan'],
+      catatan = catatan,
     )
     msg = "Judul ditolak dan telah dikembalikan."
   judul = SubmissionJudul.objects.filter(
     Q(pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(pembimbing__pembimbing_dua__nama=request.session['nama']) 
   )
-  return render(request, 'pengajuan-judul-pembimbing.html', 
+  return render(request, 'pengajuan-judul-admin.html', 
     {
       'judul':judul, 
       'msg':msg, 

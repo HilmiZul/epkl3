@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <div class="col l6">
-        <h4>Ubah Judul</h4>
+        <h4>Perbaiki Judul</h4>
       </div>
     </div>
     <div class="row">
@@ -33,8 +33,16 @@
         </form>
       </div>
       <div class="col l6">
+        {% if karil.catatan is not None %}
         <div class="card z-depth-3">
-          <div class="card-content grey lighten-5 grey-text">
+          <div class="card-content teal lighten-5">
+            <h5>Catatan dari Pembimbing</h5>
+            <p>{{ karil.catatan }}</p>
+          </div>
+        </div>
+        {% endif %}
+        <div class="card z-depth-3">
+          <div class="card-content grey lighten-5">
             <h5>
               Tips Membuat Judul Karya Ilmiah
             </h5>
