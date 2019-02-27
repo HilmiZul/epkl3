@@ -5,14 +5,13 @@ from .models import Permohonan
 from master.models import Instansi
 from datetime import datetime
 
-# tanggal sekarang
-tanggal = datetime.now()
-tanggal = tanggal.strftime("%d %B %Y")
-
 @login_required(login_url=settings.LOGIN_URL)
 def cetak_surat_rpl(request, id_instansi):
   surat = Permohonan.objects.filter(nama_instansi__id=id_instansi)
   instansi = Instansi.objects.get(id=id_instansi)
+  # tanggal sekarang
+  tanggal = datetime.now()
+  tanggal = tanggal.strftime("%d %B %Y")
   return render(request, 'cetak.html', 
     {
       'surat':surat, 
@@ -26,6 +25,9 @@ def cetak_surat_rpl(request, id_instansi):
 def cetak_surat_tkj(request, id_instansi):
   surat = Permohonan.objects.filter(nama_instansi__id=id_instansi)
   instansi = Instansi.objects.get(id=id_instansi)
+  # tanggal sekarang
+  tanggal = datetime.now()
+  tanggal = tanggal.strftime("%d %B %Y")
   return render(request, 'cetak.html', 
     {
       'surat':surat, 
@@ -39,8 +41,11 @@ def cetak_surat_tkj(request, id_instansi):
 # YANG SUDAH MENDAPATKAN TEMPAT PKL
 @login_required(login_url=settings.LOGIN_URL)
 def cetak_pkl_rpl(request):
-    fix = Permohonan.objects.filter(nama_siswa__pkl=True, nama_siswa__program_ahli='Rekayasa Perangkat Lunak').order_by('nama_instansi__nama')
+    fix = Permohonan.objects.filter(nama_siswa__pkl=True, nama_siswa__program_ahli='Rekayasa Perangkat Lunak').order_by('nama_siswa__kelas')
     program_ahli = "Rekayasa Perangkat Lunak"
+    # tanggal sekarang
+    tanggal = datetime.now()
+    tanggal = tanggal.strftime("%d %B %Y")
     return render(request, 'cetak-siswa-pkl-rpl.html', 
       {
         'surat':fix,
@@ -51,8 +56,11 @@ def cetak_pkl_rpl(request):
 
 @login_required(login_url=settings.LOGIN_URL)
 def cetak_pkl_tkj(request):
-    fix = Permohonan.objects.filter(nama_siswa__pkl=True, nama_siswa__program_ahli='Teknik Komputer dan Jaringan').order_by('nama_instansi__nama')
+    fix = Permohonan.objects.filter(nama_siswa__pkl=True, nama_siswa__program_ahli='Teknik Komputer dan Jaringan').order_by('nama_siswa__kelas')
     program_ahli = "Teknik Komputer dan Jaringan"
+    # tanggal sekarang
+    tanggal = datetime.now()
+    tanggal = tanggal.strftime("%d %B %Y")
     return render(request, 'cetak-siswa-pkl-tkj.html', 
       {
         'surat':fix,
