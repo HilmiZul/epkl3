@@ -4,3 +4,6 @@ I just build a simple app for manage PKL(Praktik Kerja Lapangan) data like agenc
 # Built with
 * Python 3.7
 * Django 2.1
+
+---
+update Maret 2019, 2th
