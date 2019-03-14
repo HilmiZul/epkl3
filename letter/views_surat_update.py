@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Permohonan
 from master.models import Siswa, Instansi
 
+# UBAH.SURAT.RPL
 @login_required(login_url=settings.LOGIN_URL)
 def ubah_surat_rpl(request, id_surat):
   if request.POST:
@@ -48,6 +49,7 @@ def ubah_surat_rpl(request, id_surat):
   )
 
 
+# UBAH.SURAT.TKJ
 @login_required(login_url=settings.LOGIN_URL)
 def ubah_surat_tkj(request, id_surat):
   if request.POST:
