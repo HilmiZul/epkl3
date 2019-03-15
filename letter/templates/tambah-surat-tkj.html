@@ -48,7 +48,7 @@
             <select name="nama_instansi" class="this-select-instansi" required>
               <option value=""></option>
               {% for company in instansi %}
-              <option value="{{ company.id }}">{{ company.nama }}</option>
+              <option value="{{ company.id }}">{{ company.nama }} ({{ company.limit }} / 5)</option>
               {% endfor %}
             </select>
           </div>
