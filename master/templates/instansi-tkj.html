@@ -18,6 +18,7 @@
             <tr>
               <th>NO.</th>
               <th>NAMA</th>
+              <th>TERISI</th>
               <th>ALAMAT</th>
               <th>AKSI</th>
             </tr>
@@ -27,6 +28,7 @@
             <tr>
               <td>{{ forloop.counter }}.</td>
               <td><a href="/instansi/tkj/ubah/{{ company.id }}">{{ company.nama }}</a></td>
+              <td>{{ company.limit }} dari 5</td>
               <td>{{ company.alamat }}</td>
               <td>
                 <a href="https://www.google.com/maps/search/?api=1&query={{ company.alamat }}" target="_blank" class="btn teal lighten-1 waves-effect waves-light modal-trigger tooltipped"
