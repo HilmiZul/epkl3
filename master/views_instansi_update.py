@@ -9,6 +9,8 @@ def ubah_instansi_rpl(request, id_instansi):
     Instansi.objects.filter(id=id_instansi).update(
       nama = request.POST['nama'],
       alamat = request.POST['alamat'],
+      pimpinan = request.POST['pimpinan'],
+      kontak = request.POST['kontak'],
     )
     msg = "Data berhasil diperbaharui."
     instansi = Instansi.objects.get(id=id_instansi)
@@ -29,10 +31,17 @@ def ubah_instansi_tkj(request, id_instansi):
     Instansi.objects.filter(id=id_instansi).update(
       nama = request.POST['nama'],
       alamat = request.POST['alamat'],
+      pimpinan = request.POST['pimpinan'],
+      kontak = request.POST['kontak'],
     )
     msg = "Data berhasil diperbaharui."
     instansi = Instansi.objects.get(id=id_instansi)
-    return render(request, 'ubah-instansi-tkj.html', {'instansi':instansi})
+    return render(request, 'ubah-instansi-tkj.html', 
+      {
+        'instansi':instansi,
+        'msg':msg,
+      }
+    )
   else:
     instansi = Instansi.objects.get(id=id_instansi)
   return render(request, 'ubah-instansi-tkj.html', {'instansi':instansi})
