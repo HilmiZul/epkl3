@@ -18,7 +18,7 @@ class SiswaAdmin(admin.ModelAdmin):
         queryset.update(pkl=False)
 
 class InstansiAdmin(admin.ModelAdmin):
-    list_display = ['nama', 'alamat', 'grup', 'limit']
+    list_display = ['nama', 'alamat', 'pimpinan', 'kontak', 'grup', 'limit']
     search_fields = ['nama', 'alamat']
     list_per_page = 20
 
