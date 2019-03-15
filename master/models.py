@@ -39,6 +39,8 @@ class Instansi(models.Model):
     )
     nama = models.CharField(max_length=100)
     alamat = models.TextField()
+    pimpinan = models.CharField(max_length=50, null=True)
+    kontak = models.CharField(max_length=13, null=True)
     grup = models.CharField(max_length=3, choices=grup_choices, default=True)
     limit = models.IntegerField(null=True)
 
