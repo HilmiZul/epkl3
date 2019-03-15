@@ -13,12 +13,20 @@ def tambah_surat_rpl(request):
       nama_siswa = siswa,
       nama_instansi = instansi,
     ).save()   
+
+    # ubah status pkl siswa menjadi True
     Siswa.objects.filter(id=siswa.id).update(pkl=True) 
+
+    # ubah limit instansi +1
+    cur_limit = instansi.limit + 1
+    Instansi.objects.filter(id=instansi.id).update(limit=cur_limit)
+
     msg = "Data berhasil ditambahkan."
     students_rpl_1 = Siswa.objects.filter(kelas='XI.RPL-1', pkl=False).order_by('kelas')
     students_rpl_2 = Siswa.objects.filter(kelas='XI.RPL-2', pkl=False).order_by('kelas')
     students_rpl_3 = Siswa.objects.filter(kelas='XI.RPL-3', pkl=False).order_by('kelas')
-    instansi = Instansi.objects.filter(grup='RPL').order_by('nama')
+    # filter instansi, hanya menampilkan yang limit-nya <= 5
+    instansi = Instansi.objects.filter(grup='RPL', limit__lt=5).order_by('nama')
     return render(request, 'tambah-surat-rpl.html', 
       {
         'msg':msg,
@@ -32,7 +40,9 @@ def tambah_surat_rpl(request):
     students_rpl_1 = Siswa.objects.filter(kelas='XI.RPL-1', pkl=False).order_by('kelas')
     students_rpl_2 = Siswa.objects.filter(kelas='XI.RPL-2', pkl=False).order_by('kelas')
     students_rpl_3 = Siswa.objects.filter(kelas='XI.RPL-3', pkl=False).order_by('kelas')
-    instansi = Instansi.objects.filter(grup='RPL').order_by('nama')
+    
+    # filter instansi yang limit-nya kurang <= 5
+    instansi = Instansi.objects.filter(grup='RPL', limit__lt=5).order_by('nama')
   return render(request, 'tambah-surat-rpl.html', 
     {
       'students_rpl_1':students_rpl_1,
@@ -52,13 +62,21 @@ def tambah_surat_tkj(request):
       nama_siswa = siswa,
       nama_instansi = instansi,
     ).save()    
-    Siswa.objects.filter(id=siswa.id).update(pkl=True)
+    
+    # ubah status pkl siswa menjadi True
+    Siswa.objects.filter(id=siswa.id).update(pkl=True) 
+
+    # ubah limit instansi +1
+    cur_limit = instansi.limit + 1
+    Instansi.objects.filter(id=instansi.id).update(limit=cur_limit)
+
     msg = "Data berhasil ditambahkan."
     students_tkj_1 = Siswa.objects.filter(kelas='XI.TKJ-1', pkl=False).order_by('kelas')
     students_tkj_2 = Siswa.objects.filter(kelas='XI.TKJ-2', pkl=False).order_by('kelas')
     students_tkj_3 = Siswa.objects.filter(kelas='XI.TKJ-3', pkl=False).order_by('kelas')
     students_tkj_4 = Siswa.objects.filter(kelas='XI.TKJ-4', pkl=False).order_by('kelas')
-    instansi = Instansi.objects.filter(grup='TKJ').order_by('nama')
+    # filter instansi, hanya menampilkan yang limit-nya <= 5
+    instansi = Instansi.objects.filter(grup='TKJ', limit__lt=5).order_by('nama')
     return render(request, 'tambah-surat-tkj.html', 
       {
         'msg':msg,
@@ -74,7 +92,9 @@ def tambah_surat_tkj(request):
     students_tkj_2 = Siswa.objects.filter(kelas='XI.TKJ-2', pkl=False).order_by('kelas')
     students_tkj_3 = Siswa.objects.filter(kelas='XI.TKJ-3', pkl=False).order_by('kelas')
     students_tkj_4 = Siswa.objects.filter(kelas='XI.TKJ-4', pkl=False).order_by('kelas')
-    instansi = Instansi.objects.filter(grup='TKJ').order_by('nama')
+    
+    # filter instansi yang limit-nya kurang <= 5
+    instansi = Instansi.objects.filter(grup='TKJ', limit__lt=5).order_by('nama')
   return render(request, 'tambah-surat-tkj.html', 
     {
       'students_tkj_1':students_tkj_1,
