@@ -23,8 +23,20 @@
             <input type="text" class="validate" name="nama" value="{{ instansi.nama }}" autofocus required>
           </div>
           <div class="input-field">
-            <label for="alamat">Alamat</label>
+            <label for="pimpinan">Nama Pimpinan</label>
+            <input type="text" class="validate" name="pimpinan" value="{{ instansi.pimpinan }}" required>
+          </div>
+          <div class="input-field">
+            <label for="alamat">Alamat Lengkap</label>
             <textarea name="alamat" id="alamat" class="materialize-textarea" required>{{ instansi.alamat }}</textarea>
+          </div>
+          <div class="input-field">
+            <label for="kontak">Kontak</label>
+            <input type="number" class="validate" maxlength="13" name="kontak" value="{{ instansi.kontak }}" required>
+          </div>
+          <div class="input-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="validate" name="email" value="{{ instansi.email }}" required>
           </div>
           <div class="input-field">
             <button class="btn waves-effect waves-light" type="submit">
