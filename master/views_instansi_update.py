@@ -11,6 +11,7 @@ def ubah_instansi_rpl(request, id_instansi):
       alamat = request.POST['alamat'],
       pimpinan = request.POST['pimpinan'],
       kontak = request.POST['kontak'],
+      email = request.POST['email'],
     )
     msg = "Data berhasil diperbaharui."
     instansi = Instansi.objects.get(id=id_instansi)
@@ -33,6 +34,7 @@ def ubah_instansi_tkj(request, id_instansi):
       alamat = request.POST['alamat'],
       pimpinan = request.POST['pimpinan'],
       kontak = request.POST['kontak'],
+      email = request.POST['email'],
     )
     msg = "Data berhasil diperbaharui."
     instansi = Instansi.objects.get(id=id_instansi)

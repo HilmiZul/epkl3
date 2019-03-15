@@ -13,6 +13,7 @@ def tambah_instansi(request):
       alamat = request.POST['alamat'],
       pimpinan = request.POST['pimpinan'],
       kontak = request.POST['kontak'],
+      email = request.POST['email'],
       grup = request.POST['grup'],
       limit = 0,
     ).save()
@@ -30,6 +31,7 @@ def tambah_instansi_rpl(request):
       alamat = request.POST['alamat'],
       pimpinan = request.POST['pimpinan'],
       kontak = request.POST['kontak'],
+      email = request.POST['email'],
       grup = "RPL",
       limit = 0,
     ).save()
@@ -46,6 +48,7 @@ def tambah_instansi_tkj(request):
       alamat = request.POST['alamat'],
       pimpinan = request.POST['pimpinan'],
       kontak = request.POST['kontak'],
+      email = request.POST['email'],
       grup = "TKJ",
       limit = 0,
     ).save()
