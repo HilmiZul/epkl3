@@ -12,6 +12,7 @@ def tambah_instansi(request):
       nama = request.POST['nama'],
       alamat = request.POST['alamat'],
       grup = request.POST['grup'],
+      limit = 0,
     ).save()
     # msg = pesan().add()
     msg = "Instansi berhasil ditambahkan."
@@ -26,6 +27,7 @@ def tambah_instansi_rpl(request):
       nama = request.POST['nama'],
       alamat = request.POST['alamat'],
       grup = "RPL",
+      limit = 0,
     ).save()
     msg = "Instansi berhasil ditambahkan."
     return render(request, 'tambah-instansi-rpl.html', {'msg':msg})
@@ -39,6 +41,7 @@ def tambah_instansi_tkj(request):
       nama = request.POST['nama'],
       alamat = request.POST['alamat'],
       grup = "TKJ",
+      limit = 0,
     ).save()
     msg = "Instansi berhasil ditambahkan."
     return render(request, 'tambah-instansi-tkj.html', {'msg':msg})

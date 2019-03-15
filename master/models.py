@@ -40,6 +40,7 @@ class Instansi(models.Model):
     nama = models.CharField(max_length=100)
     alamat = models.TextField()
     grup = models.CharField(max_length=3, choices=grup_choices, default=True)
+    limit = models.IntegerField(null=True)
 
     def __str__(self):
         return self.nama
