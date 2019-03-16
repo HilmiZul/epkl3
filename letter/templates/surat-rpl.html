@@ -39,7 +39,8 @@
             {% for letter in surat %}
             <tr>
               <td>{{ forloop.counter }}.</td>
-              <td><a href="/pkl/rpl/ubah/{{ letter.id }}" class="tooltipped" data-position="bottom" data-tooltip="Klik untuk ubah">{{ letter.nama_siswa }}</a></td>
+              <!-- <td><a href="/pkl/rpl/ubah/{{ letter.id }}" class="tooltipped" data-position="bottom" data-tooltip="Klik untuk ubah">{{ letter.nama_siswa }}</a></td> -->
+              <td>{{ letter.nama_siswa }}</td>
               <td>{{ letter.nama_siswa.kelas }}</td>
               <td><a href="/pkl/rpl/cetak/{{ letter.nama_instansi.id }}" class="tooltipped" data-position="bottom" data-tooltip="Cetak surat permohonan" target="_blank">{{ letter.nama_instansi }}</a></td>
               <td>
