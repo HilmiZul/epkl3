@@ -1,5 +1,5 @@
 # e-PKL
-I just build a simple app for manage PKL(Praktik Kerja Lapangan) data like agency/company, application letter and guidance/mentoring. This app use for SMK (TKJ & RPL) 😛.
+I build a simple app for manage PKL(Praktik Kerja Lapangan) data like agency/company, application letter and guidance/mentoring. 
 
 # Build with 💜
 * Python 3.7
