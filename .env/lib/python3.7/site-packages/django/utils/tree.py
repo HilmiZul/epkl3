@@ -5,6 +5,8 @@ ORM.
 
 import copy
 
+from django.utils.hashable import make_hashable
+
 
 class Node:
     """
@@ -71,7 +73,7 @@ class Node:
         )
 
     def __hash__(self):
-        return hash((self.__class__, self.connector, self.negated) + tuple(self.children))
+        return hash((self.__class__, self.connector, self.negated, *make_hashable(self.children)))
 
     def add(self, data, conn_type, squash=True):
         """

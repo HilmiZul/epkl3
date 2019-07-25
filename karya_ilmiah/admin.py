@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import SubmissionJudul
+from .models import SubmissionJudul, Bimbingan
 
 # Register your models here.
 class SubmissionJudulAdmin(admin.ModelAdmin):
@@ -9,4 +9,12 @@ class SubmissionJudulAdmin(admin.ModelAdmin):
   list_per_page = 20
 
 
+class BimbinganAdmin(admin.ModelAdmin):
+  list_display = ['judul', 'bab', 'tanggal', 'siswa', 'pembimbing', 'status']
+  list_filter = ('status',)
+  search_fields = ['judul', 'siswa', 'pembimbing']
+  list_per_page = 20
+
+
 admin.site.register(SubmissionJudul, SubmissionJudulAdmin)
+admin.site.register(Bimbingan, BimbinganAdmin)

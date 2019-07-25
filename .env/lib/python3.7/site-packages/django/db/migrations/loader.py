@@ -24,7 +24,7 @@ class MigrationLoader:
     but will probably follow the 1234_name.py convention.
 
     On initialization, this class will scan those directories, and open and
-    read the python files, looking for a class called Migration, which should
+    read the Python files, looking for a class called Migration, which should
     inherit from django.db.migrations.Migration. See
     django.db.migrations.migration for what that looks like.
 
@@ -97,7 +97,10 @@ class MigrationLoader:
                 if was_loaded:
                     reload(module)
             self.migrated_apps.add(app_config.label)
-            migration_names = {name for _, name, is_pkg in pkgutil.iter_modules(module.__path__) if not is_pkg}
+            migration_names = {
+                name for _, name, is_pkg in pkgutil.iter_modules(module.__path__)
+                if not is_pkg and name[0] not in '_~'
+            }
             # Load migrations
             for migration_name in migration_names:
                 migration_path = '%s.%s' % (module_name, migration_name)
@@ -213,11 +216,12 @@ class MigrationLoader:
         self.replacements = {}
         for key, migration in self.disk_migrations.items():
             self.graph.add_node(key, migration)
-            # Internal (aka same-app) dependencies.
-            self.add_internal_dependencies(key, migration)
             # Replacing migrations.
             if migration.replaces:
                 self.replacements[key] = migration
+        for key, migration in self.disk_migrations.items():
+            # Internal (same app) dependencies.
+            self.add_internal_dependencies(key, migration)
         # Add external dependencies now that the internal ones have been resolved.
         for key, migration in self.disk_migrations.items():
             self.add_external_dependencies(key, migration)
@@ -268,6 +272,7 @@ class MigrationLoader:
                         exc.node
                     ) from exc
             raise exc
+        self.graph.ensure_not_cyclic()
 
     def check_consistent_history(self, connection):
         """

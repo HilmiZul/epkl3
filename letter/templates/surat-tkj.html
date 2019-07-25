@@ -10,6 +10,9 @@
           <a href="/pkl/tkj/cetak/ready" class="btn waves-effect">
             <i class="material-icons">print</i>
           </a>
+          <a href="{% url 'export_instansi_tkj' %}" class="btn waves-effect" title="Unduh dengan file .xls">
+            <i class="material-icons">save_alt</i>
+          </a>
         </h4>
 
         {% if msg %}
@@ -46,14 +49,21 @@
               <td><a href="/pkl/tkj/cetak/{{ letter.nama_instansi.id }}" class="tooltipped" data-position="bottom"
                   data-tooltip="Cetak surat permohonan" target="_blank">{{ letter.nama_instansi }}</a></td>
               <td>
-                <a href="https://www.google.com/maps/search/?api=1&query={{ letter.nama_instansi.alamat }}" class="tooltipped" target="_blank" data-position="bottom" data-tooltip="Lihat peta">
+                <a href="https://www.google.com/maps/search/?api=1&query={{ letter.nama_instansi.alamat }}"
+                  class="tooltipped" target="_blank" data-position="bottom" data-tooltip="Lihat peta">
                   {{ letter.nama_instansi.alamat }}
                 </a>
               </td>
               <td>
-                <a href="#instansi-{{ letter.id }}" class="btn red lighten-1 waves-effect waves-light modal-trigger tooltipped"
-                  data-position="bottom" data-tooltip="Hapus">
+                <a href="#instansi-{{ letter.id }}"
+                  class="btn red lighten-1 waves-effect waves-light modal-trigger tooltipped" data-position="bottom"
+                  data-tooltip="Hapus">
                   <i class="material-icons">delete</i>
+                </a>
+                <a target="__blank" href="/pkl/tkj/cetak/pengantar/{{ letter.nama_instansi.id}}"
+                  class="btn red lighten-1 waves-effect waves-light modal-trigger tooltipped" data-position="bottom"
+                  data-tooltip="Print Surat Pengantar">
+                  <i class="material-icons">print</i>
                 </a>
               </td>
             </tr>

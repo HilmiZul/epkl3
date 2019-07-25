@@ -222,10 +222,10 @@ def stringformat(value, arg):
     """
     Format the variable according to the arg, a string formatting specifier.
 
-    This specifier uses Python string formating syntax, with the exception that
-    the leading "%" is dropped.
+    This specifier uses Python string formatting syntax, with the exception
+    that the leading "%" is dropped.
 
-    See https://docs.python.org/3/library/stdtypes.html#printf-style-string-formatting
+    See https://docs.python.org/library/stdtypes.html#printf-style-string-formatting
     for documentation of Python string formatting.
     """
     if isinstance(value, tuple):
@@ -280,7 +280,7 @@ def truncatewords(value, arg):
         length = int(arg)
     except ValueError:  # Invalid literal for int().
         return value  # Fail silently.
-    return Truncator(value).words(length, truncate=' ...')
+    return Truncator(value).words(length, truncate=' …')
 
 
 @register.filter(is_safe=True)
@@ -294,7 +294,7 @@ def truncatewords_html(value, arg):
         length = int(arg)
     except ValueError:  # invalid literal for int()
         return value  # Fail silently.
-    return Truncator(value).words(length, html=True, truncate=' ...')
+    return Truncator(value).words(length, html=True, truncate=' …')
 
 
 @register.filter(is_safe=False)
@@ -448,7 +448,7 @@ def safeseq(value):
     individually, as safe, after converting them to strings. Return a list
     with the results.
     """
-    return [mark_safe(str(obj)) for obj in value]
+    return [mark_safe(obj) for obj in value]
 
 
 @register.filter(is_safe=True)
@@ -573,7 +573,7 @@ def slice_filter(value, arg):
     """
     try:
         bits = []
-        for x in arg.split(':'):
+        for x in str(arg).split(':'):
             if not x:
                 bits.append(None)
             else:

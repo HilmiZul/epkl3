@@ -84,9 +84,9 @@ WSGI_APPLICATION = 'epkl3.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'epkl3',
-        'USER': 'zulx',
-        'PASSWORD': 'ranger99',
+        'NAME': 'epkl',
+        'USER': 'root',
+        'PASSWORD': 'passwd48',
     }
 }
 

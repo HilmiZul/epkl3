@@ -74,3 +74,34 @@ def cetak_rpl_belum_pkl(request):
     siswa = Siswa.objects.filter(pkl=False, program_ahli='Rekayasa Perangkat Lunak').order_by('NIS')
     count = siswa.count()
     return render(request, 'cetak-rpl-belum-pkl.html', {'siswa':siswa, 'count':count})
+
+
+@login_required(login_url=settings.LOGIN_URL)
+def cetak_surat_pengantar_rpl(request, id_instansi):
+  surat = Permohonan.objects.filter(nama_instansi__id=id_instansi)
+  instansi = Instansi.objects.get(id=id_instansi)
+  # tanggal sekarang
+  tanggal = datetime.now()
+  tanggal = tanggal.strftime("%d %B %Y")
+  return render(request, 'cetak-pengantar.html', 
+    {
+      'surat':surat, 
+      'instansi':instansi,
+      'tanggal': tanggal,
+    }
+  )
+
+@login_required(login_url=settings.LOGIN_URL)
+def cetak_surat_pengantar_tkj(request, id_instansi):
+  surat = Permohonan.objects.filter(nama_instansi__id=id_instansi)
+  instansi = Instansi.objects.get(id=id_instansi)
+  # tanggal sekarang
+  tanggal = datetime.now()
+  tanggal = tanggal.strftime("%d %B %Y")
+  return render(request, 'cetak-pengantar.html', 
+    {
+      'surat':surat, 
+      'instansi':instansi,
+      'tanggal': tanggal,
+    }
+  )

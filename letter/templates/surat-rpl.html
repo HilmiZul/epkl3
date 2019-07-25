@@ -10,6 +10,9 @@
           <a href="/pkl/rpl/cetak/ready" class="btn waves-effect">
             <i class="material-icons">print</i>
           </a>
+          <a href="{% url 'export_instansi_rpl' %}" class="btn waves-effect" title="Unduh dengan file .xls">
+            <i class="material-icons">save_alt</i>
+          </a>
         </h4>
 
         {% if msg %}
@@ -52,6 +55,11 @@
                 <a href="#instansi-{{ letter.id }}" class="btn red lighten-1 waves-effect waves-light modal-trigger tooltipped"
                   data-position="bottom" data-tooltip="Hapus">
                   <i class="material-icons">delete</i>
+                </a>
+                <a target="__blank" href="/pkl/tkj/cetak/pengantar/{{ letter.nama_instansi.id}}"
+                  class="btn red lighten-1 waves-effect waves-light modal-trigger tooltipped" data-position="bottom"
+                  data-tooltip="Print Surat Pengantar">
+                  <i class="material-icons">print</i>
                 </a>
               </td>
             </tr>

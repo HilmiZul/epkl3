@@ -5,7 +5,13 @@
   <div class="container">
     <div class="row">
       <div class="col l12">
-        <h4>Instansi &#8212; RPL</h4>
+        <h4>
+          Instansi &#8212; RPL
+          <a href="{% url 'export_instansi_rpl' %}" class="btn waves-effect grey darken-1">
+            <i class="material-icons left">save_alt</i>
+            .xls
+          </a>
+        </h4>
 
         {% if msg %}
         <div class="card-panel teal lighten-5">

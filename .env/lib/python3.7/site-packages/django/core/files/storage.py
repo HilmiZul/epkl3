@@ -16,7 +16,10 @@ from django.utils.functional import LazyObject, cached_property
 from django.utils.module_loading import import_string
 from django.utils.text import get_valid_filename
 
-__all__ = ('Storage', 'FileSystemStorage', 'DefaultStorage', 'default_storage')
+__all__ = (
+    'Storage', 'FileSystemStorage', 'DefaultStorage', 'default_storage',
+    'get_storage_class',
+)
 
 
 class Storage:
@@ -35,7 +38,7 @@ class Storage:
     def save(self, name, content, max_length=None):
         """
         Save new content to the file specified by name. The content should be
-        a proper File object or any python file-like object, ready to be read
+        a proper File object or any Python file-like object, ready to be read
         from the beginning.
         """
         # Get the proper name for the file, as it will actually be saved.
@@ -168,6 +171,9 @@ class FileSystemStorage(Storage):
     """
     Standard filesystem storage
     """
+    # The combination of O_CREAT and O_EXCL makes os.open() raise OSError if
+    # the file already exists before it's opened.
+    OS_OPEN_FLAGS = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, 'O_BINARY', 0)
 
     def __init__(self, location=None, base_url=None, file_permissions_mode=None,
                  directory_permissions_mode=None):
@@ -234,9 +240,9 @@ class FileSystemStorage(Storage):
                         os.umask(old_umask)
                 else:
                     os.makedirs(directory)
-            except FileNotFoundError:
+            except FileExistsError:
                 # There's a race between os.path.exists() and os.makedirs().
-                # If os.makedirs() fails with FileNotFoundError, the directory
+                # If os.makedirs() fails with FileExistsError, the directory
                 # was created concurrently.
                 pass
         if not os.path.isdir(directory):
@@ -256,12 +262,8 @@ class FileSystemStorage(Storage):
 
                 # This is a normal uploadedfile that we can stream.
                 else:
-                    # This fun binary flag incantation makes os.open throw an
-                    # OSError if the file already exists before we open it.
-                    flags = (os.O_WRONLY | os.O_CREAT | os.O_EXCL |
-                             getattr(os, 'O_BINARY', 0))
                     # The current umask value is masked out by os.open!
-                    fd = os.open(full_path, flags, 0o666)
+                    fd = os.open(full_path, self.OS_OPEN_FLAGS, 0o666)
                     _file = None
                     try:
                         locks.lock(fd, locks.LOCK_EX)
@@ -310,11 +312,11 @@ class FileSystemStorage(Storage):
     def listdir(self, path):
         path = self.path(path)
         directories, files = [], []
-        for entry in os.listdir(path):
-            if os.path.isdir(os.path.join(path, entry)):
-                directories.append(entry)
+        for entry in os.scandir(path):
+            if entry.is_dir():
+                directories.append(entry.name)
             else:
-                files.append(entry)
+                files.append(entry.name)
         return directories, files
 
     def path(self, name):

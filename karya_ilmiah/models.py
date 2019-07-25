@@ -18,3 +18,23 @@ class SubmissionJudul(models.Model):
   def __str__(self):
     return self.judul
 
+
+class Bimbingan(models.Model):
+  bab_choices = (
+    ('BAB I', 'BAB I'),
+    ('BAB II', 'BAB II'),
+    ('BAB III', 'BAB III'),
+    ('BAB IV', 'BAB IV'),
+    ('BAB V', 'BAB V'),
+  )
+
+  judul = models.ForeignKey(SubmissionJudul, on_delete=models.CASCADE)
+  bab = models.CharField(max_length=7, choices=bab_choices)
+  tanggal = models.DateField(auto_now_add=True)
+  berkas = models.FileField(upload_to='berkas/')
+  status = models.BooleanField(default=True)
+  siswa = models.ForeignKey(AkunSiswa, default=True, on_delete=models.CASCADE)
+  pembimbing = models.ForeignKey(PembimbingSiswa, default=True, on_delete=models.CASCADE)
+
+  def __str__(self):
+    return self.bab

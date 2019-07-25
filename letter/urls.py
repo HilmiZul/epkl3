@@ -4,6 +4,7 @@ from .views_surat_read import *
 from .views_cetak import *
 from .views_surat_delete import *
 from .views_surat_update import *
+from .views_export import *
 
 urlpatterns = [
   path('rpl/tambah/', tambah_surat_rpl),
@@ -12,6 +13,8 @@ urlpatterns = [
   path('rpl/hapus/<int:id_surat>', hapus_surat_rpl),
   # path('rpl/ubah/<int:id_surat>', ubah_surat_rpl),
   path('rpl/cetak/ready', cetak_pkl_rpl),
+  path('rpl/export/xls', export_instansi_rpl, name='export_instansi_rpl'),
+  path('rpl/cetak/pengantar/<int:id_instansi>', cetak_surat_pengantar_rpl, name='cetak_surat_pengantar_rpl'),
 
   path('tkj/cetak/<int:id_instansi>', cetak_surat_tkj),
   path('tkj/', surat_tkj),
@@ -19,4 +22,6 @@ urlpatterns = [
   path('tkj/hapus/<int:id_surat>', hapus_surat_tkj),
   # path('tkj/ubah/<int:id_surat>', ubah_surat_tkj),
   path('tkj/cetak/ready', cetak_pkl_tkj),
+  path('tkj/export/xls', export_instansi_tkj, name='export_instansi_tkj'),
+  path('tkj/cetak/pengantar/<int:id_instansi>', cetak_surat_pengantar_tkj, name='cetak_surat_pengantar_tkj'),
 ]

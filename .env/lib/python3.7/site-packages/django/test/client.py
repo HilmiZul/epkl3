@@ -34,8 +34,8 @@ __all__ = ('Client', 'RedirectCycleError', 'RequestFactory', 'encode_file', 'enc
 BOUNDARY = 'BoUnDaRyStRiNg'
 MULTIPART_CONTENT = 'multipart/form-data; boundary=%s' % BOUNDARY
 CONTENT_TYPE_RE = re.compile(r'.*; charset=([\w\d-]+);?')
-# JSON Vendor Tree spec: https://tools.ietf.org/html/rfc6838#section-3.2
-JSON_CONTENT_TYPE_RE = re.compile(r'^application\/(vnd\..+\+)?json')
+# Structured suffix spec: https://tools.ietf.org/html/rfc6838#section-4.2.8
+JSON_CONTENT_TYPE_RE = re.compile(r'^application\/(.+\+)?json')
 
 
 class RedirectCycleError(Exception):
@@ -192,7 +192,12 @@ def encode_multipart(boundary, data):
     # file, or a *list* of form values and/or files. Remember that HTTP field
     # names can be duplicated!
     for (key, value) in data.items():
-        if is_file(value):
+        if value is None:
+            raise TypeError(
+                'Cannot encode None as POST data. Did you mean to pass an '
+                'empty string or omit the value?'
+            )
+        elif is_file(value):
             lines.extend(encode_file(boundary, key, value))
         elif not isinstance(value, str) and is_iterable(value):
             for item in value:
@@ -275,9 +280,12 @@ class RequestFactory:
         # This is a minimal valid WSGI environ dictionary, plus:
         # - HTTP_COOKIE: for cookie support,
         # - REMOTE_ADDR: often useful, see #8551.
-        # See http://www.python.org/dev/peps/pep-3333/#environ-variables
+        # See https://www.python.org/dev/peps/pep-3333/#environ-variables
         return {
-            'HTTP_COOKIE': self.cookies.output(header='', sep='; '),
+            'HTTP_COOKIE': '; '.join(sorted(
+                '%s=%s' % (morsel.key, morsel.coded_value)
+                for morsel in self.cookies.values()
+            )),
             'PATH_INFO': '/',
             'REMOTE_ADDR': '127.0.0.1',
             'REQUEST_METHOD': 'GET',
@@ -314,10 +322,10 @@ class RequestFactory:
 
     def _encode_json(self, data, content_type):
         """
-        Return encoded JSON if data is a dict and content_type is
-        application/json.
+        Return encoded JSON if data is a dict, list, or tuple and content_type
+        is application/json.
         """
-        should_encode = JSON_CONTENT_TYPE_RE.match(content_type) and isinstance(data, dict)
+        should_encode = JSON_CONTENT_TYPE_RE.match(content_type) and isinstance(data, (dict, list, tuple))
         return json.dumps(data, cls=self.json_encoder) if should_encode else data
 
     def _get_path(self, parsed):
@@ -401,7 +409,7 @@ class RequestFactory:
         }
         if data:
             r.update({
-                'CONTENT_LENGTH': len(data),
+                'CONTENT_LENGTH': str(len(data)),
                 'CONTENT_TYPE': content_type,
                 'wsgi.input': FakePayload(data),
             })

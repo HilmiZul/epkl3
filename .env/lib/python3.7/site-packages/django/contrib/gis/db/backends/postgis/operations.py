@@ -31,7 +31,7 @@ class PostGISOperator(SpatialOperator):
         # geography type.
         self.geography = geography
         # Only a subset of the operators and functions are available for the
-        # raster type. Lookups that don't suport raster will be converted to
+        # raster type. Lookups that don't support raster will be converted to
         # polygons. If the raster argument is set to BILATERAL, then the
         # operator cannot handle mixed geom-raster lookups.
         self.raster = raster
@@ -278,12 +278,12 @@ class PostGISOperations(BaseSpatialOperations, DatabaseOperations):
         not in the SRID of the field. Specifically, this routine will
         substitute in the ST_Transform() function call.
         """
-        tranform_func = self.spatial_function_name('Transform')
+        transform_func = self.spatial_function_name('Transform')
         if hasattr(value, 'as_sql'):
             if value.field.srid == f.srid:
                 placeholder = '%s'
             else:
-                placeholder = '%s(%%s, %s)' % (tranform_func, f.srid)
+                placeholder = '%s(%%s, %s)' % (transform_func, f.srid)
             return placeholder
 
         # Get the srid for this object
@@ -297,7 +297,7 @@ class PostGISOperations(BaseSpatialOperations, DatabaseOperations):
         if value_srid is None or value_srid == f.srid:
             placeholder = '%s'
         else:
-            placeholder = '%s(%%s, %s)' % (tranform_func, f.srid)
+            placeholder = '%s(%%s, %s)' % (transform_func, f.srid)
 
         return placeholder
 

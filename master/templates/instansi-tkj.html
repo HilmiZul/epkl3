@@ -5,7 +5,13 @@
   <div class="container">
     <div class="row">
       <div class="col l12">
-        <h4>Instansi &#8212; TKJ</h4>
+        <h4>
+          Instansi &#8212; TKJ
+          <a href="{% url 'export_instansi_tkj' %}" class="btn waves-effect grey darken-1">
+            <i class="material-icons left">save_alt</i>
+            .xls
+          </a>
+        </h4>
 
         {% if msg %}
         <div class="card-panel teal lighten-5">
@@ -32,8 +38,9 @@
               <td><a href="/instansi/tkj/ubah/{{ company.id }}">{{ company.nama }}</a></td>
               <td>{{ company.pimpinan }}</td>
               <td>{{ company.kontak }}</td>
-              <td><a href="https://www.google.com/maps/search/?api=1&query={{ company.alamat }}" target="_blank" class="modal-trigger tooltipped"
-                data-position="bottom" data-tooltip="Lihat peta">{{ company.alamat }}</a>
+              <td><a href="https://www.google.com/maps/search/?api=1&query={{ company.alamat }}" target="_blank"
+                  class="modal-trigger tooltipped" data-position="bottom"
+                  data-tooltip="Lihat peta">{{ company.alamat }}</a>
               </td>
               <td>{{ company.limit }} dari 5</td>
               <td>

@@ -1,6 +1,6 @@
 """
  The OGRGeometry is a wrapper for using the OGR Geometry class
- (see http://www.gdal.org/classOGRGeometry.html).  OGRGeometry
+ (see https://www.gdal.org/classOGRGeometry.html).  OGRGeometry
  may be instantiated when reading geometries from OGR Data Sources
  (e.g. SHP files), or when given OGC WKT (a string).
 
@@ -54,7 +54,7 @@ from django.utils.encoding import force_bytes
 
 
 # For more information, see the OGR C API source code:
-#  http://www.gdal.org/ogr__api_8h.html
+#  https://www.gdal.org/ogr__api_8h.html
 #
 # The OGR_G_* routines are relevant here.
 class OGRGeometry(GDALBase):
@@ -80,7 +80,7 @@ class OGRGeometry(GDALBase):
                     srs = int(wkt_m.group('srid'))
                 if wkt_m.group('type').upper() == 'LINEARRING':
                     # OGR_G_CreateFromWkt doesn't work with LINEARRING WKT.
-                    #  See http://trac.osgeo.org/gdal/ticket/1992.
+                    #  See https://trac.osgeo.org/gdal/ticket/1992.
                     g = capi.create_geom(OGRGeomType(wkt_m.group('type')).num)
                     capi.import_wkt(g, byref(c_char_p(wkt_m.group('wkt').encode())))
                 else:
@@ -696,19 +696,20 @@ class MultiPolygon(GeometryCollection):
 
 
 # Class mapping dictionary (using the OGRwkbGeometryType as the key)
-GEO_CLASSES = {1: Point,
-               2: LineString,
-               3: Polygon,
-               4: MultiPoint,
-               5: MultiLineString,
-               6: MultiPolygon,
-               7: GeometryCollection,
-               101: LinearRing,
-               1 + OGRGeomType.wkb25bit: Point,
-               2 + OGRGeomType.wkb25bit: LineString,
-               3 + OGRGeomType.wkb25bit: Polygon,
-               4 + OGRGeomType.wkb25bit: MultiPoint,
-               5 + OGRGeomType.wkb25bit: MultiLineString,
-               6 + OGRGeomType.wkb25bit: MultiPolygon,
-               7 + OGRGeomType.wkb25bit: GeometryCollection,
-               }
+GEO_CLASSES = {
+    1: Point,
+    2: LineString,
+    3: Polygon,
+    4: MultiPoint,
+    5: MultiLineString,
+    6: MultiPolygon,
+    7: GeometryCollection,
+    101: LinearRing,
+    1 + OGRGeomType.wkb25bit: Point,
+    2 + OGRGeomType.wkb25bit: LineString,
+    3 + OGRGeomType.wkb25bit: Polygon,
+    4 + OGRGeomType.wkb25bit: MultiPoint,
+    5 + OGRGeomType.wkb25bit: MultiLineString,
+    6 + OGRGeomType.wkb25bit: MultiPolygon,
+    7 + OGRGeomType.wkb25bit: GeometryCollection,
+}
