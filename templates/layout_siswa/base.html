@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  {% include 'layout_siswa/head.html' %}
+</head>
+<body>
+  
+  {% if request.session.uname is not empty %}
+    {% include 'layout_siswa/nav.html' %}
+  {% endif %}
+
+  {% block content %}
+  {% endblock %}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

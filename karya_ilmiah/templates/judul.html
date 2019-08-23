@@ -17,7 +17,7 @@
       <div class="col l2 center-align red-text">
         <i class="material-icons large">cancel</i>
         <div>{{ k.status }}</div>
-        <a href="/karya-ilmiah/judul/ubah/{{ k.id }}" class="teal-text">Perbaiki Judul</a>
+        <a href="{% url 'ubah_judul' karil.id }}" class="teal-text">Perbaiki Judul</a>
       </div> <!-- ./col l2 -->
       {% elif k.status == 'Disetujui' %}
       <div class="col l2 center-align teal-text">

@@ -23,7 +23,7 @@ def masuk(request):
           request.session['level'] = akun.level
         except:
           messages.add_message(request, messages.INFO, 'Login Gagal :(')
-        return redirect('/')
+        return redirect('/dashboard')
       else:
         messages.add_message(request, message.INFO, 'User tidak terdaftar :(')
     else:

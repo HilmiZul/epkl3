@@ -1,0 +1,93 @@
+{% extends 'layout_siswa/base.html' %}
+
+{% block content %}
+{% if portofolio.status == 'Disetujui' %}
+  {% if not selesai %}
+  <div class="container">
+    <div class="row pt-5 mt-5">
+      <div class="col-md">
+        <h3 class="pb-3">Submit Portofolio per BAB</h3>
+      </div>
+    </div>
+    <div class="row mb-5">
+      <div class="col-md-6 mb-4">
+        <form action="{% url 'bimbingan_submit' %}" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+
+          {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+          <!-- <label for="judul">Judul</label> -->
+          <input type="hidden" name="judul" value="{{ portofolio.id }}">
+          <!-- <textarea rows="3" class="form-control" name="judul" readonly="readonly" style="display: none">{{ portofolio.id }}</textarea> -->
+          <div class="form-group">
+            <label for="bab">Berkas untuk BAB Berapa?</label>
+            <select name="bab" id="bab" class="form-control" required="required" autofocus>
+              <option value="">&#8212; Pilih BAB &#8212;</option>
+              <option value="BAB I">BAB I</option>
+              <option value="BAB II">BAB II</option>
+              <option value="BAB III">BAB III</option>
+              <option value="BAB IV">BAB IV</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="berkas">Lampirkan Berkas</label>
+            <input type="file" accept=".doc, .docx" class="form-control" name="berkas" id="berkas" required="required">
+          </div>
+          <button class="btn btn-dark"><i class="fa fa-send"></i> Kirim</button>
+          <a href="{% url 'timeline' %}" class="btn btn-outline-secondary"><i class="fa fa-clock-o"></i> Ke timeline</a>
+        </form>
+      </div> <!-- ./col-md -->
+      <div class="col-md-6">
+        <div class="alert alert-info shadow">
+          <h5>
+            <i class="fa fa-info-circle fa-2x pull-right"></i>
+            Tips men-Submit Berkas Portofolio
+          </h5>
+          <ol>
+            <li>Pastikan berkas sudah siap untuk di-<em>submit</em>/kirim</li>
+            <li>Pilih BAB berapa yang akan di-<em>submit</em></li>
+            <li>Lampirkan berkas dengan tipe <code>.doc</code> atau <code>.docx</code></li>
+          </ol>
+        </div>
+      </div>
+    </div> <!-- ./row -->
+  </div>
+  {% else %}
+  <div class="container">
+    <div class="row pt-5 mt-5">
+      <div class="col-md">
+        <div class="alert alert-info">
+          <h2>😃 Horeee!</h2>
+            Semua berkas Portofolio sudah di-<em>submit</em>. Kamu tidak lagi harus men-<em>submit</em>.
+            <div class="mt-5">
+              <a href="{% url 'timeline' %}" class="btn btn-info"><i class="fa fa-reply"></i> Kembali ke Timeline</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endif %}
+{% else %}
+<div class="container">
+  <div class="row pt-5 mt-5">
+    <div class="col-md">
+      <div class="alert alert-danger">
+        <h2>😕 Hhmmm...</h2>
+        <li>
+          Apa Anda sudah mengajukan judul? Jika belum,
+          <a href="{% url 'submit_judul' %}" class="btn btn-outline-danger">
+            Submit Sekarang <i class="fa fa-send"></i>
+          </a>
+        </li>
+        <li>
+          atau mungkin judul kamu sedang dalam proses <em>review</em> oleh pembimbing. Tunggu ya 😀 
+        </li>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

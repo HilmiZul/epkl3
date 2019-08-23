@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.contrib import messages
 from .models import AkunSiswa
+from .forms import FormTambahAkunSiswa
 
 def masuk_siswa(request):
   if request.POST:
@@ -19,16 +20,28 @@ def masuk_siswa(request):
           request.session['nama'] = akun.profil.nama
           request.session['id'] = akun.id
           request.session['id_siswa'] = akun.profil.id
+          return redirect('/siswa/home/')
         except:
           messages.add_message(request, messages.INFO, 'Login Gagal :(')
-        return redirect('/')
+        return redirect('/siswa/login/')
       else:
         messages.add_message(request, message.INFO, 'User tidak terdaftar :(')
     else:
       messages.add_message(request, messages.INFO, 'Login gagal')
-  return render(request, 'login-siswa.html')
+  return render(request, 'login-siswa-new.html')
 
 @login_required(login_url=settings.LOGIN_URL)
 def keluar_siswa(request):
   logout(request)
   return redirect('/siswa/login')
+
+
+def tambah_akun(request):
+  if request.POST:
+    forms = FormTambahAkunSiswa(request.POST)
+    forms.save()
+    messages.add_message(request, messages.INFO, 'Berhasil disimpan!')
+    return redirect('/tambah-akun/')
+  else:
+    forms = FormTambahAkunSiswa()
+  return render(request, 'tambah-akun.html', {'forms':forms})

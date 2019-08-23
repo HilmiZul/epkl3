@@ -20,6 +20,22 @@ body {
   background: #f5f5f5;
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 1280px;
+  width: 90%;
+}
+@media only screen and (min-width: 601px) {
+  .container {
+    width: 85%;
+  }
+}
+@media only screen and (min-width: 1366px) {
+  .container {
+    width: 90%;
+  }
+}
+
 .btn {
   background: #616161 !important;
 }

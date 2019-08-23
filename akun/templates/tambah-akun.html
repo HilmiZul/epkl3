@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>TAMBAH AKUN.</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{% static '/vendor/select/select2.css' %}">
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="row pt-5">
+      <div class="col-md-4 offset-md-4">
+        <div class="card shadow-lg">
+          <div class="card-header">
+            <h3>Tambah Akun</h3>
+          </div>
+          <div class="card-body">
+            <form action="/tambah-akun/" method="POST">
+              {% csrf_token %}
+
+              {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-success">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+
+              {{ forms }}
+
+              <div class="form-group mt-4">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="{% static '/vendor/jquery-3.3.1.min.js' %}"></script>
+  <script src="{% static '/vendor/select/select2.min.js' %}"></script>
+  <script>
+    $(document).ready(function () {
+      $('.select-username').select2({
+        placeholder: 'Pilih NIS/Username',
+      });
+      $('.select-profile').select2({
+        placeholder: 'Pilih Nama',
+      });
+    })
+  </script>
+</body>
+
+</html>

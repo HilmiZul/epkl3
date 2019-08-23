@@ -106,7 +106,7 @@ def tambah_pembimbing_siswa(request):
 
 @login_required(login_url=settings.LOGIN_URL)
 def pembimbing_siswa(request):
-  ps = PembimbingSiswa.objects.all().order_by('siswa__kelas')
+  ps = PembimbingSiswa.objects.all().order_by('pembimbing_satu', 'siswa__kelas')
   return render(request, 'pembimbing-siswa.html', {'ps':ps})
 
 # FUNC.HAPUS.DATA.PEMBIMBING.SISWA

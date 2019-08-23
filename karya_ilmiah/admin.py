@@ -10,9 +10,9 @@ class SubmissionJudulAdmin(admin.ModelAdmin):
 
 
 class BimbinganAdmin(admin.ModelAdmin):
-  list_display = ['judul', 'bab', 'tanggal', 'siswa', 'pembimbing', 'status']
+  list_display = ['judul', 'bab', 'tanggal', 'status']
   list_filter = ('status',)
-  search_fields = ['judul', 'siswa', 'pembimbing']
+  search_fields = ['judul']
   list_per_page = 20
 
 

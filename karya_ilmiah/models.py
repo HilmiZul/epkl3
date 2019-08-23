@@ -25,16 +25,22 @@ class Bimbingan(models.Model):
     ('BAB II', 'BAB II'),
     ('BAB III', 'BAB III'),
     ('BAB IV', 'BAB IV'),
-    ('BAB V', 'BAB V'),
+  )
+  
+  status_choices = (
+    ('Selesai', 'Selesai'),
+    ('Review', 'Review'),
+    ('Revisi', 'Revisi'),
   )
 
   judul = models.ForeignKey(SubmissionJudul, on_delete=models.CASCADE)
   bab = models.CharField(max_length=7, choices=bab_choices)
   tanggal = models.DateField(auto_now_add=True)
-  berkas = models.FileField(upload_to='berkas/')
-  status = models.BooleanField(default=True)
-  siswa = models.ForeignKey(AkunSiswa, default=True, on_delete=models.CASCADE)
-  pembimbing = models.ForeignKey(PembimbingSiswa, default=True, on_delete=models.CASCADE)
+  berkas = models.FileField()
+  status = models.CharField(max_length=12, choices=status_choices, default='Review')
+  catatan = models.TextField(null=True, default=None)
+  # siswa = models.ForeignKey(AkunSiswa, default=True, on_delete=models.CASCADE)
+  # pembimbing = models.ForeignKey(PembimbingSiswa, default=True, on_delete=models.CASCADE)
 
   def __str__(self):
     return self.bab

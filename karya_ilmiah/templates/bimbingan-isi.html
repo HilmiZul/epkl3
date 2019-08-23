@@ -1,0 +1,106 @@
+{% extends "layout_admin/base.html" %}
+
+{% block content %}
+<section class="form-table">
+  <div class="container">
+    <div class="row">
+      <div class="col l12">
+        <h4>Bimbingan Isi</h4>
+
+        {% if messages %}
+          {% for message in messages %}
+          <div class="card-panel teal lighten-5">
+            {{ message }}
+            <i class="material-icons left">check</i>
+          </div>
+          {% endfor %}
+        {% endif %}
+        
+        <table class="responsive-table" id="myTable">
+          <thead>
+            <tr>
+              <th style="width: 2%">NO.</th>
+              <th style="width: 23%">NAMA</th>
+              <th style="width: 3%">BAB</th>
+              <th style="width: 47%">JUDUL</th>
+              <th style="width: 5%">STATUS</th>
+              <th>AKSI</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for isi in contents %}
+            <tr>
+              <td>{{ forloop.counter }}.</td>
+              <td>{{ isi.judul.siswa }}</td>
+              <td><a href="{{ isi.berkas.url }}">{{ isi.bab }}</a></td>
+              <td>{{ isi.judul }}</td>
+              <td>
+                {% if isi.status == 'Review' %}
+                <span class="btn red lighten-2">{{ isi.status }}</span>
+                {% elif isi.status == 'Revisi' %}
+                <span class="btn red lighten-2">{{ isi.status }}</span>
+                {% else %}
+                <span class="btn purple darken-1">{{ isi.status }}</span>
+                {% endif %}
+              </td>
+              <td>
+                {% if isi.status == 'Review' %}
+                <a href="#setuju-{{ isi.id }}" class="btn teal darken-2 waves-effect waves-light modal-trigger">
+                  <i class="material-icons">done</i>
+                </a>
+                <a href="#revisi-{{ isi.id }}" class="btn red darken-2 waves-effect waves-light modal-trigger">
+                  <i class="material-icons">cancel</i>
+                </a>
+                {% elif isi.status == 'Revisi' %}
+                  <em>Tidak ada aksi</em>
+                {% elif isi.status == 'Selesai' %}
+                  <em>Tidak ada aksi</em>
+                {% endif %}
+              </td>
+            </tr>
+            <div class="modal" id="setuju-{{ isi.id }}">
+              <form action="{% url 'setujui_bimbingan_isi' isi.id %}" method="post">
+                {% csrf_token %}
+                <div class="modal-content">
+                  <h4>Setujui?</h4>
+                  <p>
+                      Apakah Anda yakin akan menyetujui <b>{{ isi.bab }}</b> ini?
+                  </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="modal-close btn waves-effect">
+                    Ya, Setujui
+                  </button>
+                  <a href="#!" class="modal-close btn-flat waves-effect">ENGGA</a>
+                </div>
+              </form>
+            </div>
+            <div class="modal" id="revisi-{{ isi.id }}">
+              <form action="{% url 'bimbingan_isi_revisi' isi.id %}" method="post">
+                {% csrf_token %}
+                <div class="modal-content">
+                  <h4>Kembalikan?</h4>
+                  <p>
+                    Apakah Anda yakin akan mengembalikan <b>{{ isi.bab }}</b> ini?
+                  </p>
+                  <div class="input-field">
+                    <label for="catatan">Tulis catatan revisi disini... (harus diisi)</label>
+                    <textarea name="catatan" id="catatan" class="materialize-textarea" required="required"></textarea>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="modal-close btn-flat waves-effect">
+                    Ya, Kembalikan
+                  </button>
+                  <a href="#!" class="modal-close btn waves-effect waves-light">ENGGA</a>
+                </div>
+              </form>
+            </div>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div> <!-- ./col -->
+    </div> <!-- ./row -->
+  </div>
+</section>
+{% endblock %}

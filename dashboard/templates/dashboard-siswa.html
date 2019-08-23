@@ -1,0 +1,77 @@
+{% extends 'layout_siswa/base.html' %}
+
+{% block content %}
+
+{% if request.session is not empty %}
+<div class="container">
+  <div class="row pt-5 pb-5 mt-5">
+    <div class="col-md">
+      <div class="alert alert-warning shadow"><i class="fa fa-info-circle fa-2x fa-fw pull-right"></i>
+        <li>Diberitahukan kepada seluruh peserta PKL untuk segera mengajukan judul Portofolio paling lambat hari <b><u>31 Agustus 2019</u></b>.</li>
+        <li>Bagi peserta yang judulnya telah di <em>Acc</em>. untuk segera lakukan bimbingan isi dan menyelesaikannya 2 minggu sebelum
+          waktu PKL selesai.</li>
+      </div>
+    </div> <!-- ./col-md-6 -->
+  </div> <!-- ./row -->
+
+  <div class="row">
+    <div class="col-md">
+      <div class="table-responsive">
+        <table class="table table-hover table-striped">
+          <tr>
+            <th style="width: 15%">NIS</th>
+            <td style="width: 1%">:</td>
+            <td>{{ student.nama_siswa.NIS }}</td>
+          </tr>
+          <tr>
+            <th style="width: 15%">Nama</th>
+            <td style="width: 1%">:</td>
+            <td>{{ student.nama_siswa }}</td>
+          </tr>
+          <tr>
+            <th style="width: 15%">Kelas</th>
+            <td style="width: 1%">:</td>
+            <td>{{ student.nama_siswa.kelas }}</td>
+          </tr>
+          <tr>
+            <th style="width: 15%">Tempat PKL</th>
+            <td style="width: 1%">:</td>
+            <td>{{ student.nama_instansi }}</td>
+          </tr>
+          <tr>
+            <th style="width: 15%">Pembimbing 1</th>
+            <td style="width: 1%">:</td>
+            <td>{{ pembimbing.pembimbing_satu }}</td>
+          </tr>
+          <tr>
+            <th style="width: 15%">Pembimbing 2</th>
+            <td style="width: 1%">:</td>
+            <td>{{ pembimbing.pembimbing_dua }}</td>
+          </tr>
+          <tr>
+            <th style="width: 15%">Judul Portofolio</th>
+            <td style="width: 1%">:</td>
+            <td>
+              {% if portofolio.status == 'Disetujui' %}
+                {{ portofolio.judul }}
+              {% elif portofolio.status == 'Menunggu' %}
+              <em class="text-muted">Sedang di-review.</em>
+              {% elif portofolio.status == 'Ditolak' %}
+              <em class="text-muted">Judul Anda dikembalikan.</em>
+              <a href="{% url 'ubah_judul' portofolio.id %}" class="btn btn-outline-dark">Sunting
+                  <i class="fa fa-pencil"></i></a>
+              {% else %}
+              <em class="text-muted">belum punya judul.</em> <a href="{% url 'submit_judul' %}" class="btn btn-outline-dark">Submit Sekarang
+                <i class="fa fa-pencil"></i></a>
+              {% endif %}
+            </td>
+          </tr>
+        </table>
+      </div> <!-- ./table-responsive -->
+    </div> <!-- ./col-md -->
+  </div> <!-- ./row -->
+</div>
+{% endif %}
+
+
+{% endblock %}

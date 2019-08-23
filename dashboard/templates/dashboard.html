@@ -1,65 +1,80 @@
-  {% extends 'layout_admin/base.html' %}
+{% extends 'layout_admin/base.html' %}
 
-  {% block content %}
-  
-  {% if request.session.level is not empty %}
-  <section class="dashboard">
-    <div class="container">
-      <div class="row">
-        <div class="col l12">
-          <div class="card-panel grey darken-2 white-text center-align z-depth-3">
-            <i class="medium material-icons">group</i>
-            <div class="count">
-              {{ students_count }} Total Siswa
-            </div>
+{% block content %}
+
+{% if request.session.level is not empty %}
+<section class="dashboard">
+  <div class="container">
+    <div class="row">
+      <div class="col l12">
+        <div class="card-panel grey darken-2 white-text center-align z-depth-3">
+          <i class="medium material-icons">group</i>
+          <div class="count">
+            {{ students_count }} Total Siswa
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col l6">
-          <div class="card-panel grey darken-2 z-depth-3">
-            <span class="new badge blue" data-badge-caption="TKJ"></span>
-            <div class="count white-text">
-              <i class=" material-icons left">group</i>
-              {{ students_count_tkj }} <span class="label">Siswa</span>
-            </div>
-          </div> <!-- ./card -->
-        </div> <!-- ./col -->
-
-        <div class="col l6">
-          <div class="card-panel grey darken-2 z-depth-3">
-            <span class="new badge green" data-badge-caption="RPL"></span>
-            <div class="count white-text">
-              <i class=" material-icons left">group</i>
-              {{ students_count_rpl }} <span class="label">Siswa</span>
-            </div>
-          </div> <!-- ./card -->
-        </div> <!-- ./col -->
-      </div> <!-- ./row -->
-
-      <div class="row">
-        <div class="col l6">
-          <div class="card-panel grey darken-2 z-depth-3">
-            <span class="new badge blue" data-badge-caption="TKJ"></span>
-            <div class="count white-text">
-              <i class=" material-icons left">account_balance</i>
-              {{ ready_tkj }} <span class="label">Siap PKL</span>
-            </div>
-          </div> <!-- ./card -->
-        </div> <!-- ./col -->
-
-        <div class="col l6">
-          <div class="card-panel grey darken-2 z-depth-3">
-            <span class="new badge green" data-badge-caption="RPL"></span>
-            <div class="count white-text">
-              <i class=" material-icons left">account_balance</i>
-              {{ ready_rpl }} <span class="label">Siap PKL</span>
-            </div>
-          </div> <!-- ./card -->
-        </div> <!-- ./col -->
-      </div> <!-- ./row -->
     </div>
-  </section>
-  {% endif %}
-  
-  {% endblock %}
+    <div class="row">
+      <div class="col l6">
+        <div class="card-panel grey darken-2 z-depth-3">
+          <span class="new badge blue" data-badge-caption="TKJ"></span>
+          <div class="count white-text">
+            <i class=" material-icons left">group</i>
+            {{ students_count_tkj }} <span class="label">Siswa</span>
+          </div>
+        </div> <!-- ./card -->
+      </div> <!-- ./col -->
+
+      <div class="col l6">
+        <div class="card-panel grey darken-2 z-depth-3">
+          <span class="new badge green" data-badge-caption="RPL"></span>
+          <div class="count white-text">
+            <i class=" material-icons left">group</i>
+            {{ students_count_rpl }} <span class="label">Siswa</span>
+          </div>
+        </div> <!-- ./card -->
+      </div> <!-- ./col -->
+    </div> <!-- ./row -->
+
+    <div class="row">
+      <div class="col l6">
+        <div class="card-panel grey darken-2 z-depth-3">
+          <span class="new badge blue" data-badge-caption="TKJ"></span>
+          <div class="count white-text">
+            <i class=" material-icons left">account_balance</i>
+            {{ ready_tkj }} <span class="label">Siap PKL</span>
+          </div>
+        </div> <!-- ./card -->
+      </div> <!-- ./col -->
+
+      <div class="col l6">
+        <div class="card-panel grey darken-2 z-depth-3">
+          <span class="new badge green" data-badge-caption="RPL"></span>
+          <div class="count white-text">
+            <i class=" material-icons left">account_balance</i>
+            {{ ready_rpl }} <span class="label">Siap PKL</span>
+          </div>
+        </div> <!-- ./card -->
+      </div> <!-- ./col -->
+    </div> <!-- ./row -->
+  </div>
+</section>
+{% else %}
+<!-- <section class="dashboard">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="card-panel red darken-4 white-text">
+            Diinformasikan kepada seluruh peserta PKL, harus mengajukan judul dan segera di ACC paling lambat akhir bulan ini, Sabtu 31 Agustus 2019.
+          <i class="material-icons left">info</i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<meta http-equiv="refresh" content="0;url='/siswa/home/'">
+{% endif %}
+
+
+{% endblock %}

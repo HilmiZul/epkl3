@@ -1,0 +1,61 @@
+/*
+ * style.main.css
+ * portal PKL
+ * 23 Agustus 2019
+ * Zul Hilmi (https://github.com/hilmizul)
+ */
+@font-face {
+  font-family: 'Avenir';
+  src: url('../font/Avenir.ttc');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'Prototype';
+  src: url('../font/Prototype.ttf');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: 'FredokaOne';
+  src: url('../font/FredokaOne.ttf');
+  font-weight: normal;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Avenir';
+  background-color: #000;
+}
+
+.avenir {
+  font-family: 'Avenir';
+}
+.prototype {
+  font-family: 'Prototype';
+}
+
+.FredokaOne {
+  font-family: 'FredokaOne';
+}
+
+.btn {
+  transition: .2s ease-out;
+}
+.btn:hover {
+  transform: translateY(2px);
+}
+
+.header {
+  width: 100%;
+  height: auto;
+  background: #000 url('../img/bg-login.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.header .card {
+  border-radius: 0;
+  border: none;
+  border-top: 7px solid #007bff;
+}

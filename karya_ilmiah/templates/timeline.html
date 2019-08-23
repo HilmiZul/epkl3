@@ -1,0 +1,168 @@
+{% extends "layout_siswa/base.html" %}
+
+{% block content %}
+
+{% if karil %}
+<div class="container">
+  <div class="row pt-5 mt-5">
+    <div class="col-md-2 text-center">
+      {% if karil.status == 'Disetujui' %}
+      <i class="fa fa-check-circle fa-5x text-success"></i>
+      <h4 class="text-muted">Accepted.</h4>
+      {% elif karil.status == 'Menunggu' %}
+      <i class="fa fa-spinner fa-spin fa-5x text-info"></i>
+      <h4 class="text-muted">Menunggu.</h4>
+      {% elif karil.status == 'Ditolak' %}
+      <i class="fa fa-times-circle fa-5x text-danger"></i>
+      <h4 class="text-muted">Ditolak.</h4>
+      <a href="{% url 'ubah_judul' karil.id %}" class="btn btn-dark"><i class="fa fa-edit"></i> Sunting</a>
+      {% endif %}
+    </div>
+    <div class="col-md">
+      <h2>{{ karil.judul }}</h2>
+      Progress Portofolio:
+      <div class="progress">
+        <div class="progress-bar" role="progressbar" style="width: {{ persentase }}%" aria-valuenow="{{ persentase }}" aria-valuemin="0"
+          aria-valuemax="100">
+          {{ persentase }}%
+        </div>
+      </div>
+    </div>
+  </div> <!-- ./row -->
+  <hr>
+  <div class="row mb-5">
+    <div class="col-md-12">
+      <h3 class="mt-3 mb-3"><i class="fa fa-clock-o"></i> Timeline/Progress Isi</h3>
+      {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+      <!-- item timeline loop -->
+      {% for content in contents %}
+      <div class="card mb-3 shadow">
+        <div class="card-body">
+          {% if content.status == 'Selesai' %}
+          <div class="text-success pb-3">
+            <i class="fa fa-check"></i> {{ content.status }}
+          </div>
+          {% elif content.status == 'Review' %}
+          <div class="text-info pb-3">
+            <i class="fa fa-spinner fa-spin"></i> Sedang di-{{ content.status }}
+          </div>
+          {% elif content.status == 'Revisi' %}
+          <div class="text-danger pb-3">
+            <i class="fa fa-edit"></i> {{ content.status }}
+            <span class="text-dark">&#8212;</span>
+            <a href="#" data-toggle="modal" data-target="#revisi-{{ content.id }}">Lihat catatan dan kirim ulang</a>
+          </div>
+          {% endif %}
+          <h4>
+            {{ content.bab }}:
+            {%  if content.bab == 'BAB I' %}
+              Latar Belakang, Tujuan dan Manfaat
+            {% elif content.bab == 'BAB II' %}
+              Landasan Teori
+            {% elif content.bab == 'BAB III' %}
+              Proses dan Hasil Belajar di DU/DI
+            {% elif content.bab == 'BAB IV' %}
+              Simpulan/Saran
+            {% endif %}
+          </h4>
+          
+          {% if content.status == 'Selesai' %}
+          <a href="{{ content.berkas.url }}" class="btn btn-secondary"><i class="fa fa-download"></i> Unduh</a>
+          {% endif %}
+          <em class="text-muted pull-right">{{ content.tanggal|date:'d F Y' }}</em>
+        </div>
+      </div>
+      
+      <!-- end item timeline loop -->
+      <!-- <div class="card mb-3 shadow">
+        <div class="card-body">
+          <div class="text-info pb-3">
+            <i class="fa fa-spinner fa-spin"></i> Sedang di review
+          </div>
+          <h4>BAB II: Landasan Teori</h4>
+          <em class="text-muted pull-right">22 Agustus 2019</em>
+        </div>
+      </div>
+      <div class="card mb-3 shadow">
+        <div class="card-body">
+          <div class="text-danger pb-3">
+            <i class="fa fa-edit"></i> Revisi
+            <span class="text-dark">&#8212;</span>
+            <a href="#" data-toggle="modal" data-target="#revisi">Lihat catatan revisi</a>
+          </div>
+          <h4>BAB III: Proses dan Hasil Belajar di DU/DI</h4>
+          <em class="text-muted pull-right">27 Agustus 2019</em>
+        </div>
+      </div> -->
+
+      <!-- modal catatan revisi -->
+      <div class="modal fade" tabindex="-1" role="dialog" id="revisi-{{ content.id }}">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <form action="{% url 'bimbingan_submit_revisi' content.id %}" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="modal-header">
+                <h5 class="modal-title">Revisi {{ content.bab }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                Catatan Pembimbing:
+                <p class="mb-5">{{ content.catatan }}</p>
+                <hr>
+                <div class="form-group">
+                  <label for="berkas">Lampirkan berkas yang sudah direvisi*</label>
+                  <input type="file" accept=".doc, .docx" class="form-control" name="berkas" id="berkas" required="required">
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-outline-dark"><i class="fa fa-upload"></i> Kirim ulang</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Nanti</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div> <!-- ./row -->
+  {% if selesai %}
+  <div class="row mb-5">
+    <div class="col-md-12">
+      <h3 class="text-center text-muted">
+        &#8212; Selesai &#8212;
+      </h3>
+    </div>
+  </div>
+  {% endif %}
+  {% if belum_bimbingan %}
+  <div class="row mb-5">
+    <div class="col-md-12">
+      <h3 class="text-center text-muted">
+        &#8212; Kamu belum melakukan bimbingan. Ayo <a href="{% url 'bimbingan_submit' %}" class="btn btn-secondary">Mulai bimbingan</a> &#8212;
+      </h3>
+    </div>
+  </div>
+  {% endif %}
+</div>
+{% else %}
+<div class="container">
+  <div class="row pt-5 mt-5">
+    <div class="col-md">
+      <div class="alert alert-danger">
+        <h2>😕 Hhmmm...</h2>
+        Apa Anda sudah mengajukan judul? Jika belum, 
+        <a href="{% url 'submit_judul' %}" class="btn btn-outline-danger">
+          Submit Sekarang <i class="fa fa-send"></i> 
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
