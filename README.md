@@ -10,7 +10,8 @@ I build a simple app for manage PKL(Praktik Kerja Lapangan) data, like:
 * mysqlclient 1.4.2.post1
 * xlwt
 * Materialize CSS
-* Bootstrap 4
+* Bootstrap 4.3.1
+* Font Awesome 4.7.0
 
 # License
 [MIT](https://github.com/HilmiZul/epkl3/blob/master/LICENSE)
