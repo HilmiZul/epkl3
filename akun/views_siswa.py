@@ -5,6 +5,7 @@ from django.conf import settings
 from django.contrib import messages
 from .models import AkunSiswa
 from .forms import FormTambahAkunSiswa
+from master.models import Siswa
 
 def masuk_siswa(request):
   if request.POST:
@@ -28,7 +29,9 @@ def masuk_siswa(request):
         messages.add_message(request, message.INFO, 'User tidak terdaftar :(')
     else:
       messages.add_message(request, messages.INFO, 'Login gagal')
-  return render(request, 'login-siswa-new.html')
+    # ambil data siswa buat yang lupa NIS nya wkwkwkk
+  students = Siswa.objects.all().order_by('NIS', '-program_ahli')
+  return render(request, 'login-siswa-new.html', {'students':students})
 
 @login_required(login_url=settings.LOGIN_URL)
 def keluar_siswa(request):
