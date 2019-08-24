@@ -1,12 +1,20 @@
 # e-PKL
-I build a simple app for manage PKL(Praktik Kerja Lapangan) data like agency/company, application letter and guidance/mentoring. 
+I build a simple app for manage PKL(Praktik Kerja Lapangan) data, like:
+* company
+* application letter
+* guidance/mentoring
 
-# Build with 💜
-* Python 3.7
-* Django 2.1
+# Built with 💜
+* Python 3.7.4
+* Django 2.2.4
+* mysqlclient 1.4.2.post1
+* xlwt
+* Materialize CSS
+* Bootstrap 4
 
 # License
 [MIT](https://github.com/HilmiZul/epkl3/blob/master/LICENSE)
 
 ---
-update Maret 2019, 2th
+update August 24, 2019
+update Maret 2, 2019
