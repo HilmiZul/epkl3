@@ -16,108 +16,33 @@
         </div>
       </li> <!-- ./ list main menu > collapsible-header -->
       <li>
-        <div class="collapsible-header waves-effect">
-          <i class="material-icons">account_balance</i>INSTANSI
-        </div>
+        <div class="collapsible-header waves-effect"><i class="material-icons">insert_drive_file</i>PORTOFOLIO</div>
         <div class="collapsible-body">
           <ul>
             {% if request.session.jurusan == 'TKJ' %}
             <li>
-              <a href="/instansi/tkj" class="waves-effect">
-                TKJ
-                <i class="material-icons">wifi</i>
-              </a>
-            </li>
-            {% elif request.session.jurusan == 'RPL' %}
-            <li>
-              <a href="/instansi/rpl" class="waves-effect">
-                RPL
-                <i class="material-icons">code</i>
-              </a>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
-      </li> <!-- ./ list main menu > collapsible-header -->
-      <li>
-        <div class="collapsible-header waves-effect ">
-          <i class="material-icons">mail</i>INSTANSI & SISWA
-        </div>
-        <div class="collapsible-body">
-          <ul>
-            {% if request.session.jurusan == 'TKJ' %}
-            <li>
-              <a href="/pkl/tkj" class="waves-effect">
-                TKJ
-                <i class="material-icons">wifi</i>
-              </a>
-            </li>
-            {% elif request.session.jurusan == 'RPL' %}
-            <li>
-              <a href="/pkl/rpl" class="waves-effect">
-                RPL
-                <i class="material-icons">code</i>
-              </a>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
-      </li> <!-- ./ list main menu > collapsible-header -->
-      <li>
-        <div class="collapsible-header waves-effect">
-          <i class="material-icons left">group</i>PEMBIMBING
-        </div>
-        <div class="collapsible-body">
-          <ul>
-            <li>
-              <a href="/pembimbing/siswa" class="waves-effect">
-                Pembimbing & Siswa
-                <i class="material-icons left">group</i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li> <!-- ./ list main menu > collapsible-header -->
-      <li>
-        <div class="collapsible-header waves-effect"><i class="material-icons">insert_drive_file</i>KARYA ILMIAH</div>
-        <div class="collapsible-body">
-          <ul>
-            {% if request.session.jurusan == 'TKJ' %}
-            <li>
-              <a href="/karya-ilmiah/pengajuan-judul/" class="waves-effect">
+              <a href="{% url 'pengajuan_judul' %}" class="waves-effect">
                 Pengajuan Judul
                 <i class="material-icons">send</i>
               </a>
             </li>
             <li>
-              <a href="/karya-ilmiah/#!" class="waves-effect">
+              <a href="{% url 'bimbingan_isi' %}" class="waves-effect">
                 Bimbingan
                 <i class="material-icons">account_balance</i>
               </a>
             </li>
-            <li>
-              <a href="/karya-ilmiah/#!" class="waves-effect">
-                Timeline
-                <i class="material-icons">timeline</i>
-              </a>
-            </li>
             {% elif request.session.jurusan == 'RPL' %}
             <li>
-              <a href="/karya-ilmiah/pengajuan-judul" class="waves-effect">
+              <a href="{% url 'pengajuan_judul' %}" class="waves-effect">
                 Pengajuan Judul
                 <i class="material-icons">send</i>
               </a>
             </li>
             <li>
-              <a href="/karya-ilmiah/#!" class="waves-effect">
+              <a href="{% url 'bimbingan_isi' %}" class="waves-effect">
                 Bimbingan
                 <i class="material-icons">account_balance</i>
-              </a>
-            </li>
-            <li>
-              <a href="/karya-ilmiah/#!" class="waves-effect">
-                Timeline
-                <i class="material-icons">timeline</i>
               </a>
             </li>
             {% endif %}
