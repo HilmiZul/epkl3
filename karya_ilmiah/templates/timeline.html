@@ -52,9 +52,9 @@
           </div>
           {% elif content.status == 'Revisi' %}
           <div class="text-danger pb-3">
-            <i class="fa fa-edit"></i> {{ content.status }}
+            <i class="fa fa-edit"></i> {{ content.status|upper }}
             <span class="text-dark">&#8212;</span>
-            <a href="#" data-toggle="modal" data-target="#revisi-{{ content.id }}">Lihat catatan dan kirim ulang</a>
+            <a href="#" data-toggle="modal" data-target="#revisi-{{ content.id }}">LIHAT CATAN DARI PEMBIMBING DAN KIRIM ULANG</a>
           </div>
           {% endif %}
           <h4>
@@ -112,11 +112,13 @@
                 </button>
               </div>
               <div class="modal-body">
-                Catatan Pembimbing:
-                <p class="mb-5">{{ content.catatan }}</p>
+                <div class="alert alert-info">
+                  <h4>Catatan Pembimbing:</h4>
+                  <p class="mb-5">{{ content.catatan|linebreaks }}</p>
+                </div>
                 <hr>
                 <div class="form-group">
-                  <label for="berkas">Lampirkan berkas yang sudah direvisi*</label>
+                  <label for="berkas"><b>LAMPIRKAN BERKAS YANG SUDAH DIREVISI*</b></label>
                   <input type="file" accept=".doc, .docx" class="form-control" name="berkas" id="berkas" required="required">
                 </div>
               </div>
