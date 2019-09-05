@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{{ judul.siswa }} - {{ judul }}</title>
+  <style>
+  body {
+    margin: 3cm 3cm 3cm 4cm;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  .container .header {
+    margin-bottom: 20px;
+  }
+  .container .header .h1 {
+    font-size: 15pt;
+    text-align: center;
+    font-weight: bold;
+  }
+  .container .judul {
+    font-size: 17pt;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .container .logo {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    text-align: center;
+  }
+
+  .container .logo .logo-img {
+    width: 5.5cm;
+    height: auto;
+  }
+
+  .container .identitas p {
+    text-align: center;
+  }
+
+  table tr {
+    padding-bottom: 100px;
+  }
+
+  .container .footer {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 90px;
+  }
+
+  .container .footer .f1 {
+    font-size: 13pt;
+  }
+  .container .footer .f2 {
+    font-size: 12pt;
+  }
+  .container .footer .f3 {
+    font-size: 10pt;
+  }
+  .container .footer .f4 {
+    font-size: 12pt;
+  }
+  </style>
+</head>
+<body onload="window.print()">
+  <div class="container">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="h1">PORTOFOLIO</div>
+      <div class="h1">PRAKTIK KERJA LAPANGAN</div>
+    </div>
+
+    <!-- JUDUL -->
+    <div class="judul">{{ judul | upper }}</div>
+
+    <!-- LOGO -->
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/id/9/9e/Logo_SMK_Negeri_4_Tasikmalaya.png" class="logo-img">
+    </div>
+
+    <!-- IDENTITAS -->
+    <div class="identitas">
+      <p>Disusun oleh</p>
+      <table>
+        <tr>
+          <td rowspan="5" width="20%"></td>
+          <td width="25%">NAMA</td>
+          <td>:</td>
+          <td>{{ judul.siswa | upper }}</td>
+          <td rowspan="3"></td>
+        </tr>
+        <tr>
+          <td>NIS</td>
+          <td>:</td>
+          <td>{{ judul.siswa.profil.NIS }}</td>
+        </tr>
+        <tr>
+          <td>KELAS</td>
+          <td>:</td>
+          <td>{{ judul.siswa.profil.kelas }}</td>
+        </tr>
+        <tr>
+          <td>TEMPAT PKL</td>
+          <td>:</td>
+          <td>{{ DUDI }}</td>
+        </tr>
+        <tr>
+          <td valign="top">ALAMAT DU/DI</td>
+          <td valign="top">:</td>
+          <td valign="top">{{ DUDI.nama_instansi.alamat }}</td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <div class="f1">SEKOLAH MENENGAH KEJURUAN NEGERI 4 TASIKMALAYA</div>
+      <div class="f2">KOMPETENSI KEAHLIAN {{ judul.siswa.profil.program_ahli|upper }}</div>
+      <div class="f3">Jl.DEPOK KELURAHAN SUKAMENAK KECAMATAN PURBARATU (0265) 312059</div>
+      <div class="f4">KOTA TASIKMALAYA</div>
+      <div class="f4">2019/2020</div>
+    </div>
+  </div>
+</body>
+</html>
