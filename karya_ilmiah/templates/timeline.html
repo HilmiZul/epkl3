@@ -9,6 +9,7 @@
       {% if karil.status == 'Disetujui' %}
       <i class="fa fa-check-circle fa-5x text-success"></i>
       <h4 class="text-muted">Accepted.</h4>
+      <a href="{% url 'unduh_halaman_judul' %}" target="__blank" class="btn btn-outline-primary"><i class="fa fa-download fa-fw"></i>Halaman Judul</a>
       {% elif karil.status == 'Menunggu' %}
       <i class="fa fa-spinner fa-spin fa-5x text-info"></i>
       <h4 class="text-muted">Menunggu.</h4>
@@ -44,17 +45,20 @@
         <div class="card-body">
           {% if content.status == 'Selesai' %}
           <div class="text-success pb-3">
-            <i class="fa fa-check"></i> {{ content.status }}
+            <i class="fa fa-check"></i> {{ content.status|upper }}
           </div>
           {% elif content.status == 'Review' %}
           <div class="text-info pb-3">
-            <i class="fa fa-spinner fa-spin"></i> Sedang di-{{ content.status }}
+            <i class="fa fa-spinner fa-spin"></i> Sedang di-{{ content.status|upper }}
           </div>
           {% elif content.status == 'Revisi' %}
           <div class="text-danger pb-3">
             <i class="fa fa-edit"></i> {{ content.status|upper }}
             <span class="text-dark">&#8212;</span>
-            <a href="#" data-toggle="modal" data-target="#revisi-{{ content.id }}">LIHAT CATAN DARI PEMBIMBING DAN KIRIM ULANG</a>
+            <a href="#" data-toggle="modal" data-target="#revisi-{{ content.id }}" class="btn btn-danger">
+              <i class="fa fa-pencil"></i>
+              LIHAT CATAN DARI PEMBIMBING DAN KIRIM ULANG
+            </a>
           </div>
           {% endif %}
           <h4>
@@ -114,7 +118,7 @@
               <div class="modal-body">
                 <div class="alert alert-info">
                   <h4>Catatan Pembimbing:</h4>
-                  <p class="mb-5">{{ content.catatan|linebreaks }}</p>
+                  <p>{{ content.catatan|linebreaks }}</p>
                 </div>
                 <hr>
                 <div class="form-group">
