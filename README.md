@@ -1,4 +1,6 @@
 # e-PKL
+Just for fun 😁
+
 I build a simple app for manage PKL(Praktik Kerja Lapangan) data, like:
 * company
 * application letter
