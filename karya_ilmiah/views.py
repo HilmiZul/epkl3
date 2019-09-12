@@ -6,6 +6,7 @@ from django.contrib import messages
 from .models import SubmissionJudul, Bimbingan
 from akun.models import AkunSiswa
 from master.models import PembimbingSiswa
+from letter.models import Permohonan
 from .forms import FormBimbingan
 from django.core.files.storage import FileSystemStorage
 
@@ -158,3 +159,10 @@ def bimbingan_submit_revisi(request,id):
     except:
       pass
   return redirect('/portofolio/timeline/')
+
+
+@login_required(login_url=settings.LOGIN_URL)
+def unduh_halaman_judul(request):
+  judul = SubmissionJudul.objects.get(siswa__id=request.session['id'])
+  DUDI = Permohonan.objects.get(nama_siswa__id=judul.siswa.profil.id)
+  return render(request, 'template-judul.html', {'judul':judul, 'DUDI':DUDI})
