@@ -10,9 +10,10 @@ urlpatterns = [
   path('bimbingan/submit/', bimbingan_submit, name='bimbingan_submit'),
   path('bimbingan/revisi/<int:id>', bimbingan_submit_revisi, name='bimbingan_submit_revisi'),
   path('bimbingan/setujui/<int:id>', setujui_bimbingan_isi, name='setujui_bimbingan_isi'),
+  path('judul/unduh/halaman-judul/', unduh_halaman_judul, name='unduh_halaman_judul'),
 
   # area.mentor
-  path('pengajuan-judul/', pengajuan_judul),
+  path('pengajuan-judul/', pengajuan_judul, name='pengajuan_judul'),
   path('pengajuan-judul/setuju/<int:id>', setuju_submission_judul),
   path('pengajuan-judul/tolak/<int:id>', dikembalikan_submission_judul),
 
