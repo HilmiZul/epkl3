@@ -10,6 +10,9 @@ from letter.models import Permohonan
 from .forms import FormBimbingan
 from django.core.files.storage import FileSystemStorage
 
+
+# print(ubah_nama('Downloads/BAB_I_PENDAHULUAN_.doc'))
+
 @login_required(login_url=settings.LOGIN_URL)
 def submit_judul(request):
   if request.POST:
@@ -112,14 +115,16 @@ def bimbingan_submit(request):
       # form = FormBimbingan(request.POST)
       # form.save()
       berkas = request.FILES['berkas']
+      berkas_name = berkas.name+"-"+request.session['uname']
+      fs = FileSystemStorage()
+      fs.save(berkas_name, berkas)
+      # berkas_baru = ubah_nama(request.FILES['berkas'], request.session['uname'])
       Bimbingan(
         judul = SubmissionJudul.objects.get(id=request.POST['judul']),
         bab = request.POST['bab'],
-        berkas = berkas,
+        berkas = berkas_name,
         catatan = None
       ).save()
-      # fs = FileSystemStorage()
-      # fs.save('berkas/'+berkas.name, berkas)
       messages.add_message(request, messages.INFO, 'Berkas berhasil dikirim dan akan di-review oleh Pembimbing.')
       return redirect('/portofolio/timeline/')
     else:
@@ -145,15 +150,18 @@ def bimbingan_submit_revisi(request,id):
       os.remove(berkas_lama.berkas.path)
       # upload yang baru
       berkas = request.FILES['berkas']
+      berkas_name = berkas.name+"-REVISI-"+request.session['uname']
+      fs = FileSystemStorage()
+      fs.save(berkas_name, berkas)
       # berkas = os.path.join(settings.MEDIA_ROOT, berkas)
       Bimbingan.objects.filter(id=id).update(
-        berkas = berkas,
+        berkas = berkas_name,
         status = 'Review'
       )
       # fs = FileSystemStorage()
       # fs.save('berkas/'+berkas.name, berkas)
-      fs = FileSystemStorage()
-      fs.save(berkas.name, berkas)
+      # fs = FileSystemStorage()
+      # fs.save(berkas.name+"-"+request.session['uname'], berkas)
       messages.add_message(request, messages.INFO, 'Berkas berhasil dikirim dan akan di-review kembali oleh Pembimbing.')
       return redirect('/portofolio/timeline/')
     except:
