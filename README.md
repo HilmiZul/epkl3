@@ -19,6 +19,8 @@ I build a simple app for manage PKL(Praktik Kerja Lapangan) data, like:
 [MIT](https://github.com/HilmiZul/epkl3/blob/master/LICENSE)
 
 ---
+update September 23, 2019: add 'who is verified this title and content?'
+
 update September 19, 2019: fix duplicate file Bimbingan, fix bug URL
 
 update September 12, 2019
