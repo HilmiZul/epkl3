@@ -1,5 +1,5 @@
 from django.db import models
-from akun.models import AkunSiswa
+from akun.models import AkunSiswa, AkunPembimbing
 from master.models import PembimbingSiswa
 
 # Create your models here.
@@ -14,6 +14,7 @@ class SubmissionJudul(models.Model):
   siswa = models.ForeignKey(AkunSiswa, on_delete=models.CASCADE)
   pembimbing = models.ForeignKey(PembimbingSiswa, on_delete=models.CASCADE)
   catatan = models.TextField(null=True)
+  verified_by = models.ForeignKey(AkunPembimbing, on_delete=models.CASCADE, null=True)
 
   def __str__(self):
     return self.judul
@@ -39,6 +40,7 @@ class Bimbingan(models.Model):
   berkas = models.FileField()
   status = models.CharField(max_length=12, choices=status_choices, default='Review')
   catatan = models.TextField(null=True, default=None)
+  verified_by = models.ForeignKey(AkunPembimbing, on_delete=models.CASCADE, null=True)
   # siswa = models.ForeignKey(AkunSiswa, default=True, on_delete=models.CASCADE)
   # pembimbing = models.ForeignKey(PembimbingSiswa, default=True, on_delete=models.CASCADE)
 
