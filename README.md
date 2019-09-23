@@ -9,11 +9,6 @@ I build a simple app for manage PKL(Praktik Kerja Lapangan) data, like:
 # Built with 💜
 * Python 3.7.4
 * Django 2.2.4
-* mysqlclient 1.4.2.post1
-* xlwt
-* Materialize CSS
-* Bootstrap 4.3.1
-* Font Awesome 4.7.0
 
 # License
 [MIT](https://github.com/HilmiZul/epkl3/blob/master/LICENSE)
