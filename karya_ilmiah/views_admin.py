@@ -28,6 +28,7 @@ def setuju_submission_judul(request, id):
     SubmissionJudul.objects.filter(id=id).update(
       tanggal_acc = datetime.now(),
       status = "Disetujui",
+      verified_by = request.session['id']
     )
     # ubah status judul di Siswa
     # ambil id siswa dulu, gimana caranya?
@@ -96,7 +97,8 @@ def bimbingan_isi_revisi(request, id):
 def setujui_bimbingan_isi(request, id):
   if request.POST:
     Bimbingan.objects.filter(id=id).update(
-      status = 'Selesai'
+      status = 'Selesai',
+      verified_by = request.session['id']
     )
     messages.add_message(request, messages.INFO, 'Berkas telah disetujui.')
     return redirect('/portofolio/bimbingan-isi/')
