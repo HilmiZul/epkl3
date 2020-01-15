@@ -2,8 +2,8 @@
 Just for fun 😁
 
 # Built with 💜
-* Python 3.7.4
-* Django 2.2.4
+* Python 3.7.5
+* Django 2.2.9
 
 # License
 [MIT](https://github.com/HilmiZul/epkl3/blob/master/LICENSE)
