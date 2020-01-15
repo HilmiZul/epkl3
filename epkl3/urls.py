@@ -13,7 +13,7 @@ urlpatterns = [
     
     # akun
     path('akun/', include('akun.urls')),
-    # path('tambah-akun/', tambah_akun),
+    path('tambah-akun/', tambah_akun),
 
     path('siswa/', include('akun.urls')),
 
