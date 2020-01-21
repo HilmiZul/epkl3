@@ -1,7 +1,8 @@
 [![CircleCI](https://circleci.com/gh/circleci/circleci-docs.svg?style=svg)](https://circleci.com/gh/HilmiZul/epkl3)
 
 # e-PKL
-Just for fun 😁
+Aplikasi untuk mengelola data PKL (Praktik Kerja Lapangan).
+Just for fun!
 
 # Built with 💜
 * Python 3.7.5
@@ -11,6 +12,8 @@ Just for fun 😁
 [MIT](https://github.com/HilmiZul/epkl3/blob/master/LICENSE)
 
 ---
+update January 22, 2020: change admin UI to Bootstrap 4.4.1. Happy New Year 🎉
+
 update September 23, 2019: add "who is verified this [title and content](https://github.com/HilmiZul/epkl3/commit/ce582a9becb009e334c57446d087ffaa71ce0cfb)?"
 
 update September 19, 2019: fix duplicate file Bimbingan, fix bug URL
