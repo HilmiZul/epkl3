@@ -18,6 +18,8 @@ def dashboard(request):
 
   ready_rpl = Siswa.objects.filter(program_ahli='Rekayasa Perangkat Lunak', pkl=True).count()
   ready_tkj = Siswa.objects.filter(program_ahli='Teknik Komputer dan Jaringan', pkl=True).count()
+  ready_pkl = ready_rpl + ready_tkj
+  not_yet   = len(students) - ready_pkl
 
   students_count = len(students)
 
@@ -29,6 +31,8 @@ def dashboard(request):
 
       'ready_rpl': ready_rpl,
       'ready_tkj': ready_tkj,
+      'ready_pkl': ready_pkl,
+      'not_yet': not_yet,
     }
   )
 
