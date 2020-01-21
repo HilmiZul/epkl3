@@ -56,3 +56,7 @@ html, body {
 .underline {
   border-bottom: 5px solid #ffffff;
 }
+
+.alert {
+  border-radius: 0;
+}
