@@ -1,183 +1,78 @@
 <!-- NAV -->
-<div class="main-menu">
-  <a href="#" data-target="mobile-nav" class="sidenav-trigger btn-flat waves-effect">MENU<i class="material-icons left">menu</i></a>
-  <ul class="sidenav" id="mobile-nav">
-    <li>
-      <div class="nama-app white-text grey darken-2 center-align">
-        e-PKL.
-      </div>
-    </li>
-    <ul class="collapsible" data-collapsible="accordion">
-      <li>
-        <div class="collapsible-header waves-effect">
-          <a href="/dashboard">
-            <i class="material-icons left">dashboard</i>DASHBOARD
-          </a>
-        </div>
-      </li> <!-- ./ list main menu > collapsible-header -->
-      <li>
-        <div class="collapsible-header waves-effect">
-          <i class="material-icons">account_balance</i>INSTANSI
-        </div>
-        <div class="collapsible-body">
-          <ul>
-            <li>
-              <a href="/instansi/tambah" class="waves-effect">
-                Tambah
-                <i class="material-icons">add</i>
-              </a>
-            </li>
-            <li>
-              <a href="/instansi/tkj" class="waves-effect">
-                TKJ
-                <i class="material-icons">wifi</i>
-              </a>
-            </li>
-            <li>
-              <a href="/instansi/rpl" class="waves-effect">
-                RPL
-                <i class="material-icons">code</i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li> <!-- ./ list main menu > collapsible-header -->
-      <li>
-        <div class="collapsible-header waves-effect ">
-          <i class="material-icons">mail</i>INSTANSI & SISWA
-        </div>
-        <div class="collapsible-body">
-          <ul>
-            <li>
-              <a href="/pkl/tkj" class="waves-effect">
-                TKJ
-                <i class="material-icons">wifi</i>
-              </a>
-            </li>
-            <li>
-              <a href="/pkl/rpl" class="waves-effect">
-                RPL
-                <i class="material-icons">code</i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li> <!-- ./ list main menu > collapsible-header -->
-      <li>
-        <div class="collapsible-header waves-effect">
-          <i class="material-icons left">group</i>PEMBIMBING
-        </div>
-        <div class="collapsible-body">
-          <ul>
-            <li>
-              <a href="/pembimbing" class="waves-effect">
-                Pembimbing
-                <i class="material-icons left">account_circle</i>
-              </a>
-            </li>
-            <li>
-              <a href="/pembimbing/siswa" class="waves-effect">
-                Pembimbing & Siswa
-                <i class="material-icons left">group</i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li> <!-- ./ list main menu > collapsible-header -->
-      <li>
-        <div class="collapsible-header waves-effect"><i class="material-icons">insert_drive_file</i>PORTOFOLIO</div>
-        <div class="collapsible-body">
-          <ul>
-            <li>
-              <a href="{% url 'pengajuan_judul' %}" class="waves-effect">
-                Pengajuan Judul
-                <i class="material-icons">send</i>
-              </a>
-            </li>
-            <li>
-              <a href="{% url 'bimbingan_isi' %}" class="waves-effect">
-                Bimbingan
-                <i class="material-icons">chat</i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li> <!-- ./ list main menu > collapsible-header -->
-      <!-- <li>
-        <div class="collapsible-header waves-effect"><i class="material-icons">chat</i>BIMBINGAN</div>
-        <div class="collapsible-body">
-          <ul>
-            <li>
-              <a href="/bimbingan/tkj" class="waves-effect">
-                TKJ
-                <i class="material-icons">wifi</i>
-              </a>
-            </li>
-            <li>
-              <a href="/bimbingan/rpl" class="waves-effect">
-                RPL
-                <i class="material-icons">code</i>
-              </a>
-            </li>
-            <li>
-              <a href="/bimbingan/timeline" class="waves-effect">
-                Timeline/Progress
-                <i class="material-icons">timeline</i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li> ./ list main menu > collapsible-header -->
-      <li>
-        <div class="collapsible-header waves-effect"><i class="material-icons">gavel</i>SIDANG</div>
-        <div class="collapsible-body">
-          <ul>
-            <li>
-              <a href="#" class="waves-effect">
-                Buat Jadwal
-                <i class="material-icons">schedule</i>
-              </a>
-            </li>
-            <li>
-              <a href="#" class="waves-effect">
-                Penilaian
-                <i class="material-icons">edit</i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </li> <!-- ./ list main menu > collapsible-header -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light prototype mb-5 shadow">
+  <a class="navbar-brand" href="#">e-PKL.</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-      <li>
-        <div class="divider"></div>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'dashboard' %}"><i class="fa fa-home"></i></a>
       </li>
-
-      <li>
-        <div class="collapsible-header waves-effect"><i class="material-icons">mood</i>Hi, {{ request.session.nama }}</div>
-        <div class="collapsible-body">
-          <ul>
-            <!-- <li>
-              <a href="#" class="waves-effect">
-                Ubah Katasandi
-                <i class="material-icons">locked</i>
-              </a>
-            </li> -->
-            <li>
-              <a href="/akun/keluar" class="waves-effect">
-                Keluar
-                <i class="material-icons">logout</i>
-              </a>
-            </li>
-          </ul>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          INSTANSI
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'instansi_tkj' %}">TKJ</a>
+          <a class="dropdown-item" href="{% url 'instansi_rpl' %}">RPL</a>
         </div>
-      </li> <!-- ./ list main menu > collapsible-header -->
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          INSTANSI & SISWA
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'surat_tkj' %}">TKJ</a>
+          <a class="dropdown-item" href="{% url 'surat_rpl' %}">RPL</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          PEMBIMBING
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/pembimbing">Pembimbing</a>
+          <a class="dropdown-item" href="{% url 'pembimbing_siswa' %}">Pembimbing & Siswa</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          JURNAL
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">TKJ</a>
+          <a class="dropdown-item" href="#">RPL</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          PORTOFOLIO
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Pengajuan Judul</a>
+          <a class="dropdown-item" href="#">Isi</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">SIDANG</a>
+      </li>
     </ul>
-  </ul>
-  <a href="#" class="dropdown-triger btn-flat waves-effect grey darken-2 right" data-target="dropdown-aksi">
-    <i class="material-icons right">more_vert</i>Hi, {{ request.session.nama }}
-  </a>
-  <ul id="dropdown-aksi" class="dropdown-content">
-    <li><a href="/akun/keluar">Keluar</a></li>
-  </ul>
-</div>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link text-muted">Zul Hilmi &nbsp; &bull;</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/akun/keluar/">Keluar</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <!-- ./NAV -->

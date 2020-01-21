@@ -1,0 +1,58 @@
+@font-face {
+  src: url('../../vendor/font/Avenir.ttc');
+  font-family: Avenir;
+}
+
+@font-face {
+  src: url('../../vendor/font/Prototype.ttf');
+  font-family: Prototype;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: Avenir;
+  /* background-color: rgb(250, 250, 250); */
+  background: #eeeeee url('../img/bg-layangan.png') no-repeat center bottom fixed;
+  background-size: cover;
+}
+
+@media (min-width: 1200px) {
+  .container{
+      max-width: 1500px;
+  }
+}
+
+.card {
+  border: none;
+  border-radius: 0;
+}
+
+.border-r {
+  border-right: 7px solid #ffffff;
+}
+
+.avenir {
+  font-family: Avenir;
+}
+
+.prototype {
+  font-family: Prototype;
+}
+
+.login {
+  width: 100%;
+  height: 100%;
+  padding-top: 90px;
+  background: url('../img/bg-login.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.block {
+  color: #0E8E84;
+  background-color: #ffffff;
+}
+
+.underline {
+  border-bottom: 5px solid #ffffff;
+}

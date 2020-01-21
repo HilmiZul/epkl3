@@ -1,78 +1,82 @@
 {% extends "layout_admin/base.html" %}
 
 {% block content %}
-<section class="form-table">
-  <div class="container">
-    <div class="row">
-      <div class="col l12">
-        <h4>
-          Instansi &#8212; RPL
-          <a href="{% url 'export_instansi_rpl' %}" class="btn waves-effect grey darken-1">
-            <i class="material-icons left">save_alt</i>
-            .xls
-          </a>
-        </h4>
-
-        {% if msg %}
-        <div class="card-panel teal lighten-5">
-          {{ msg }}
-          <i class="material-icons left">check</i>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header bg-dark text-white prototype">
+          INSTANSI &raquo; RPL
+          <a href="{% url 'tambah_instansi_rpl' %}" class="btn btn-outline-light"><i class="fa fa-plus"></i> Tambah</a>
+          <span class="float-right">
+            <a href="{% url 'export_instansi_rpl' %}" class="btn btn-outline-light"><i class="fa fa-download"></i></a>
+          </span>
         </div>
-        {% endif %}
-
-        <table class="responsive-table" id="myTable">
-          <thead>
-            <tr>
-              <th>NO.</th>
-              <th>NAMA</th>
-              <th>NAMA PIMPINAN</th>
-              <th>KONTAK</th>
-              <th>ALAMAT</th>
-              <th>TERISI</th>
-              <th>AKSI</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for company in instansi %}
-            <tr>
-              <td>{{ forloop.counter }}.</td>
-              <td><a href="/instansi/rpl/ubah/{{ company.id }}">{{ company.nama }}</a></td>
-              <td>{{ company.pimpinan }}</td>
-              <td>{{ company.kontak }}</td>
-              <td><a href="https://www.google.com/maps/search/?api=1&query={{ company.alamat }}" target="_blank" class="modal-trigger tooltipped"
-                data-position="bottom" data-tooltip="Lihat peta">{{ company.alamat }}</a>
-              </td>
-              <td>{{ company.limit }} dari 5</td>
-              <td>
-                <a href="#instansi-{{ company.id }}" class="btn red lighten-1 waves-effect waves-light modal-trigger
-                  tooltipped" data-position="bottom" data-tooltip="Hapus">
-                  <i class="material-icons">delete</i>
-                </a>
-              </td>
-            </tr>
-            <div class="modal" id="instansi-{{ company.id }}">
-              <div class="modal-content">
-                <h4>Hapus?</h4>
-                <p>
-                  Kalo kamu hapus <b>{{ company.nama|upper }}</b>, maka data di <b>DU/DI & SISWA</b>
-                  yang bersangkutan akan ikut terhapus. <br> <b>YAKIN MAU HAPUS?</b>
-                </p>
-              </div>
-              <div class="modal-footer">
-                <a href="/instansi/rpl/hapus/{{ company.id }}" class="btn-flat waves-effect">Ya, Hapus</a>
-                <a href="#!" class="btn waves-effect modal-close">ENGGA</a>
-              </div>
-            </div>
-            {% endfor %}
-          </tbody>
-        </table>
-        <div class="tombol-add">
-          <a href="/instansi/rpl/tambah/" class="btn-floating btn-large waves-effect grey darken-1 pulse">
-            <i class="material-icons">add</i>
-          </a>
+        <div class="card-body shadow-lg">
+          {% if msg %}
+          <div class="alert alert-success">
+            {{ msg }}
+          </div>
+          {% endif %}
+          <div class="table-responsive">
+            <table class="table table-striped table-hover" id="myTable">
+              <thead class="prototype">
+                <tr>
+                  <th>NO.</th>
+                  <th>NAMA</th>
+                  <th>NAMA PIMPINAN</th>
+                  <th>KONTAK</th>
+                  <th>ALAMAT</th>
+                  <th>TERISI</th>
+                  <th>AKSI</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for company in instansi %}
+                <tr>
+                  <td>{{ forloop.counter }}.</td>
+                  <td><a href="/instansi/rpl/ubah/{{ company.id }}">{{ company.nama }}</a></td>
+                  <td>{{ company.pimpinan }}</td>
+                  <td>{{ company.kontak }}</td>
+                  <td><a href="https://www.google.com/maps/search/?api=1&query={{ company.alamat }}" target="_blank"
+                      class="modal-trigger tooltipped" data-position="bottom"
+                      data-tooltip="Lihat peta">{{ company.alamat }}</a>
+                  </td>
+                  <td>{{ company.limit }} dari 5</td>
+                  <td>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#instansi-{{ company.id }}"><i class="fa fa-trash"></i></button>
+                  </td>
+                </tr>
+                <div class="modal fade" tabindex="-1" role="dialog" id="instansi-{{ company.id }}">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title">HAPUS</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p>JIKA ANDA MENGHAPUS DATA INSTANSI: <strong>"{{ company.nama }}"</strong>, MAKA DATA SISWA YANG 
+                          SUDAH DIINPUT AKAN IKUT TERHAPUS!
+                        </p>
+                        <p>YAKIN HAPUS?</p>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="/instansi/rpl/hapus/{{ company.id }}" class="btn btn-outline-danger">Yakin</a>
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">TIDAK</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div> <!-- ./col -->
-    </div> <!-- ./row -->
+      </div>
+    </div>
   </div>
-</section>
+</div>
+
 {% endblock %}

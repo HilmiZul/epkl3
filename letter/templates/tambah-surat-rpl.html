@@ -1,62 +1,68 @@
 {% extends "layout_admin/base.html" %}
 
 {% block content %}
-<section class="form-input">
-  <div class="container">
-    <div class="row">
-      <div class="col l12">
-        <h4>Tambah Data PKL - RPL</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-dark text-white prototype">
+          <a href="{% url 'surat_rpl' %}" class="btn btn-outline-light"><i class="fa fa-chevron-left"></i> kembali</a>
+          INSTANSI & SISWA &raquo; RPL &raquo; TAMBAH BARU
+        </div>
+        <div class="card-body shadow-lg">
+          <div class="row">
+            <div class="col-md-12">
+              {% if msg %}
+              <div class="alert alert-success">
+                {{ msg }}
+              </div>
+              {% endif %}
+              <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="siswa">Siswa</label>
+                  <select name="nama_siswa" class="this-select form-control" id="siswa" required>
+                    <option value=""></option>
+                    <optgroup label="XI.RPL-1">
+                      {% for rpl1 in students_rpl_1 %}
+                      <option value="{{ rpl1.id }}">{{ rpl1.NIS }} &#8212; {{ rpl1.nama }} </option>
+                      {% endfor %}
+                    </optgroup>
+                    <optgroup label="XI.RPL-2">
+                      {% for rpl2 in students_rpl_2 %}
+                      <option value="{{ rpl2.id }}">{{ rpl2.NIS }} &#8212; {{ rpl2.nama }} </option>
+                      {% endfor %}
+                    </optgroup>
+                    <optgroup label="XI.RPL-3">
+                      {% for rpl3 in students_rpl_3 %}
+                      <option value="{{ rpl3.id }}">{{ rpl3.NIS }} &#8212; {{ rpl3.nama }} </option>
+                      {% endfor %}
+                    </optgroup>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="">Instansi</label>
+                  <select name="nama_instansi" class="this-select form-control" required>
+                    <option value=""></option>
+                    {% for company in instansi %}
+                    <option value="{{ company.id }}">{{ company.nama }} ({{ company.limit }} / 5)</option>
+                    {% endfor %}
+                  </select>
+                </div>
+                <button type="submit" class="btn btn-dark">Simpan</button>
+              </form> 
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col l6">
-        {% if msg %}
-        <div class="card-panel teal lighten-5">
-          <i class="material-icons left">check</i>
-          {{ msg }}
-        </div>
-        {% endif %}
-
-        <form action="/pkl/rpl/tambah/" method="post">
-          {% csrf_token %}
-          <div class="input-field">
-            <select name="nama_siswa" class="this-select-siswa" required>
-              <option value=""></option>
-              <optgroup label="XI.RPL-1">
-                {% for rpl1 in students_rpl_1 %}
-                <option value="{{ rpl1.id }}">{{ rpl1.NIS }} &#8212; {{ rpl1.nama }} </option>
-                {% endfor %}
-              </optgroup>
-              <optgroup label="XI.RPL-2">
-                {% for rpl2 in students_rpl_2 %}
-                <option value="{{ rpl2.id }}">{{ rpl2.NIS }} &#8212; {{ rpl2.nama }} </option>
-                {% endfor %}
-              </optgroup>
-              <optgroup label="XI.RPL-3">
-                {% for rpl3 in students_rpl_3 %}
-                <option value="{{ rpl3.id }}">{{ rpl3.NIS }} &#8212; {{ rpl3.nama }} </option>
-                {% endfor %}
-              </optgroup>
-            </select>
-          </div>
-          <div class="input-field">
-            <select name="nama_instansi" class="this-select-instansi" required>
-              <option value=""></option>
-              {% for company in instansi %}
-              <option value="{{ company.id }}">{{ company.nama }} ({{ company.limit }} / 5)</option>
-              {% endfor %}
-            </select>
-          </div>
-          <div class="input-field">
-            <button type="submit" class="btn waves-effect">
-              <i class="material-icons left">save</i>
-              Simpan
-            </button>
-            <a href="/pkl/rpl" class="btn waves-effect">Kembali</a>
-          </div>
-        </form>
+    <div class="col-md-6">
+      <div class="alert alert-warning shadow">
+        <h2>Infomari</h2>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium hic sapiente nesciunt pariatur excepturi aut, quaerat nulla explicabo consequatur doloribus ea neque quas tempora, molestiae iusto, optio magnam voluptates incidunt!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur velit laboriosam eveniet nobis fuga error nesciunt, autem provident quisquam neque possimus! Nemo molestiae ea rerum itaque. Officia architecto provident iste?
       </div>
     </div>
   </div>
-</section>
+</div>
 {% endblock %}

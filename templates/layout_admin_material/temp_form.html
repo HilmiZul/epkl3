@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FORM.</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="select/select2.css">
+  <link rel="stylesheet" href="materialize/css/materialize.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div class="main-menu">
+    <a href="#" data-target="mobile-nav" class="sidenav-trigger btn-flat">MENU<i class="material-icons left">menu</i></a>
+    <ul class="sidenav" id="mobile-nav">
+      <li>
+        <div class="nama-app white-text grey darken-2 center-align">
+          e-PKL.
+        </div>
+      </li>
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header waves-effect">
+            <a href="#!">
+              <i class="material-icons left">dashboard</i>DASHBOARD
+            </a>
+          </div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+        <li>
+          <div class="collapsible-header waves-effect">
+            <i class="material-icons">account_balance</i>INSTANSI
+          </div>
+          <div class="collapsible-body">
+            <ul>
+              <li>
+                <a href="#" class="waves-effect">
+                  Tambah
+                  <i class="material-icons">add</i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="waves-effect">
+                  TKJ
+                  <i class="material-icons">wifi</i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="waves-effect">
+                  RPL
+                  <i class="material-icons">code</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+        <li>
+          <div class="collapsible-header waves-effect ">
+            <i class="material-icons">mail</i>PKL & SURAT
+          </div>
+          <div class="collapsible-body">
+            <ul>
+              <li>
+                <a href="#" class="waves-effect">
+                  TKJ
+                  <i class="material-icons">wifi</i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="waves-effect">
+                  RPL
+                  <i class="material-icons">code</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+        <li>
+          <div class="collapsible-header waves-effect"><i class="material-icons">group</i>PEMBIMBING</div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+        <li>
+          <div class="collapsible-header waves-effect"><i class="material-icons">insert_drive_file</i>KARYA ILMIAH</div>
+          <div class="collapsible-body">
+            <ul>
+              <li>
+                <a href="#" class="waves-effect">
+                  TKJ
+                  <i class="material-icons">wifi</i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="waves-effect">
+                  RPL
+                  <i class="material-icons">code</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+        <li>
+          <div class="collapsible-header waves-effect"><i class="material-icons">chat</i>BIMBINGAN</div>
+          <div class="collapsible-body">
+            <ul>
+              <li>
+                <a href="#" class="waves-effect">
+                  TKJ
+                  <i class="material-icons">wifi</i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="waves-effect">
+                  RPL
+                  <i class="material-icons">code</i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="waves-effect">
+                  Timeline/Progress
+                  <i class="material-icons">timeline</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+        <li>
+          <div class="collapsible-header waves-effect"><i class="material-icons">gavel</i>SIDANG</div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+
+        <li>
+          <div class="divider"></div>
+        </li>
+
+        <li>
+          <div class="collapsible-header waves-effect"><i class="material-icons">mood</i>Hi, Zul Hilmi</div>
+          <div class="collapsible-body">
+            <ul>
+              <li>
+                <a href="#" class="waves-effect">
+                  Ubah Katasandi
+                  <i class="material-icons">locked</i>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="waves-effect">
+                  Keluar
+                  <i class="material-icons">logout</i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li> <!-- ./ list main menu > collapsible-header -->
+      </ul>
+    </ul>
+  </div>
+  <!-- ./NAV -->
+
+  <section class="form-input">
+    <div class="container">
+      <div class="row">
+        <div class="col l12">
+          <h4>Judul Menu/Model</h4>
+        </div>
+      </div> <!-- ./row -->
+      <div class="row">
+        <div class="col l6">
+          <form action="" method="post">
+            <div class="input-field">
+              <label for="">Nama Instansi</label>
+              <input type="text" class="validate" name="nama">
+            </div>
+            <div class="input-field">
+              <label for="alamat">Alamat</label>
+              <textarea name="alamat" id="alamat" class="materialize-textarea"></textarea>
+            </div>
+            <div class="input-field">
+              <select class="this-select" name="negara">
+                <option value="">Pilih Negara</option>
+                <option value="1">USA</option>
+                <option value="2">Germany</option>
+                <option value="3">France</option>
+                <option value="4">Poland</option>
+                <option value="5">Japan</option>
+              </select>
+            </div>
+            <div class="input-field">
+              <button class="btn btn-large waves-effect waves-light" type="submit">
+                Simpan
+                <i class="material-icons right">save</i>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="jquery-3.3.1.min.js"></script>
+  <script src="select/select2.min.js"></script>
+  <script src="materialize/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.sidenav').sidenav();
+
+      $('.collapsible').collapsible();
+
+      $('.this-select').select2({
+        placeholder: 'Pilih...'
+      });
+    });
+  </script>
+</body>
+
+</html>

@@ -3,63 +3,59 @@
 {% block content %}
 
 {% if request.session.level is not empty %}
-<section class="dashboard">
-  <div class="container">
-    <div class="row">
-      <div class="col l12">
-        <div class="card-panel grey darken-2 white-text center-align z-depth-3">
-          <i class="medium material-icons">group</i>
-          <div class="count">
-            {{ students_count }} Total Siswa
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Statistik</h1>
+      <div class="row mt-3 mb-5">
+        <div class="col-md-3">
+          <div class="card shadow text-white bg-primary mb-3">
+            <div class="card-body">
+              <span class="float-right">
+                <i class="fa fa-users fa-5x"></i>
+              </span>
+              <h3>134</h3>
+              Siswa TKJ
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card shadow text-white bg-success mb-3">
+            <div class="card-body">
+              <span class="float-right">
+                <i class="fa fa-users fa-5x"></i>
+              </span>
+              <h3>103</h3>
+              Siswa RPL
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card shadow mb-3 text-white bg-info">
+            <div class="card-body">
+              <span class="float-right">
+                <i class="fa fa-rocket fa-5x"></i>
+              </span>
+              <h3>0</h3>
+              Siap PKL
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card shadow text-white bg-danger mb-3">
+            <div class="card-body">
+              <span class="float-right">
+                <i class="fa fa-home fa-5x"></i>
+              </span>
+              <h3>0</h3>
+              Belum Siap
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col l6">
-        <div class="card-panel grey darken-2 z-depth-3">
-          <span class="new badge blue" data-badge-caption="TKJ"></span>
-          <div class="count white-text">
-            <i class=" material-icons left">group</i>
-            {{ students_count_tkj }} <span class="label">Siswa</span>
-          </div>
-        </div> <!-- ./card -->
-      </div> <!-- ./col -->
-
-      <div class="col l6">
-        <div class="card-panel grey darken-2 z-depth-3">
-          <span class="new badge green" data-badge-caption="RPL"></span>
-          <div class="count white-text">
-            <i class=" material-icons left">group</i>
-            {{ students_count_rpl }} <span class="label">Siswa</span>
-          </div>
-        </div> <!-- ./card -->
-      </div> <!-- ./col -->
-    </div> <!-- ./row -->
-
-    <div class="row">
-      <div class="col l6">
-        <div class="card-panel grey darken-2 z-depth-3">
-          <span class="new badge blue" data-badge-caption="TKJ"></span>
-          <div class="count white-text">
-            <i class=" material-icons left">account_balance</i>
-            {{ ready_tkj }} <span class="label">Siap PKL</span>
-          </div>
-        </div> <!-- ./card -->
-      </div> <!-- ./col -->
-
-      <div class="col l6">
-        <div class="card-panel grey darken-2 z-depth-3">
-          <span class="new badge green" data-badge-caption="RPL"></span>
-          <div class="count white-text">
-            <i class=" material-icons left">account_balance</i>
-            {{ ready_rpl }} <span class="label">Siap PKL</span>
-          </div>
-        </div> <!-- ./card -->
-      </div> <!-- ./col -->
-    </div> <!-- ./row -->
   </div>
-</section>
+</div>
 {% else %}
 <!-- <section class="dashboard">
   <div class="container">

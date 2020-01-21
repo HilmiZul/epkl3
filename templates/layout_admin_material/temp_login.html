@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>LOGIN.</title>
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="materialize/css/materialize.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <section class="login">
+    <div class="container">
+      <div class="row">
+        <div class="col l4 offset-l4">
+          <div class="title center-align">e-PKL.</div>
+          <div class="card z-depth-3">
+            <div class="card-content">
+              <form action="" method="post">
+                <div class="input-field">
+                  <i class="material-icons prefix">account_circle</i>
+                  <input type="text" name="uname" id="uname" class="validate" required>
+                  <label for="uname">Username</label>
+                </div>
+                <div class="input-field">
+                  <i class="material-icons prefix">locked</i>
+                  <input type="password" name="passwd" id="passwd" class="validate" required>
+                  <label for="passwd">Password</label>
+                </div>
+                <div class="input-field center-align">
+                  <button type="submit" class="btn waves-effect">
+                    Login
+                    <i class="material-icons right">send</i>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="jquery-3.3.1.min.js"></script>
+  <script src="materialize/js/materialize.min.js"></script>
+</body>
+</html>

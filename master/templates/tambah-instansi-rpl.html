@@ -1,53 +1,64 @@
 {% extends "layout_admin/base.html" %}
 
 {% block content %}
-<section class="form-input">
-  <div class="container">
-    <div class="row">
-      <div class="col l12">
-        <h4>Tambah Instansi &#8212; RPL</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-header bg-dark text-white prototype">
+          <a href="{% url 'instansi_rpl' %}" class="btn btn-outline-light"><i class="fa fa-chevron-left"></i> kembali </a>
+          INSTANSI &raquo; RPL &raquo; TAMBAH BARU
+        </div>
+        <div class="card-body shadow-lg">
+          <div class="row">
+            <div class="col-md-12">
+              <form action="{% url 'tambah_instansi_rpl' %}" method="post">
+                {% csrf_token %}
+
+                {% if msg %}
+                <div class="alert alert-success">
+                  {{ msg }}
+                </div>
+                {% endif %}
+
+                <div class="form-group">
+                  <label for="nama">Nama Instansi</label>
+                  <input type="text" id="nama" class="form-control" name="nama" autofocus required>
+                </div>
+                <div class="form-group">
+                  <label for="pimpinan">Nama Pimpinan</label>
+                  <input type="text" id="pimpinan" class="form-control" name="pimpinan" required>
+                </div>
+                <div class="form-group">
+                  <label for="alamat">Alamat Lengkap</label>
+                  <textarea name="alamat" id="alamat" class="form-control" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="kontak">Nomor Kontak</label>
+                  <input type="number" id="kontak" maxlength="13" class="form-control" name="kontak" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" class="form-control" name="email" required>
+                </div>
+                <button type="submit" class="btn btn-dark">Simpan</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-    </div> <!-- ./row -->
-    <div class="row">
-      <div class="col l6">
-        {% if msg %}
-          <div class="card-panel teal lighten-5">
-            <i class="material-icons left">check</i>
-            {{ msg }}
-          </div>
-        {% endif %}
-        <form action="/instansi/rpl/tambah/" method="post">
-          {% csrf_token %}
-          <div class="input-field">
-            <label for="nama">Nama Instansi</label>
-            <input type="text" id="nama" class="validate" name="nama" autofocus required>
-          </div>
-          <div class="input-field">
-            <label for="pimpinan">Nama Pimpinan</label>
-            <input type="text" id="pimpinan" class="validate" name="pimpinan" required>
-          </div>
-          <div class="input-field">
-            <label for="alamat">Alamat Lengkap</label>
-            <textarea name="alamat" id="alamat" class="materialize-textarea" required></textarea>
-          </div>
-          <div class="input-field">
-            <label for="kontak">Nomor Kontak</label>
-            <input type="number" id="kontak" maxlength="13" class="validate" name="kontak" required>
-          </div>
-          <div class="input-field">
-            <label for="email">Email</label>
-            <input type="email" id="email" class="validate" name="email" required>
-          </div>
-          <div class="input-field">
-            <button class="btn waves-effect waves-light" type="submit">
-              Simpan
-              <i class="material-icons left">save</i>
-            </button>
-            <a href="/instansi/rpl" class="btn waves-effect waves-light">Kembali</a>
-          </div>
-        </form>
+    </div>
+    <div class="col-md-6">
+      <div class="alert alert-warning shadow">
+        <h2>Infomari</h2>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium hic sapiente nesciunt pariatur excepturi
+        aut, quaerat nulla explicabo consequatur doloribus ea neque quas tempora, molestiae iusto, optio magnam
+        voluptates incidunt!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur velit laboriosam eveniet nobis fuga error
+        nesciunt, autem provident quisquam neque possimus! Nemo molestiae ea rerum itaque. Officia architecto provident
+        iste?
       </div>
     </div>
   </div>
-</section>
+</div>
 {% endblock %}

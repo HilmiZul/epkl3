@@ -7,21 +7,21 @@ from .views_surat_update import *
 from .views_export import *
 
 urlpatterns = [
-  path('rpl/tambah/', tambah_surat_rpl),
-  path('rpl/', surat_rpl),
+  path('rpl/tambah/', tambah_surat_rpl, name='tambah_surat_rpl'),
+  path('rpl/', surat_rpl, name='surat_rpl'),
   path('rpl/cetak/<int:id_instansi>', cetak_surat_rpl),
   path('rpl/hapus/<int:id_surat>', hapus_surat_rpl),
   # path('rpl/ubah/<int:id_surat>', ubah_surat_rpl),
-  path('rpl/cetak/ready', cetak_pkl_rpl),
-  path('rpl/export/xls', export_instansi_rpl, name='export_instansi_rpl'),
+  path('rpl/cetak/ready', cetak_pkl_rpl, name='cetak_pkl_rpl'),
+  path('rpl/export/xls', export_instansi_rpl, name='export_instansi_siswa_rpl'),
   path('rpl/cetak/pengantar/<int:id_instansi>', cetak_surat_pengantar_rpl, name='cetak_surat_pengantar_rpl'),
 
   path('tkj/cetak/<int:id_instansi>', cetak_surat_tkj),
-  path('tkj/', surat_tkj),
-  path('tkj/tambah/', tambah_surat_tkj),
+  path('tkj/', surat_tkj, name='surat_tkj'),
+  path('tkj/tambah/', tambah_surat_tkj, name='tambah_surat_tkj'),
   path('tkj/hapus/<int:id_surat>', hapus_surat_tkj),
   # path('tkj/ubah/<int:id_surat>', ubah_surat_tkj),
   path('tkj/cetak/ready', cetak_pkl_tkj),
-  path('tkj/export/xls', export_instansi_tkj, name='export_instansi_tkj'),
+  path('tkj/export/xls', export_instansi_tkj, name='export_instansi_siswa_tkj'),
   path('tkj/cetak/pengantar/<int:id_instansi>', cetak_surat_pengantar_tkj, name='cetak_surat_pengantar_tkj'),
 ]

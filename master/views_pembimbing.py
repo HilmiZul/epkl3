@@ -90,7 +90,8 @@ def tambah_pembimbing_siswa(request):
         {
           'msg':msg,
           'siswa': siswa,
-          'pembimbing': pembimbing
+          'pembimbing': pembimbing,
+          'form': form
         }
       )
   else:
@@ -100,7 +101,8 @@ def tambah_pembimbing_siswa(request):
   return render(request, 'tambah-pembimbing-siswa.html', 
     {
       'siswa': siswa,
-      'pembimbing': pembimbing
+      'pembimbing': pembimbing,
+      'form': form
     }
   )
 

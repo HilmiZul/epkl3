@@ -1,64 +1,71 @@
 {% extends "layout_admin/base.html" %}
 
 {% block content %}
-<section class="form-table">
-  <div class="container">
-    <div class="row">
-      <div class="col l12">
-        <h4>Pembimbing</h4>
-
-        {% if msg %}
-        <div class="card-panel teal lighten-5">
-          {{ msg }}
-          <i class="material-icons left">check</i>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header bg-dark text-white prototype">
+          PEMBIMBING
+          <a href="{% url 'tambah_pembimbing' %}" class="btn btn-outline-light"><i class="fa fa-plus"></i> Tambah</a>
         </div>
-        {% endif %}
-
-        <table class="responsive-table" id="myTable">
-          <thead>
-            <tr>
-              <th>NO.</th>
-              <th>NAMA</th>
-              <th>JURUSAN</th>
-              <th>AKSI</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for mentor in pembimbing %}
-            <tr>
-              <td>{{ forloop.counter }}.</td>
-              <td><a href="/pembimbing/ubah/{{ mentor.id }}">{{ mentor.nama }}</a></td>
-              <td>{{ mentor.jurusan }}</td>
-              <td>
-                <a href="#mentor-{{ mentor.id }}" class="btn red lighten-1 waves-effect waves-light modal-trigger
-                  tooltipped" data-position="bottom" data-tooltip="Hapus">
-                  <i class="material-icons">delete</i>
-                </a>
-              </td>
-            </tr>
-            <div class="modal" id="mentor-{{ mentor.id }}">
-              <div class="modal-content">
-                <h4>Hapus?</h4>
-                <p>
-                  Kalo kamu hapus Mentor <b>{{ mentor.nama|upper }}</b>, maka data di <b>KARYA ILMIAH</b>
+        <div class="card-body shadow-lg">
+          {% if msg %}
+          <div class="alert alert-success">
+            {{ msg }}
+          </div>
+          {% endif %}
+          <div class="table-responsive">
+            <table class="table table-striped table-hover" id="myTable">
+              <thead class="prototype">
+                <tr>
+                  <th>NO.</th>
+                  <th>NAMA</th>
+                  <th>JURUSAN</th>
+                  <th>AKSI</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for mentor in pembimbing %}
+                <tr>
+                  <td>{{ forloop.counter }}.</td>
+                  <td><a href="/pembimbing/ubah/{{ mentor.id }}">{{ mentor.nama }}</a></td>
+                  <td>{{ mentor.jurusan }}</td>
+                  <td>
+                    <button type="button" data-toggle="modal" data-target="#mentor-{{ mentor.id }}" class="btn btn-danger">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </td>
+                </tr>
+                <div class="modal fade" tabindex="-1" role="dialog" id="mentor-{{ mentor.id }}">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header bg-danger text-white">
+                        <h5 class="modal-title">HAPUS</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <p>
+                          Kalo kamu hapus Mentor <b>{{ mentor.nama|upper }}</b>, maka data di <b>KARYA ILMIAH</b>
                   dan <b>BIMBINGAN</b> yang bersangkutan akan ikut terhapus. <br> <b>YAKIN MAU HAPUS?</b>
-                </p>
-              </div>
-              <div class="modal-footer">
-                <a href="/pembimbing/hapus/{{ mentor.id }}" class="btn-flat waves-effect">Ya, Hapus</a>
-                <a href="#!" class="btn waves-effect modal-close">ENGGA</a>
-              </div>
-            </div>
-            {% endfor %}
-          </tbody>
-        </table>
-        <div class="tombol-add">
-          <a href="/pembimbing/tambah/" class="btn-floating btn-large waves-effect grey darken-1 pulse">
-            <i class="material-icons">add</i>
-          </a>
+                        </p>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="/pembimbing/hapus/{{ mentor.id }}" class="btn btn-outline-danger">Ya, Hapus</a>
+                        <button type="button" class="btn btn-dark" data-dismiss="modal">TIDAK</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div> <!-- ./col -->
-    </div> <!-- ./row -->
+      </div>
+    </div>
   </div>
-</section>
+</div>
 {% endblock %}

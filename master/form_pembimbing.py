@@ -15,12 +15,12 @@ class FormPembimbing(ModelForm):
     widgets = {
       'nama': forms.TextInput(attrs={
         'id': 'nama',
-        'class':'validate',
+        'class':'validate form-control',
         'required':'required',
       }),
       'jurusan': forms.Select(attrs={
         'id': 'jurusan',
-        'class': 'validate this-select',
+        'class': 'validate this-select form-control',
         'required': 'required',
       }),
     }

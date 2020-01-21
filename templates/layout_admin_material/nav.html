@@ -1,0 +1,183 @@
+<!-- NAV -->
+<div class="main-menu">
+  <a href="#" data-target="mobile-nav" class="sidenav-trigger btn-flat waves-effect">MENU<i class="material-icons left">menu</i></a>
+  <ul class="sidenav" id="mobile-nav">
+    <li>
+      <div class="nama-app white-text grey darken-2 center-align">
+        e-PKL.
+      </div>
+    </li>
+    <ul class="collapsible" data-collapsible="accordion">
+      <li>
+        <div class="collapsible-header waves-effect">
+          <a href="/dashboard">
+            <i class="material-icons left">dashboard</i>DASHBOARD
+          </a>
+        </div>
+      </li> <!-- ./ list main menu > collapsible-header -->
+      <li>
+        <div class="collapsible-header waves-effect">
+          <i class="material-icons">account_balance</i>INSTANSI
+        </div>
+        <div class="collapsible-body">
+          <ul>
+            <li>
+              <a href="/instansi/tambah" class="waves-effect">
+                Tambah
+                <i class="material-icons">add</i>
+              </a>
+            </li>
+            <li>
+              <a href="/instansi/tkj" class="waves-effect">
+                TKJ
+                <i class="material-icons">wifi</i>
+              </a>
+            </li>
+            <li>
+              <a href="/instansi/rpl" class="waves-effect">
+                RPL
+                <i class="material-icons">code</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li> <!-- ./ list main menu > collapsible-header -->
+      <li>
+        <div class="collapsible-header waves-effect ">
+          <i class="material-icons">mail</i>INSTANSI & SISWA
+        </div>
+        <div class="collapsible-body">
+          <ul>
+            <li>
+              <a href="/pkl/tkj" class="waves-effect">
+                TKJ
+                <i class="material-icons">wifi</i>
+              </a>
+            </li>
+            <li>
+              <a href="/pkl/rpl" class="waves-effect">
+                RPL
+                <i class="material-icons">code</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li> <!-- ./ list main menu > collapsible-header -->
+      <li>
+        <div class="collapsible-header waves-effect">
+          <i class="material-icons left">group</i>PEMBIMBING
+        </div>
+        <div class="collapsible-body">
+          <ul>
+            <li>
+              <a href="/pembimbing" class="waves-effect">
+                Pembimbing
+                <i class="material-icons left">account_circle</i>
+              </a>
+            </li>
+            <li>
+              <a href="/pembimbing/siswa" class="waves-effect">
+                Pembimbing & Siswa
+                <i class="material-icons left">group</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li> <!-- ./ list main menu > collapsible-header -->
+      <li>
+        <div class="collapsible-header waves-effect"><i class="material-icons">insert_drive_file</i>PORTOFOLIO</div>
+        <div class="collapsible-body">
+          <ul>
+            <li>
+              <a href="{% url 'pengajuan_judul' %}" class="waves-effect">
+                Pengajuan Judul
+                <i class="material-icons">send</i>
+              </a>
+            </li>
+            <li>
+              <a href="{% url 'bimbingan_isi' %}" class="waves-effect">
+                Bimbingan
+                <i class="material-icons">chat</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li> <!-- ./ list main menu > collapsible-header -->
+      <!-- <li>
+        <div class="collapsible-header waves-effect"><i class="material-icons">chat</i>BIMBINGAN</div>
+        <div class="collapsible-body">
+          <ul>
+            <li>
+              <a href="/bimbingan/tkj" class="waves-effect">
+                TKJ
+                <i class="material-icons">wifi</i>
+              </a>
+            </li>
+            <li>
+              <a href="/bimbingan/rpl" class="waves-effect">
+                RPL
+                <i class="material-icons">code</i>
+              </a>
+            </li>
+            <li>
+              <a href="/bimbingan/timeline" class="waves-effect">
+                Timeline/Progress
+                <i class="material-icons">timeline</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li> ./ list main menu > collapsible-header -->
+      <li>
+        <div class="collapsible-header waves-effect"><i class="material-icons">gavel</i>SIDANG</div>
+        <div class="collapsible-body">
+          <ul>
+            <li>
+              <a href="#" class="waves-effect">
+                Buat Jadwal
+                <i class="material-icons">schedule</i>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="waves-effect">
+                Penilaian
+                <i class="material-icons">edit</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li> <!-- ./ list main menu > collapsible-header -->
+
+      <li>
+        <div class="divider"></div>
+      </li>
+
+      <li>
+        <div class="collapsible-header waves-effect"><i class="material-icons">mood</i>Hi, {{ request.session.nama }}</div>
+        <div class="collapsible-body">
+          <ul>
+            <!-- <li>
+              <a href="#" class="waves-effect">
+                Ubah Katasandi
+                <i class="material-icons">locked</i>
+              </a>
+            </li> -->
+            <li>
+              <a href="/akun/keluar" class="waves-effect">
+                Keluar
+                <i class="material-icons">logout</i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li> <!-- ./ list main menu > collapsible-header -->
+    </ul>
+  </ul>
+  <a href="#" class="dropdown-triger btn-flat waves-effect grey darken-2 right" data-target="dropdown-aksi">
+    <i class="material-icons right">more_vert</i>Hi, {{ request.session.nama }}
+  </a>
+  <ul id="dropdown-aksi" class="dropdown-content">
+    <li><a href="/akun/keluar">Keluar</a></li>
+  </ul>
+</div>
+<!-- ./NAV -->
