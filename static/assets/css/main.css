@@ -60,3 +60,17 @@ html, body {
 .alert {
   border-radius: 0;
 }
+
+.form-control,
+input:focus {
+  border: none;
+  background-color: #f0f0f0;
+  outline:0px !important;
+  -webkit-appearance:none;
+    box-shadow: none !important;
+}
+
+.form-control:focus {
+  border: none;
+  background-color: #eaeaea;
+}
