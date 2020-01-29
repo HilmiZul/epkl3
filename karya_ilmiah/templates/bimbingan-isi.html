@@ -1,106 +1,117 @@
 {% extends "layout_admin/base.html" %}
 
 {% block content %}
-<section class="form-table">
-  <div class="container">
-    <div class="row">
-      <div class="col l12">
-        <h4>Bimbingan Isi</h4>
-
-        {% if messages %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header bg-dark text-white prototype">
+          BIMBINGAN ISI
+        </div>
+        <div class="card-body shadow-lg">
+          {% if messages %}
           {% for message in messages %}
-          <div class="card-panel teal lighten-5">
-            {{ message }}
-            <i class="material-icons left">check</i>
-          </div>
-          {% endfor %}
-        {% endif %}
-        
-        <table class="responsive-table" id="myTable">
-          <thead>
-            <tr>
-              <th style="width: 2%">NO.</th>
-              <th style="width: 23%">NAMA</th>
-              <th style="width: 3%">BAB</th>
-              <th style="width: 47%">JUDUL</th>
-              <th style="width: 5%">STATUS</th>
-              <th>AKSI</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for isi in contents %}
-            <tr>
-              <td>{{ forloop.counter }}.</td>
-              <td>{{ isi.judul.siswa }}</td>
-              <td><a href="{{ isi.berkas.url }}">{{ isi.bab }}</a></td>
-              <td>{{ isi.judul }}</td>
-              <td>
-                {% if isi.status == 'Review' %}
-                <span class="btn red lighten-2">{{ isi.status }}</span>
-                {% elif isi.status == 'Revisi' %}
-                <span class="btn red lighten-2">{{ isi.status }}</span>
-                {% else %}
-                <span class="btn purple darken-1">{{ isi.status }}</span>
-                {% endif %}
-              </td>
-              <td>
-                {% if isi.status == 'Review' %}
-                <a href="#setuju-{{ isi.id }}" class="btn teal darken-2 waves-effect waves-light modal-trigger">
-                  <i class="material-icons">done</i>
-                </a>
-                <a href="#revisi-{{ isi.id }}" class="btn red darken-2 waves-effect waves-light modal-trigger">
-                  <i class="material-icons">cancel</i>
-                </a>
-                {% elif isi.status == 'Revisi' %}
-                  <em>Tidak ada aksi</em>
-                {% elif isi.status == 'Selesai' %}
-                  <em>Tidak ada aksi</em>
-                {% endif %}
-              </td>
-            </tr>
-            <div class="modal" id="setuju-{{ isi.id }}">
-              <form action="{% url 'setujui_bimbingan_isi' isi.id %}" method="post">
-                {% csrf_token %}
-                <div class="modal-content">
-                  <h4>Setujui?</h4>
-                  <p>
-                      Apakah Anda yakin akan menyetujui <b>{{ isi.bab }}</b> ini?
-                  </p>
-                </div>
-                <div class="modal-footer">
-                  <button type="submit" class="modal-close btn waves-effect">
-                    Ya, Setujui
-                  </button>
-                  <a href="#!" class="modal-close btn-flat waves-effect">ENGGA</a>
-                </div>
-              </form>
+            <div class="alert alert-success">
+              {{ message }}
             </div>
-            <div class="modal" id="revisi-{{ isi.id }}">
-              <form action="{% url 'bimbingan_isi_revisi' isi.id %}" method="post">
-                {% csrf_token %}
-                <div class="modal-content">
-                  <h4>Kembalikan?</h4>
-                  <p>
-                    Apakah Anda yakin akan mengembalikan <b>{{ isi.bab }}</b> ini?
-                  </p>
-                  <div class="input-field">
-                    <label for="catatan">Tulis catatan revisi disini... (harus diisi)</label>
-                    <textarea name="catatan" id="catatan" class="materialize-textarea" required="required"></textarea>
+          {% endfor %}
+          {% endif %}
+          <div class="table-responsive">
+            <table class="table table-striped table-hover" id="myTable">
+              <thead class="prototype">
+                <tr>
+                  <th style="width: 2%">NO.</th>
+                  <th style="width: 23%">NAMA</th>
+                  <th style="width: 3%">BAB</th>
+                  <th style="width: 47%">JUDUL</th>
+                  <th style="width: 5%">STATUS</th>
+                  <th>AKSI</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for isi in contents %}
+                <tr>
+                  <td>{{ forloop.counter }}.</td>
+                  <td>{{ isi.judul.siswa }}</td>
+                  <td><a href="{{ isi.berkas.url }}">{{ isi.bab }}</a></td>
+                  <td>{{ isi.judul }}</td>
+                  <td>
+                    {% if isi.status == 'Review' %}
+                    <span class="badge bg-info text-white">{{ isi.status|upper }}</span>
+                    {% elif isi.status == 'Revisi' %}
+                    <span class="badge bg-danger text-white">{{ isi.status|upper }}</span>
+                    {% else %}
+                    <span class="badge bg-success text-white">{{ isi.status|upper }}</span>
+                    {% endif %}
+                  </td>
+                  <td>
+                    {% if isi.status == 'Review' %}
+                      <a href="#" data-toggle="modal" data-target="#setuju-{{ isi.id }}" class="btn btn-outline-success">
+                        <i class="fa fa-edit"></i>
+                      </a>
+                      <a href="#" data-toggle="modal" data-target="#revisi-{{ isi.id }}" class="btn btn-outline-danger">
+                        <i class="fa fa-times"></i>
+                      </a>
+                    {% elif isi.status == 'Revisi' or isi.status == 'Selesai' %}
+                      <a href="#" class="btn btn-dark disabled"><i class="fa fa-edit"></i></a>
+                      <a href="#" class="btn btn-dark disabled"><i class="fa fa-times"></i></a>
+                    {% endif %}
+                  </td>
+                </tr>
+                <div class="modal fade" tabindex="-1" role="dialog" id="setuju-{{ isi.id }}">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <form action="{% url 'setujui_bimbingan_isi' isi.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="modal-header bg-success text-white">
+                          <h5 class="modal-title">SETUJUI</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Apakah Anda yakin akan menyetujui <b>{{ isi.bab }}</b> ini?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-success" >Ya, setujui</button>
+                          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">BATAL</button>
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="submit" class="modal-close btn-flat waves-effect">
-                    Ya, Kembalikan
-                  </button>
-                  <a href="#!" class="modal-close btn waves-effect waves-light">ENGGA</a>
+                <div class="modal fade" tabindex="-1" role="dialog" id="revisi-{{ isi.id }}">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <form action="{% url 'bimbingan_isi_revisi' isi.id %}" method="post">
+                        {% csrf_token %}
+                        <div class="modal-header bg-danger text-white">
+                          <h5 class="modal-title">KEMBALIKAN</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Apakah Anda yakin akan mengembalikan <b>{{ isi.bab }}</b> ini?</p>
+                          <div class="form-group">
+                            <textarea name="catatan" rows="5" class="form-control" required="required" placeholder="Tulis alasannya..."></textarea>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-outline-danger">Ya, kembalikan</button>
+                          <button type="button" class="btn btn-dark" data-dismiss="modal">BATAL</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-              </form>
-            </div>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div> <!-- ./col -->
-    </div> <!-- ./row -->
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
+</div>
 {% endblock %}

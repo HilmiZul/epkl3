@@ -1,106 +1,117 @@
 {% extends "layout_admin/base.html" %}
 
 {% block content %}
-<section class="form-table">
-  <div class="container">
-    <div class="row">
-      <div class="col l12">
-        <h4>Pengajuan Judul</h4>
-
-        {% if messages %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header bg-dark text-white prototype">
+          PENGAJUAN JUDUL
+          <span class="float-right">
+            <a href="#" class="btn btn-outline-light"><i class="fa fa-download"></i></a>
+          </span>
+        </div>
+        <div class="card-body shadow-lg">
+          {% if messages %}
           {% for message in messages %}
-            <div class="card-panel teal lighten-5">
+            <div class="alert alert-success">
               {{ message }}
-              <i class="material-icons left">check</i>
             </div>
           {% endfor %}
-        {% endif %}
-        <table class="responsive-table" id="myTable">
-          <thead>
-            <tr>
-              <th>NO.</th>
-              <th>JUDUL</th>
-              <th>NAMA</th>
-              <th>KELAS</th>
-              <th>STATUS</th>
-              <th>AKSI</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for karil in judul %}
-            <tr>
-              <td>{{ forloop.counter }}.</td>
-              <td>{{ karil.judul }}</td>
-              <td>{{ karil.siswa.profil }}</td>
-              <td>{{ karil.siswa.profil.kelas }}</td>
-              <td>
-                {% if karil.status == 'Menunggu' %}
-                <span class="btn red lighten-2">{{ karil.status }}</span>
-                {% elif karil.status == 'Ditolak' %}
-                <span class="btn red lighten-2">{{ karil.status }}</span>
-                {% else %}
-                <span class="btn purple darken-1">{{ karil.status }}</span>
-                {% endif %}
-              </td>
-              <td>
-                {% if karil.status == 'Menunggu' %}
-                <a href="#setuju-{{ karil.id }}" class="btn teal darken-2 waves-effect waves-light modal-trigger">
-                  <i class="material-icons">done</i>
-                </a>
-                <a href="#tolak-{{ karil.id }}" class="btn red darken-2 waves-effect waves-light modal-trigger">
-                  <i class="material-icons">cancel</i>
-                </a>
-                {% elif karil.status == 'Disetujui' %}
-                  <em>Tidak ada aksi</em>
-                {% elif karil.status == 'Ditolak' %}
-                  <em>Tidak ada aksi</em>
-                {% endif %}
-              </td>
-            </tr>
-            <div class="modal" id="setuju-{{ karil.id }}">
-              <form action="/portofolio/pengajuan-judul/setuju/{{ karil.id }}" method="post">
-                {% csrf_token %}
-                <div class="modal-content">
-                  <h4>Setujui?</h4>
-                  <p>
-                    Apakah Anda yakin akan menyetujui Judul Karya Ilmiah ini?
-                  </p>
-                </div>
-                <div class="modal-footer">
-                  <button type="submit" class="btn waves-effect">
-                    Ya, Setujui
-                  </button>
-                  <a href="#!" class="modal-close btn-flat waves-effect">ENGGA</a>
-                </div>
-              </form>
-            </div>
-            <div class="modal" id="tolak-{{ karil.id }}">
-              <form action="/portofolio/pengajuan-judul/tolak/{{ karil.id }}" method="post">
-                {% csrf_token %}
-                <div class="modal-content">
-                  <h4>Tolak?</h4>
-                  <p>
-                    Apakah Anda yakin akan menolak/mengembalikan pengajuan judul ini?
-                  </p>
-                  <b>{{ karil.judul }}</b>
-                  <div class="input-field">
-                    <label for="catatan">Tulis tanggapan disini... (harus diisi)</label>
-                    <textarea name="catatan" id="catatan" class="materialize-textarea" required="required"></textarea>
+          {% endif %}
+          <div class="table-responsive">
+            <table class="table table-striped table-hover" id="myTable">
+              <thead class="prototype">
+                <tr>
+                  <th>NO.</th>
+                  <th>JUDUL</th>
+                  <th>NAMA</th>
+                  <th>KELAS</th>
+                  <th>STATUS</th>
+                  <th>AKSI</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for karil in judul %}
+                <tr>
+                  <td>{{ forloop.counter }}.</td>
+                  <td>{{ karil.judul }}</td>
+                  <td>{{ karil.siswa.profil }}</td>
+                  <td>{{ karil.siswa.profil.kelas }}</td>
+                  <td>
+                    {% if karil.status == 'Menunggu' %}
+                    <div class="badge bg-danger text-white">{{ karil.status }}</div>
+                    {% elif karil.status == 'Ditolak' %}
+                    <div class="badge bg-danger text-white">{{ karil.status }}</div>
+                    {% else %}
+                    <div class="badge bg-success text-white">{{ karil.status }}</div>
+                    {% endif %}
+                  <td>
+                    {% if karil.status == 'Menunggu' %}
+                    <a href="#" data-toggle="modal" data-target="#setuju-{{ karil.id }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
+                    <a href="#" data-toggle="modal" data-target="#tolak-{{ karil.id }}" class="btn btn-outline-danger"><i class="fa fa-times"></i></a>
+                    {% elif karil.status == 'Disetujui' or karil.status == 'Ditolak' %}
+                    <a href="#" class="btn btn-dark disabled"><i class="fa fa-check"></i></a>
+                    <a href="#" class="btn btn-dark disabled"><i class="fa fa-times"></i></a>
+                    {% endif %}
+                  </td>
+                </tr>
+                <div class="modal fade" tabindex="-1" role="dialog" id="setuju-{{ karil.id }}">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <form action="/portofolio/pengajuan-judul/setuju/{{ karil.id }}" method="post">
+                        {% csrf_token %}
+                        <div class="modal-header bg-success text-white">
+                          <h5 class="modal-title">SETUJUI</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Setujui Judul ini?</p>
+                          <strong>{{ karil.judul }}</strong>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-success" >Ya, setujui</button>
+                          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">BATAL</button>
+                        </div>
+                      </form>
+                    </div>
                   </div>
                 </div>
-                <div class="modal-footer">
-                  <button type="submit" class="modal-close btn-flat waves-effect">
-                    Ya, Kembalikan
-                  </button>
-                  <a href="#!" class="modal-close btn waves-effect waves-light">ENGGA</a>
+                <div class="modal fade" tabindex="-1" role="dialog" id="tolak-{{ karil.id }}">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <form action="/portofolio/pengajuan-judul/tolak/{{ karil.id }}" method="post">
+                        {% csrf_token %}
+                        <div class="modal-header bg-danger text-white">
+                          <h5 class="modal-title">TOLAK</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <p>Tolak Judul ini?</p>
+                          <p><strong>{{ karil.judul }}</strong></p>
+                          <div class="form-group">
+                            <textarea name="catatan" rows="5" class="form-control" required="required" placeholder="Tulis alasannya..."></textarea>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-outline-danger">Ya, tolak</button>
+                          <button type="button" class="btn btn-dark" data-dismiss="modal">BATAL</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
                 </div>
-              </form>
-            </div>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div> <!-- ./col -->
-    </div> <!-- ./row -->
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</section>
+</div>
 {% endblock %}

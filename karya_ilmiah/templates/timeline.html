@@ -9,7 +9,7 @@
       {% if karil.status == 'Disetujui' %}
       <i class="fa fa-check-circle fa-5x text-success"></i>
       <h4 class="text-muted">Accepted.</h4>
-      <a href="{% url 'unduh_halaman_judul' %}" target="__blank" class="btn btn-outline-primary"><i class="fa fa-download fa-fw"></i>Halaman Judul</a>
+      <a href="{% url 'unduh_halaman_judul' %}" target="__blank" class="btn btn-outline-primary"><i class="fa fa-print fa-fw"></i>Print</a>
       {% elif karil.status == 'Menunggu' %}
       <i class="fa fa-spinner fa-spin fa-5x text-info"></i>
       <h4 class="text-muted">Menunggu.</h4>
@@ -80,28 +80,6 @@
           <em class="text-muted pull-right">{{ content.tanggal|date:'d F Y' }}</em>
         </div>
       </div>
-      
-      <!-- end item timeline loop -->
-      <!-- <div class="card mb-3 shadow">
-        <div class="card-body">
-          <div class="text-info pb-3">
-            <i class="fa fa-spinner fa-spin"></i> Sedang di review
-          </div>
-          <h4>BAB II: Landasan Teori</h4>
-          <em class="text-muted pull-right">22 Agustus 2019</em>
-        </div>
-      </div>
-      <div class="card mb-3 shadow">
-        <div class="card-body">
-          <div class="text-danger pb-3">
-            <i class="fa fa-edit"></i> Revisi
-            <span class="text-dark">&#8212;</span>
-            <a href="#" data-toggle="modal" data-target="#revisi">Lihat catatan revisi</a>
-          </div>
-          <h4>BAB III: Proses dan Hasil Belajar di DU/DI</h4>
-          <em class="text-muted pull-right">27 Agustus 2019</em>
-        </div>
-      </div> -->
 
       <!-- modal catatan revisi -->
       <div class="modal fade" tabindex="-1" role="dialog" id="revisi-{{ content.id }}">
