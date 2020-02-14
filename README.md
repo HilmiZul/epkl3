@@ -6,7 +6,7 @@ Just for fun!
 
 # Built with 💜
 * Python 3.7.5
-* Django 2.2.9
+* Django 2.2.9 to 2.2.10 (security update)
 
 # License
 [MIT](https://github.com/HilmiZul/epkl3/blob/master/LICENSE)
