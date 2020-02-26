@@ -1,0 +1,99 @@
+{% extends "layout_siswa/base.html" %}
+
+{% block content %}
+<style>
+  .card {
+    border-radius: 0;
+    border: none;
+    transition: all .3s ease-in-out;
+  }
+  .timeline:hover {
+    box-shadow:0 1rem 3rem rgba(0,0,0,.175)!important;
+  }
+</style>
+<div class="container">
+  <div class="row mt-5 pt-5">
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <form action="">
+            <div class="form-group">
+              <textarea name="" class="form-control" cols="30" rows="5" placeholder="Apa yang kamu kerjakan hari ini?" required autofocus></textarea>
+            </div>
+            <div class="form-group">
+              <select name="" id="" class="form-control" required>
+                <option value="">&#8212; PILIH KOMPETENSI DASAR &#8212;</option>
+                <option value="3.10">3.10 Install</option>
+                <option value="3.10">3.10 Install</option>
+                <option value="3.10">3.10 Install</option>
+                <option value="3.10">3.10 Install</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="foto">Foto</label>
+              <input type="file" id="foto" accept="image/*" class="form-control" required>
+            </div>
+            <div class="form-group text-right">
+              <button class="btn btn-primary" type="submit"><i class="fa fa-send"></i> Kirim</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-6 offset-md-3 mb-5">
+      <h2 class="font-prototype"><i class="fa fa-clock-o"></i> Timeline</h2>
+
+      <div class="card mb-3 timeline">
+        <div class="card-body">
+          <em class="text-muted"><i class="fa fa-calendar"></i> 12 November 2019, 00:01 A.M.</em>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In nam, similique molestiae itaque fugiat natus porro, fuga ex provident at quia minus hic consequatur ut id dolores harum eos pariatur?
+          </p>
+          <img src="/media/foto/thumb-1.JPG" width="100%">
+        </div>
+      </div>
+      <div class="card mb-3 timeline">
+        <div class="card-body">
+          <em class="text-muted"><i class="fa fa-calendar"></i> 12 November 2019, 00:01 A.M.</em>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In nam, similique molestiae itaque fugiat natus porro, fuga ex provident at quia minus hic consequatur ut id dolores harum eos pariatur?
+          </p>
+          <img src="/media/foto/thumb-1.JPG" width="100%">
+        </div>
+      </div>
+      <div class="card mb-3 timeline">
+        <div class="card-body">
+          <em class="text-muted"><i class="fa fa-calendar"></i> 12 November 2019, 00:01 A.M.</em>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In nam, similique molestiae itaque fugiat natus porro, fuga ex provident at quia minus hic consequatur ut id dolores harum eos pariatur?
+          </p>
+          <img src="/media/foto/thumb-1.JPG" width="100%">
+        </div>
+      </div>
+      <div class="card mb-3 timeline">
+        <div class="card-body">
+          <em class="text-muted"><i class="fa fa-calendar"></i> 12 November 2019, 00:01 A.M.</em>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In nam, similique molestiae itaque fugiat natus porro, fuga ex provident at quia minus hic consequatur ut id dolores harum eos pariatur?
+          </p>
+          <img src="/media/foto/thumb-1.JPG" width="100%">
+        </div>
+      </div>
+      <div class="card mb-3 timeline">
+        <div class="card-body">
+          <em class="text-muted"><i class="fa fa-calendar"></i> 12 November 2019, 00:01 A.M.</em>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In nam, similique molestiae itaque fugiat natus porro, fuga ex provident at quia minus hic consequatur ut id dolores harum eos pariatur?
+          </p>
+          <img src="/media/foto/thumb-1.JPG" width="100%">
+        </div>
+      </div>
+      
+
+    </div>
+  </div>
+</div>
+{% endblock %}

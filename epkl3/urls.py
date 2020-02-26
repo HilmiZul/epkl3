@@ -32,4 +32,7 @@ urlpatterns = [
     # karya ilmiah
     # submission judul
     path('portofolio/', include('karya_ilmiah.urls')),
+
+    # jurnal
+    path('jurnal/', include('jurnal.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Siswa, Instansi, Pembimbing, PembimbingSiswa
+from .models import Siswa, Instansi, Pembimbing, PembimbingSiswa, KompetensiDasar
 
 
 # Register your models here.
@@ -34,7 +34,14 @@ class PembimbingSiswaAdmin(admin.ModelAdmin):
     search_fields = ['pembimbing_satu', 'pembimbing_dua', 'siswa']
     list_per_page = 20
 
+class KDAdmin(admin.ModelAdmin):
+    list_display = ['kode', 'nama', 'jurusan']
+    list_filter = ('jurusan',)
+    search_fields = ['kode', 'nama', 'jurusan']
+    list_per_page = 20
+
 admin.site.register(Siswa, SiswaAdmin)
 admin.site.register(Instansi, InstansiAdmin)
 admin.site.register(Pembimbing, PembimbingAdmin)
 admin.site.register(PembimbingSiswa, PembimbingSiswaAdmin)
+admin.site.register(KompetensiDasar, KDAdmin)

@@ -75,3 +75,16 @@ class PembimbingSiswa(models.Model):
 
     def __str__(self):
         return self.pembimbing_satu.nama
+
+
+class KompetensiDasar(models.Model):
+    jurusan_choices = (
+        ('TKJ', 'TKJ'),
+        ('RPL', 'RPL'),
+    )
+    kode        = models.CharField(max_length=4)
+    nama        = models.CharField(max_length=70)
+    jurusan     = models.CharField(max_length=3, choices=jurusan_choices)
+
+    def __str__(self):
+        return self.kode
