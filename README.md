@@ -8,6 +8,11 @@ Just for fun!
 * Python 3.7.5
 * Django 2.2.9 to 2.2.10 (security update)
 
+# Dependencies
+* pillow
+* xlwt
+* mysqlclient (optional)
+ 
 # License
 [MIT](https://github.com/HilmiZul/epkl3/blob/master/LICENSE)
 
