@@ -1,6 +1,14 @@
 import xlwt
 from django.http import HttpResponse
 from .models import Instansi
+from .resources import InstansiResource
+
+def export_instansi(request):
+  instansi = InstansiResource()
+  dataset = instansi.export()
+  response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+  response['Content-Disposition'] = 'attachment; filename=Data-Instansi-PKL-2021.xls'
+  return response
 
 def export_instansi_rpl(request):
   response = HttpResponse(content_type='application/ms-excel')

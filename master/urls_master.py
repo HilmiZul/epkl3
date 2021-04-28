@@ -1,6 +1,7 @@
 from django.urls import path
 from .views_master import *
 from .views_pembimbing import *
+from .views_export_instansi import *
 
 urlpatterns = [
   path('', get_master_peserta, name="get_master_peserta"),
@@ -16,4 +17,5 @@ urlpatterns = [
   path('pembimbing/ubah/<int:id>', ubah_pembimbing, name='ubah_pembimbing'),
   path('pembimbing/hapus/<int:id>', hapus_pembimbing, name='hapus_pembimbing'),
 
+  path('export/xls/', export_instansi, name='export_instansi')
 ]
