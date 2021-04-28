@@ -8,5 +8,5 @@ class SiswaViewset(viewsets.ModelViewSet):
 
 
 class InstansiViewset(viewsets.ModelViewSet):
-  queryset = Instansi.objects.all()
+  queryset = Instansi.objects.all().order_by('nama')
   serializer_class = InstansiSerializer
