@@ -17,5 +17,5 @@ urlpatterns = [
   path('pembimbing/ubah/<int:id>', ubah_pembimbing, name='ubah_pembimbing'),
   path('pembimbing/hapus/<int:id>', hapus_pembimbing, name='hapus_pembimbing'),
 
-  path('export/xls/', export_instansi, name='export_instansi'),
+  path('export/xls/', export_instansi, name='ex_instansi'),
 ]
