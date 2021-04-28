@@ -43,7 +43,7 @@
                     <a href="/pkl/rpl/cetak/{{ letter.nama_instansi.id }}" target="_blank">{{ letter.nama_instansi }}</a></td>
                   <td>
                     <a href="https://www.google.com/maps/search/?api=1&query={{ letter.nama_instansi.alamat }}" target="_blank">
-                      {{ letter.nama_instansi.alamat }}
+                      {{ letter.nama_instansi.alamat|slice:40 }}...
                     </a>
                   </td>
                   <td>
