@@ -45,7 +45,13 @@
                       class="modal-trigger tooltipped" data-position="bottom" data-tooltip="Lihat peta">{{ company.alamat|slice:40 }}...</a>
                   </td>
                   <td>{{ company.kuota }}</td>
-                  <td>{{ company.slot }} dari {{ company.kuota }}</td>
+                  <td>
+                    {% if company.slot == company.kuota %}
+                    <span class="p-1 bg-danger">PENUH</span>
+                    {% else %}
+                    {{ company.slot }} dari {{ company.kuota }}
+                    {% endif %}
+                  </td>
                   <td>
                     <button type="button" class="btn btn-danger" data-toggle="modal"
                       data-target="#instansi-{{ company.id }}"><i class="fa fa-trash"></i></button>
