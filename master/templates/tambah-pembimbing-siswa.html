@@ -15,25 +15,18 @@
               <form action="{% url 'tambah_pembimbing_siswa' %}" method="post">
                 {% csrf_token %}
 
-                {% if msg %}
-                <div class="alert alert-success">
-                  {{ msg }}
-                </div>
-                {% endif %}
+                {% for message in messages %}
+                  {% if message %}
+                  <div class="alert alert-success">
+                    {{ message }}
+                  </div>
+                  {% endif %}
+                {% endfor %}
 
                 <div class="form-group">
                   <label for="{{ form.pembimbing_satu.label }}">{{ form.pembimbing_satu.label }}</label>
                   <select name="pembimbing_satu" id="{{ form.pembimbing_satu.label }}" class="this-select form-control" required>
-                    <option >Pilih Pembimbing 1</option>
-                    {% for p in pembimbing %}
-                    <option value="{{ p.id }}">{{ p.nama }}</option>
-                    {% endfor %}
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="{{ form.pembimbing_dua.label }}">{{ form.pembimbing_dua.label }}</label>
-                  <select name="pembimbing_dua" id="{{ form.pembimbing_dua.label }}" class="this-select form-control" required>
-                    <option >Pilih Pembimbing 2</option>
+                    <option >Pilih Pembimbing</option>
                     {% for p in pembimbing %}
                     <option value="{{ p.id }}">{{ p.nama }}</option>
                     {% endfor %}
@@ -44,7 +37,11 @@
                   <select name="siswa" id="{{ form.siswa.label }}" class="this-select form-control" required>
                     <option >Pilih Siswa</option>
                     {% for s in siswa %}
-                    <option value="{{ s.id }}">{{ s.NIS }} &#8212; {{ s.nama }} &#8212; {{ s.kelas }}</option>
+                      {% if s.isRapotTuntas %}
+                        <option value="{{ s.id }}">{{ s.NIS }} &#8212; {{ s.nama }} &#8212; {{ s.jk }}</option>
+                      {% else %}
+                        <option disabled>{{ s.NIS }} &#8212; {{ s.nama }} &#8212; {{ s.jk }} &#8212; (Belum Tuntas)</option>
+                      {% endif %}
                     {% endfor %}
                   </select>
                 </div>

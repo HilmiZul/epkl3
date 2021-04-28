@@ -5,10 +5,10 @@ from .models import Instansi
 
 @login_required(login_url=settings.LOGIN_URL)
 def instansi_rpl(request):
-  instansi = Instansi.objects.filter(grup='RPL').order_by('nama')
+  instansi = Instansi.objects.filter(program_keahlian='RPL').order_by('nama')
   return render(request, 'instansi-rpl.html', {'instansi': instansi})
 
 @login_required(login_url=settings.LOGIN_URL)
 def instansi_tkj(request):
-  instansi = Instansi.objects.filter(grup='TKJ').order_by('nama')
+  instansi = Instansi.objects.filter(program_keahlian='TKJ').order_by('nama')
   return render(request, 'instansi-tkj.html', {'instansi': instansi})

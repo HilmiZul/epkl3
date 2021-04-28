@@ -13,11 +13,13 @@
           </span>
         </div>
         <div class="card-body shadow-lg">
-          {% if msg %}
+          {% for message in messages %}
+          {% if message %}
           <div class="alert alert-success">
-            {{ msg }}
+            {{ message }}
           </div>
           {% endif %}
+          {% endfor %}
           <div class="table-responsive">
             <table class="table table-striped table-hover" id="myTable">
               <thead class="prototype">
@@ -42,7 +44,7 @@
                       class="modal-trigger tooltipped" data-position="bottom"
                       data-tooltip="Lihat peta">{{ company.alamat }}</a>
                   </td>
-                  <td>{{ company.limit }} dari 5</td>
+                  <td>{{ company.slot }} dari {{ company.kuota }}</td>
                   <td>
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#instansi-{{ company.id }}"><i class="fa fa-trash"></i></button>
                   </td>

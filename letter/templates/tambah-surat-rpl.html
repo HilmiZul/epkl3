@@ -25,17 +25,22 @@
                     <option value=""></option>
                     <optgroup label="XI.RPL-1">
                       {% for rpl1 in students_rpl_1 %}
-                      <option value="{{ rpl1.id }}">{{ rpl1.NIS }} &#8212; {{ rpl1.nama }} </option>
+                      <option value="{{ rpl1.id }}">{{ rpl1.NIS }} &#8212; {{ rpl1.nama }} &#8212; {{ rpl1.jk }}</option>
                       {% endfor %}
                     </optgroup>
                     <optgroup label="XI.RPL-2">
                       {% for rpl2 in students_rpl_2 %}
-                      <option value="{{ rpl2.id }}">{{ rpl2.NIS }} &#8212; {{ rpl2.nama }} </option>
+                      <option value="{{ rpl2.id }}">{{ rpl2.NIS }} &#8212; {{ rpl2.nama }} &#8212; {{ rpl2.jk }}</option>
                       {% endfor %}
                     </optgroup>
                     <optgroup label="XI.RPL-3">
                       {% for rpl3 in students_rpl_3 %}
-                      <option value="{{ rpl3.id }}">{{ rpl3.NIS }} &#8212; {{ rpl3.nama }} </option>
+                      <option value="{{ rpl3.id }}">{{ rpl3.NIS }} &#8212; {{ rpl3.nama }} &#8212; {{ rpl3.jk }}</option>
+                      {% endfor %}
+                    </optgroup>
+                    <optgroup label="XI.RPL-4">
+                      {% for rpl4 in students_rpl_4 %}
+                      <option value="{{ rpl4.id }}">{{ rpl4.NIS }} &#8212; {{ rpl4.nama }} &#8212; {{ rpl4.jk }}</option>
                       {% endfor %}
                     </optgroup>
                   </select>
@@ -45,7 +50,9 @@
                   <select name="nama_instansi" class="this-select form-control" required>
                     <option value=""></option>
                     {% for company in instansi %}
-                    <option value="{{ company.id }}">{{ company.nama }} ({{ company.limit }} / 5)</option>
+                      {% if company.slot < company.kuota %}
+                        <option value="{{ company.id }}">{{ company.nama }} &#8212; Terisi {{ company.slot }} dari {{ company.kuota }}</option>
+                      {% endif %}
                     {% endfor %}
                   </select>
                 </div>

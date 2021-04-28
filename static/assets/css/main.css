@@ -25,7 +25,7 @@ html, body {
 
 .card {
   border: none;
-  border-radius: 0;
+  border-radius: 5px;
 }
 
 .border-r {
@@ -44,8 +44,12 @@ html, body {
   width: 100%;
   height: 100%;
   padding-top: 90px;
-  background: url('../img/bg-login.png') no-repeat center center fixed;
+  background: url('../img/who-needs.png') no-repeat center center fixed;
   background-size: cover;
+}
+
+.login .card {
+  border-bottom: 5px solid #A0D9EE;
 }
 
 .block {
@@ -73,4 +77,8 @@ input:focus {
 .form-control:focus {
   border: none;
   background-color: #eaeaea;
+}
+
+label {
+  font-weight: bold;
 }

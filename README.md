@@ -17,6 +17,8 @@ Just for fun!
 [MIT](https://github.com/HilmiZul/epkl3/blob/master/LICENSE)
 
 ---
+update April 27, 2021: re-design models. Happy Fasting 🌙
+
 update January 22, 2020: change admin UI to Bootstrap 4.4.1. Happy New Year 🎉
 
 update September 23, 2019: add "who is verified this [title and content](https://github.com/HilmiZul/epkl3/commit/ce582a9becb009e334c57446d087ffaa71ce0cfb)?"

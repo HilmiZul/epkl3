@@ -6,20 +6,22 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-header bg-dark text-white prototype">
-          <a href="/pembimbing" class="btn btn-outline-light"><i class="fa fa-chevron-left"></i> kembali</a>
-          PEMBIMBING &raquo; TAMBAH BARU
+          <a href="{% url 'get_master_pembimbing' %}" class="btn btn-outline-light"><i class="fa fa-chevron-left"></i> kembali</a>
+          PEMBIMBING &raquo; UBAH
         </div>
         <div class="card-body shadow-lg">
           <div class="row">
             <div class="col-md-12">
-              <form action="/pembimbing/ubah/{{ pembimbing.id }}" method="post">
+              <form action="/master/pembimbing/ubah/{{ pembimbing.id }}" method="post">
                 {% csrf_token %}
 
-                {% if msg %}
-                <div class="alert alert-success">
-                  {{ msg }}
-                </div>
-                {% endif %}
+                {% for message in messages %}
+                  {% if message %}
+                  <div class="alert alert-success">
+                    {{ message }}
+                  </div>
+                  {% endif %}
+                {% endfor %}
 
                 <div class="form-group">
                   <label for="{{ form.nama.label }}">{{ form.nama.label }}</label>

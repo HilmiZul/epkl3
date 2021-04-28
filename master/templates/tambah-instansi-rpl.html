@@ -6,7 +6,8 @@
     <div class="col-md-6">
       <div class="card">
         <div class="card-header bg-dark text-white prototype">
-          <a href="{% url 'instansi_rpl' %}" class="btn btn-outline-light"><i class="fa fa-chevron-left"></i> kembali </a>
+          <a href="{% url 'instansi_rpl' %}" class="btn btn-outline-light"><i class="fa fa-chevron-left"></i> kembali
+          </a>
           INSTANSI &raquo; RPL &raquo; TAMBAH BARU
         </div>
         <div class="card-body shadow-lg">
@@ -15,11 +16,13 @@
               <form action="{% url 'tambah_instansi_rpl' %}" method="post">
                 {% csrf_token %}
 
-                {% if msg %}
+                {% for message in messages %}
+                {% if message %}
                 <div class="alert alert-success">
-                  {{ msg }}
+                  {{ message }}
                 </div>
                 {% endif %}
+                {% endfor %}
 
                 <div class="form-group">
                   <label for="nama">Nama Instansi</label>
@@ -28,6 +31,10 @@
                 <div class="form-group">
                   <label for="pimpinan">Nama Pimpinan</label>
                   <input type="text" id="pimpinan" class="form-control" name="pimpinan" required>
+                </div>
+                <div class="form-group">
+                  <label for="pembimbing">Nama Pembimbing</label>
+                  <input type="text" id="pembimbing" class="form-control" name="pembimbing" required>
                 </div>
                 <div class="form-group">
                   <label for="alamat">Alamat Lengkap</label>
@@ -40,6 +47,19 @@
                 <div class="form-group">
                   <label for="email">Email</label>
                   <input type="email" id="email" class="form-control" name="email" required>
+                </div>
+                <div class="form-group">
+                  <label for="kuota">Kuota Peserta</label>
+                  <input type="number" id="kuota" max="6" min="1" class="form-control" name="kuota" required>
+                </div>
+                <div class="form-group">
+                  <label for="gender">Gender <em class="text-muted">(Penerimaan berdasarkan Gender)</em></label>
+                  <select name="gender" id="gender" class="form-control" required>
+                    <option>&#8212; Pilih Gender &#8212;</option>
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                    <option value="Semua">Semua gender</option>
+                  </select>
                 </div>
                 <button type="submit" class="btn btn-dark">Simpan</button>
               </form>

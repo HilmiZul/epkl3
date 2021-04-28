@@ -6,30 +6,32 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header bg-dark text-white prototype">
-          PEMBIMBING
+          GURU PEMBIMBING
           <a href="{% url 'tambah_pembimbing' %}" class="btn btn-outline-light"><i class="fa fa-plus"></i> Tambah</a>
         </div>
         <div class="card-body shadow-lg">
-          {% if msg %}
+          {% for message in messages %}
+          {% if message %}
           <div class="alert alert-success">
-            {{ msg }}
+            {{ message }}
           </div>
           {% endif %}
+          {% endfor %}
           <div class="table-responsive">
             <table class="table table-striped table-hover" id="myTable">
               <thead class="prototype">
                 <tr>
-                  <th>NO.</th>
+                  <th width="30">NO.</th>
                   <th>NAMA</th>
                   <th>JURUSAN</th>
-                  <th>AKSI</th>
+                  <th width="30">AKSI</th>
                 </tr>
               </thead>
               <tbody>
                 {% for mentor in pembimbing %}
                 <tr>
                   <td>{{ forloop.counter }}.</td>
-                  <td><a href="/pembimbing/ubah/{{ mentor.id }}">{{ mentor.nama }}</a></td>
+                  <td><a href="/master/pembimbing/ubah/{{ mentor.id }}">{{ mentor.nama }}</a></td>
                   <td>{{ mentor.jurusan }}</td>
                   <td>
                     <button type="button" data-toggle="modal" data-target="#mentor-{{ mentor.id }}" class="btn btn-danger">
@@ -53,7 +55,7 @@
                         </p>
                       </div>
                       <div class="modal-footer">
-                        <a href="/pembimbing/hapus/{{ mentor.id }}" class="btn btn-outline-danger">Ya, Hapus</a>
+                        <a href="/master/pembimbing/hapus/{{ mentor.id }}" class="btn btn-outline-danger">Ya, Hapus</a>
                         <button type="button" class="btn btn-dark" data-dismiss="modal">TIDAK</button>
                       </div>
                     </div>

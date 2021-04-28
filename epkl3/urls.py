@@ -4,8 +4,19 @@ from dashboard.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 from akun.views_siswa import tambah_akun
+from master.api_views import *
+from letter.api_views import *
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register('siswa', SiswaViewset)
+router.register('instansi', InstansiViewset)
+router.register('permohonan', PermohonanViewset)
+
 
 urlpatterns = [
+    path('api/', include(router.urls)),
+
     # halaman depan e-PKL
     path('', home, name='home'),
 
@@ -35,4 +46,8 @@ urlpatterns = [
 
     # jurnal
     path('jurnal/', include('jurnal.urls')),
+
+    #=====================
+    # MASTER
+    path('master/', include('master.urls_master')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -11,19 +11,20 @@
             Tambah</a>
         </div>
         <div class="card-body shadow-lg">
-          {% if msg %}
-          <div class="alert alert-success">
-            {{ msg }}
-          </div>
-          {% endif %}
+          {% for message in messages %}
+            {% if message %}
+            <div class="alert alert-success">
+              {{ message }}
+            </div>
+            {% endif %}
+          {% endfor %}
           <div class="table-responsive">
             <table class="table table-striped table-hover" id="myTable">
               <thead class="prototype">
                 <tr>
-                  <th>NO.</th>
-                  <th>PEMBIMBING SATU</th>
-                  <th>PEMBIMBING DUA</th>
-                  <th>NAMA SISWA</th>
+                  <th width="50">NO.</th>
+                  <th>PEMBIMBING</th>
+                  <th>SISWA</th>
                   <th>KELAS</th>
                   <th>AKSI</th>
                 </tr>
@@ -33,7 +34,6 @@
                 <tr>
                   <td>{{ forloop.counter }}.</td>
                   <td>{{ mentor.pembimbing_satu }}</td>
-                  <td>{{ mentor.pembimbing_dua }}</td>
                   <td>{{ mentor.siswa }}</td>
                   <td>{{ mentor.siswa.kelas }}</td>
                   <td>

@@ -1,59 +1,48 @@
 {% extends "layout_admin/base.html" %}
 
 {% block content %}
-<section class="form-input">
-  <div class="container">
-    <div class="row">
-      <div class="col l12">
-        <h4>Tambah Instansi</h4>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="card mb-5">
+        <div class="card-header bg-dark text-white prototype">
+          <a href="{% url 'get_master_instansi' %}" class="btn btn-outline-light"><i class="fa fa-chevron-left"></i> kembali
+          </a>
+          INSTANSI &raquo; TAMBAH BARU
+        </div>
+        <div class="card-body shadow-lg">
+          <div class="row">
+            <div class="col-md-12">
+              <form action="{% url 'tambah_instansi' %}" method="post">
+                {% csrf_token %}
+
+                {% for message in messages %}
+                {% if message %}
+                <div class="alert alert-success">
+                  {{ message }}
+                </div>
+                {% endif %}
+                {% endfor %}
+
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-dark">Simpan</button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-    </div> <!-- ./row -->
-    <div class="row">
-      <div class="col l6">
-        {% if msg %}
-          <div class="card-panel teal lighten-5">
-            <i class="material-icons left">check</i>
-            {{ msg }}
-          </div>
-        {% endif %}
-        <form action="/instansi/tambah/" method="post">
-          {% csrf_token %}
-          <div class="input-field">
-            <label for="">Nama Instansi</label>
-            <input type="text" class="validate" name="nama" autofocus required>
-          </div>
-          <div class="input-field">
-            <label for="pimpinan">Nama Pimpinan</label>
-            <input type="text" id="pimpinan" class="validate" name="pimpinan" required>
-          </div>
-          <div class="input-field">
-            <label for="alamat">Alamat Lengkap</label>
-            <textarea name="alamat" id="alamat" class="materialize-textarea" required></textarea>
-          </div>
-          <div class="input-field">
-            <label for="kontak">Nomor Kontak</label>
-            <input type="number" id="kontak" maxlength="13" class="validate" name="kontak" required>
-          </div>
-          <div class="input-field">
-            <label for="email">Email</label>
-            <input type="email" id="email" class="validate" name="email" required>
-          </div>
-          <div class="input-field">
-            <select class="this-select" name="grup" required>
-              <option value="">Pilih Grup Jurusan</option>
-              <option value="TKJ">TKJ</option>
-              <option value="RPL">RPL</option>
-            </select>
-          </div>
-          <div class="input-field">
-            <button class="btn waves-effect waves-light" type="submit">
-              Simpan
-              <i class="material-icons left">save</i>
-            </button>
-          </div>
-        </form>
+    </div>
+    <div class="col-md-6">
+      <div class="alert alert-warning shadow">
+        <h2>Infomari</h2>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium hic sapiente nesciunt pariatur excepturi
+        aut, quaerat nulla explicabo consequatur doloribus ea neque quas tempora, molestiae iusto, optio magnam
+        voluptates incidunt!
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur velit laboriosam eveniet nobis fuga error
+        nesciunt, autem provident quisquam neque possimus! Nemo molestiae ea rerum itaque. Officia architecto provident
+        iste?
       </div>
     </div>
   </div>
-</section>
+</div>
 {% endblock %}

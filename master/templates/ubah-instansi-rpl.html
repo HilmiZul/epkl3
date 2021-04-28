@@ -30,6 +30,10 @@
                   <input type="text" id="pimpinan" class="form-control" name="pimpinan" value="{{ instansi.pimpinan }}" required>
                 </div>
                 <div class="form-group">
+                  <label for="pembimbing">Nama Pembimbing</label>
+                  <input type="text" id="pembimbing" class="form-control" name="pembimbing" value="{{ instansi.pembimbing }}" required>
+                </div>
+                <div class="form-group">
                   <label for="alamat">Alamat Lengkap</label>
                   <textarea name="alamat" id="alamat" class="form-control" required>{{ instansi.alamat }}</textarea>
                 </div>
@@ -40,6 +44,20 @@
                 <div class="form-group">
                   <label for="email">Email</label>
                   <input type="email" id="email" class="form-control" name="email" value="{{ instansi.email }}" required>
+                </div>
+                <div class="form-group">
+                  <label for="kuota">Kuota Peserta</label>
+                  <input type="number" id="kuota" max="6" min="1" class="form-control" name="kuota" value="{{ instansi.kuota }}" required>
+                </div>
+                <div class="form-group">
+                  <label for="gender">Gender <em class="text-muted">(Penerimaan berdasarkan Gender)</em></label>
+                  <select name="gender" id="gender" class="form-control" required>
+                    <option value="{{ instansi.gender }}">{{ instansi.gender }}</option>
+                    <option>&#8212; Pilih Gender &#8212;</option>
+                    <option value="L">Laki-laki</option>
+                    <option value="P">Perempuan</option>
+                    <option value="Semua">Semua gender</option>
+                  </select>
                 </div>
                 <button type="submit" class="btn btn-dark">Simpan</button>
               </form>

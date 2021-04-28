@@ -7,10 +7,14 @@ from .views_surat_update import *
 from .views_export import *
 
 urlpatterns = [
+  path('', get_surat_permohonan, name="get_surat_permohonan"),
+  path('tambah/', tambah_surat_permohonan, name="tambah_surat_permohonan"),
+  path('hapus/<int:id_surat>', hapus_surat_permohonan, name="hapus_surat_permohonan"),
+
   path('rpl/tambah/', tambah_surat_rpl, name='tambah_surat_rpl'),
   path('rpl/', surat_rpl, name='surat_rpl'),
   path('rpl/cetak/<int:id_instansi>', cetak_surat_rpl),
-  path('rpl/hapus/<int:id_surat>', hapus_surat_rpl),
+  # path('rpl/hapus/<int:id_surat>', hapus_surat_rpl),
   # path('rpl/ubah/<int:id_surat>', ubah_surat_rpl),
   path('rpl/cetak/ready', cetak_pkl_rpl, name='cetak_pkl_rpl'),
   path('rpl/export/xls', export_instansi_rpl, name='export_instansi_siswa_rpl'),

@@ -14,22 +14,27 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          INSTANSI
+          MASTER
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'instansi_tkj' %}"><i class="fa fa-globe"></i> TKJ</a>
-          <a class="dropdown-item" href="{% url 'instansi_rpl' %}"><i class="fa fa-code"></i> RPL</a>
+          <a class="dropdown-item" href="{% url 'get_master_peserta' %}"><i class="fa fa-users"></i> PESERTA</a>
+          <a class="dropdown-item" href="{% url 'get_master_instansi' %}"><i class="fa fa-building"></i> INSTANSI</a>
+          <a class="dropdown-item" href="{% url 'get_master_pembimbing' %}"><i class="fa fa-user"></i> GURU PEMBIMBING</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          INSTANSI & SISWA
+          SURAT
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{% url 'surat_tkj' %}"><i class="fa fa-globe"></i> TKJ</a>
-          <a class="dropdown-item" href="{% url 'surat_rpl' %}"><i class="fa fa-code"></i> RPL</a>
+          <a class="dropdown-item" href=""><i class="fa fa-plane"></i> PENJAJAKAN</a>
+          <a class="dropdown-item" href=""><i class="fa fa-tag"></i> VERIFIKASI</a>
+          <a class="dropdown-item" href="{% url 'get_surat_permohonan' %}"><i class="fa fa-envelope"></i> PERMOHONAN SISWA</a>
         </div>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'get_surat_permohonan' %}">PKL</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -37,7 +42,7 @@
           PEMBIMBING
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/pembimbing"><i class="fa fa-user"></i> Pembimbing</a>
+          <!-- <a class="dropdown-item" href="{% url 'pembimbing' %}"><i class="fa fa-user"></i> Pembimbing</a> -->
           <a class="dropdown-item" href="{% url 'pembimbing_siswa' %}"><i class="fa fa-users"></i> Pembimbing & Siswa</a>
         </div>
       </li>
@@ -51,7 +56,7 @@
           <a class="dropdown-item" href="#"><i class="fa fa-code"></i> RPL</a>
         </div>
       </li>
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
           PORTOFOLIO
@@ -64,13 +69,13 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">
-          SIDANG
+          VERIFIKASI
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="#"><i class="fa fa-calendar"></i> Jadwal</a>
           <a class="dropdown-item" href="#"><i class="fa fa-edit"></i> Penilaian</a>
         </div>
-      </li>
+      </li> -->
     </ul>
     <ul class="navbar-nav ml-auto">
       <li class="nav-item">

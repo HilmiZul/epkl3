@@ -25,22 +25,22 @@
                     <option value=""></option>
                     <optgroup label="XI.TKJ-1">
                       {% for tkj1 in students_tkj_1 %}
-                      <option value="{{ tkj1.id }}">{{ tkj1.NIS }} &#8212; {{ tkj1.nama }} </option>
+                      <option value="{{ tkj1.id }}">{{ tkj1.NIS }} &#8212; {{ tkj1.nama }} &#8212; {{ tkj1.jk }}</option>
                       {% endfor %}
                     </optgroup>
                     <optgroup label="XI.TKJ-2">
                       {% for tkj2 in students_tkj_2 %}
-                      <option value="{{ tkj2.id }}">{{ tkj2.NIS }} &#8212; {{ tkj2.nama }} </option>
+                      <option value="{{ tkj2.id }}">{{ tkj2.NIS }} &#8212; {{ tkj2.nama }} &#8212; {{ tkj2.jk }}</option>
                       {% endfor %}
                     </optgroup>
                     <optgroup label="XI.TKJ-3">
                       {% for tkj3 in students_tkj_3 %}
-                      <option value="{{ tkj3.id }}">{{ tkj3.NIS }} &#8212; {{ tkj3.nama }} </option>
+                      <option value="{{ tkj3.id }}">{{ tkj3.NIS }} &#8212; {{ tkj3.nama }} &#8212; {{ tkj3.jk }}</option>
                       {% endfor %}
                     </optgroup>
                     <optgroup label="XI.TKJ-4">
                       {% for tkj4 in students_tkj_4 %}
-                      <option value="{{ tkj4.id }}">{{ tkj4.NIS }} &#8212; {{ tkj4.nama }} </option>
+                      <option value="{{ tkj4.id }}">{{ tkj4.NIS }} &#8212; {{ tkj4.nama }} &#8212; {{ tkj4.jk }}</option>
                       {% endfor %}
                     </optgroup>
                   </select>
@@ -50,7 +50,9 @@
                   <select name="nama_instansi" class="this-select form-control" required>
                     <option value=""></option>
                     {% for company in instansi %}
-                    <option value="{{ company.id }}">{{ company.nama }} ({{ company.limit }} / 5)</option>
+                      {% if company.slot < company.kuota %}
+                      <option value="{{ company.id }}">{{ company.nama }} &#8212; Terisi {{ company.slot }} dari {{ company.kuota }}</option>
+                      {% endif %}
                     {% endfor %}
                   </select>
                 </div>

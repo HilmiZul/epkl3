@@ -25,7 +25,7 @@ SECRET_KEY = 'm*9oy0sf$+8b-z4^)e8c5#s!dw8v%j#jqo!60xak9%e0c3!m*y'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '10.0.3.5', '202.52.14.178', 'smkn4-tsm.sch.id', '*']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'dashboard',
     'pesan',
     'karya_ilmiah',
+    'jurnal',
+    'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -54,7 +57,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'epkl3.urls'
 
@@ -84,7 +91,7 @@ WSGI_APPLICATION = 'epkl3.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db-epkl3-2021.sqlite3'),
     }
 }
 

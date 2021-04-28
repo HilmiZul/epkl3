@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from .models import Instansi
+from django.contrib import messages
 
 @login_required(login_url=settings.LOGIN_URL)
 def ubah_instansi_rpl(request, id_instansi):
@@ -10,8 +11,11 @@ def ubah_instansi_rpl(request, id_instansi):
       nama = request.POST['nama'],
       alamat = request.POST['alamat'],
       pimpinan = request.POST['pimpinan'],
+      pembimbing = request.POST['pembimbing'],
       kontak = request.POST['kontak'],
       email = request.POST['email'],
+      kuota = request.POST['kuota'],
+      gender = request.POST['gender']
     )
     msg = "Data berhasil diperbaharui."
     instansi = Instansi.objects.get(id=id_instansi)
@@ -33,8 +37,11 @@ def ubah_instansi_tkj(request, id_instansi):
       nama = request.POST['nama'],
       alamat = request.POST['alamat'],
       pimpinan = request.POST['pimpinan'],
+      pembimbing = request.POST['pembimbing'],
       kontak = request.POST['kontak'],
       email = request.POST['email'],
+      kuota = request.POST['kuota'],
+      gender = request.POST['gender']
     )
     msg = "Data berhasil diperbaharui."
     instansi = Instansi.objects.get(id=id_instansi)

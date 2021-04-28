@@ -46,7 +46,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/purple/labs/dj/epkl3/.env"
+VIRTUAL_ENV='/Users/purple/labs/dj/epkl3/.env'
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

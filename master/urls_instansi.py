@@ -6,8 +6,6 @@ from .views_instansi_delete import *
 from .views_export_instansi import  *
 
 urlpatterns = [
-  path('tambah/', tambah_instansi),
-
   path('rpl/tambah/', tambah_instansi_rpl, name='tambah_instansi_rpl'),
   path('rpl/', instansi_rpl, name='instansi_rpl'),
   path('rpl/ubah/<int:id_instansi>', ubah_instansi_rpl, name='ubah_instansi_rpl'),

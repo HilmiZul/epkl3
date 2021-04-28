@@ -1,4 +1,4 @@
-#!/Users/purple/labs/dj/epkl3/.env/bin/python3.7
+#!/Users/purple/labs/dj/epkl3/.env/bin/python
 from django.core import management
 
 if __name__ == "__main__":

@@ -1,6 +1,7 @@
 from django.conf import settings
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from .models import Pembimbing, PembimbingSiswa, Siswa
 from .form_pembimbing import FormPembimbing, FormPembimbingSiswa
 
@@ -38,15 +39,8 @@ def ubah_pembimbing(request, id):
       jurusan = request.POST['jurusan'],
     )
     msg = "Data berhasil diperbaharui."
-    pembimbing = Pembimbing.objects.get(id=id)
-    form = FormPembimbing()
-    return render(request, 'ubah-pembimbing.html', 
-      {
-        'msg':msg,
-        'pembimbing': pembimbing,
-        'form': form,
-      }
-    )
+    messages.success(request, msg)
+    return redirect('ubah_pembimbing', id)
   else:
     pembimbing = Pembimbing.objects.get(id=id)
     form = FormPembimbing()
@@ -62,15 +56,8 @@ def ubah_pembimbing(request, id):
 def hapus_pembimbing(request, id):
   Pembimbing.objects.filter(id=id).delete()
   msg = "Data berhasil dihapus."
-
-  # update data setelah penghapusan
-  pembimbing = Pembimbing.objects.all().order_by('jurusan')
-  return render(request, 'pembimbing.html', 
-    {
-      'msg':msg,
-      'pembimbing': pembimbing,
-    }
-  )
+  messages.success(request, msg)
+  return redirect('get_master_pembimbing')
 
 
 # PEMBIMBING.SISWA
@@ -83,17 +70,9 @@ def tambah_pembimbing_siswa(request):
       Siswa.objects.filter(id=request.POST['siswa']).update(
         pembimbing = True
       )
-      pembimbing = Pembimbing.objects.all().order_by('nama')
-      siswa = Siswa.objects.filter(pembimbing=False).order_by('kelas')
       msg = "Data Berhasil disimpan"
-      return render(request, 'tambah-pembimbing-siswa.html', 
-        {
-          'msg':msg,
-          'siswa': siswa,
-          'pembimbing': pembimbing,
-          'form': form
-        }
-      )
+      messages.success(request, msg)
+      return redirect('tambah_pembimbing_siswa')
   else:
     pembimbing = Pembimbing.objects.all().order_by('nama')
     siswa = Siswa.objects.filter(pembimbing=False).order_by('kelas')
@@ -123,15 +102,8 @@ def hapus_pembimbing_siswa(request, id):
   # hapus
   PembimbingSiswa.objects.filter(id=id).delete()
   msg = "Data berhasil dihapus."
-
-  # update data setelah ada penghapusan
-  ps = PembimbingSiswa.objects.all().order_by('siswa__kelas')
-  return render(request, 'pembimbing-siswa.html', 
-    {
-      'msg': msg,
-      'ps': ps,
-    }
-  )
+  messages.success(request, msg)  
+  return redirect('pembimbing_siswa')
 
 # UBAH.DATA.PEMBIMBING.SISWA
 # MENERIMA id PembimbingSiswa
