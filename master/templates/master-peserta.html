@@ -31,16 +31,16 @@
                   <td>{{ peserta.kelas }}</td>
                   <td>
                     {% if peserta.isRapotTuntas %}
-                    <span class="bg-success text-white p-1">Tuntas</span>
+                    <span class="bg-success text-white p-1 rounded">Tuntas</span>
                     {% else %}
-                    <span class="bg-danger text-white p-1">Belum Tuntas</span>
+                    <span class="bg-danger text-white p-1 rounded">Belum Tuntas</span>
                     {% endif %}
                   </td>
                   <td>
                     {% if peserta.pkl %}
-                    <span class="bg-success text-white p-1">Sudah</span>
+                    <span class="bg-success text-white p-1 rounded">Sudah</span>
                     {% else %}
-                    <span class="bg-danger text-white p-1">Belum</span>
+                    <span class="bg-danger text-white p-1 rounded">Belum</span>
                     {% endif %}
                   </td>
                   <td>{{ peserta.pembimbing }}</td>
