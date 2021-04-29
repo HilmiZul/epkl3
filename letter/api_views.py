@@ -7,6 +7,7 @@ from rest_framework.response import Response
 class PermohonanViewset(viewsets.ModelViewSet):
   queryset = Permohonan.objects.all()
   serializer_class = PermohonanSerializer
+  http_method_names = ['get']
 
   @action(methods=['post'], detail=True)
   def permohonan(self, request, *args, **kwargs):
