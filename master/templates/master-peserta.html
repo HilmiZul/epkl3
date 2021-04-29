@@ -36,7 +36,13 @@
                     <span class="bg-danger text-white p-1">Belum Tuntas</span>
                     {% endif %}
                   </td>
-                  <td>{{ peserta.pkl }}</td>
+                  <td>
+                    {% if peserta.pkl %}
+                    <span class="bg-success text-white p-1">Sudah</span>
+                    {% else %}
+                    <span class="bg-danger text-white p-1">Belum</span>
+                    {% endif %}
+                  </td>
                   <td>{{ peserta.pembimbing }}</td>
                 </tr>
                 {% endfor %}
