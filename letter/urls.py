@@ -11,6 +11,8 @@ urlpatterns = [
   path('tambah/', tambah_surat_permohonan, name="tambah_surat_permohonan"),
   path('hapus/<int:id_surat>', hapus_surat_permohonan, name="hapus_surat_permohonan"),
 
+  path('export/xls/', export_pkl_xls, name='export_pkl_xls'),
+
   path('rpl/tambah/', tambah_surat_rpl, name='tambah_surat_rpl'),
   path('rpl/', surat_rpl, name='surat_rpl'),
   path('rpl/cetak/<int:id_instansi>', cetak_surat_rpl),

@@ -10,7 +10,7 @@
           SISWA YANG TELAH MENDAPAT TEMPAT PRAKTIK
           <a href="{% url 'tambah_surat_permohonan' %}" class="btn btn-outline-light"><i class="fa fa-plus"></i> Tambah</a>
           <span class="float-right">
-            <a href="{% url 'export_instansi_siswa_rpl' %}" class="btn btn-outline-light"><i class="fa fa-download"></i></a>
+            <a href="{% url 'export_pkl_xls' %}" class="btn btn-outline-light"><i class="fa fa-download"></i></a>
           </span>
         </div>
         <div class="card-body shadow-lg">
@@ -24,21 +24,21 @@
           <div class="table-responsive">
             <table class="table table-striped table-hover" id="myTable">
               <thead class="prototype">
-                <tr>
-                  <th>NO.</th>
-                  <th>NAMA</th>
-                  <th>KELAS</th>
+                <tr align="center">
+                  <th width="5%">NO.</th>
+                  <th width="20%">NAMA</th>
+                  <th width="5%">KELAS</th>
                   <th>INSTANSI</th>
-                  <th width="350">ALAMAT</th>
-                  <th width="100">AKSI</th>
+                  <th width="25%">ALAMAT</th>
+                  <th width="9%">AKSI</th>
                 </tr>
               </thead>
               <tbody>
                 {% for letter in surat %}
                 <tr>
-                  <td>{{ forloop.counter }}.</td>
+                  <td align="center">{{ forloop.counter }}.</td>
                   <td>{{ letter.nama_siswa }}</td>
-                  <td>{{ letter.nama_siswa.kelas }}</td>
+                  <td align="center">{{ letter.nama_siswa.kelas }}</td>
                   <td>
                     <a href="/pkl/rpl/cetak/{{ letter.nama_instansi.id }}" target="_blank">{{ letter.nama_instansi }}</a></td>
                   <td>

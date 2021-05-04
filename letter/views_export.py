@@ -1,6 +1,17 @@
 import xlwt
 from django.http import HttpResponse
 from .models import Permohonan
+from .resources import PermohonanResource
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
+
+@login_required(login_url=settings.LOGIN_URL)
+def export_pkl_xls(request):
+  pkl = PermohonanResource()
+  dataset = pkl.export()
+  response = HttpResponse(dataset.xls, content_type='application/vnd.ms-excel')
+  response['Content-Disposition'] = 'attachment; filename=Data-PKL-TKI-2021.xls'
+  return response
 
 def export_instansi_rpl(request):
   response = HttpResponse(content_type='application/ms-excel')
