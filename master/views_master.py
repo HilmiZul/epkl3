@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Siswa, Instansi, Pembimbing
+from letter.models import Permohonan
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -59,7 +60,12 @@ def master_ubah_instansi(request, id_instansi):
     return redirect('master_ubah_instansi',id_instansi)
   else:
     instansi = Instansi.objects.get(id=id_instansi)
-  return render(request, 'ubah-instansi.html', {'instansi':instansi})
+    pkl = Permohonan.objects.filter(nama_instansi__id=id_instansi)
+    context = {
+      'instansi': instansi,
+      'pkl': pkl
+    }
+  return render(request, 'ubah-instansi.html', context)
 
 
 @login_required(login_url=settings.LOGIN_URL)

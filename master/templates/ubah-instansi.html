@@ -4,9 +4,10 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6">
-      <div class="card">
+      <div class="card mb-5">
         <div class="card-header bg-dark text-white prototype">
-          <a href="{% url 'get_master_instansi' %}" class="btn btn-outline-light"><i class="fa fa-chevron-left"></i> kembali</a>
+          <a href="{% url 'get_master_instansi' %}" class="btn btn-outline-light"><i class="fa fa-chevron-left"></i>
+            kembali</a>
           INSTANSI &raquo; UBAH &raquo; {{ instansi.nama }}
         </div>
         <div class="card-body shadow-lg">
@@ -16,40 +17,47 @@
                 {% csrf_token %}
 
                 {% for message in messages %}
-                  {% if message %}
-                  <div class="alert alert-success">
-                    {{ message }}
-                  </div>
-                  {% endif %}
+                {% if message %}
+                <div class="alert alert-success">
+                  {{ message }}
+                </div>
+                {% endif %}
                 {% endfor %}
 
                 <div class="form-group">
                   <label for="nama">Nama Instansi</label>
-                  <input type="text" id="nama" class="form-control" name="nama" value="{{ instansi.nama }}" autofocus required>
+                  <input type="text" id="nama" class="form-control" name="nama" value="{{ instansi.nama }}" autofocus
+                    required>
                 </div>
                 <div class="form-group">
                   <label for="pimpinan">Nama Pimpinan</label>
-                  <input type="text" id="pimpinan" class="form-control" name="pimpinan" value="{{ instansi.pimpinan }}" required>
+                  <input type="text" id="pimpinan" class="form-control" name="pimpinan" value="{{ instansi.pimpinan }}"
+                    required>
                 </div>
                 <div class="form-group">
                   <label for="pembimbing">Nama Pembimbing</label>
-                  <input type="text" id="pembimbing" class="form-control" name="pembimbing" value="{{ instansi.pembimbing }}" required>
+                  <input type="text" id="pembimbing" class="form-control" name="pembimbing"
+                    value="{{ instansi.pembimbing }}" required>
                 </div>
                 <div class="form-group">
                   <label for="alamat">Alamat Lengkap</label>
-                  <textarea name="alamat" rows="4" id="alamat" class="form-control" required>{{ instansi.alamat }}</textarea>
+                  <textarea name="alamat" rows="4" id="alamat" class="form-control"
+                    required>{{ instansi.alamat }}</textarea>
                 </div>
                 <div class="form-group">
                   <label for="kontak">Nomor Kontak</label>
-                  <input type="number" id="kontak" maxlength="13" class="form-control" name="kontak" value="{{ instansi.kontak }}" required>
+                  <input type="number" id="kontak" maxlength="13" class="form-control" name="kontak"
+                    value="{{ instansi.kontak }}" required>
                 </div>
                 <div class="form-group">
                   <label for="email">Email</label>
-                  <input type="email" id="email" class="form-control" name="email" value="{{ instansi.email }}" required>
+                  <input type="email" id="email" class="form-control" name="email" value="{{ instansi.email }}"
+                    required>
                 </div>
                 <div class="form-group">
                   <label for="kuota">Kuota Peserta</label>
-                  <input type="number" id="kuota" min="1" class="form-control" name="kuota" value="{{ instansi.kuota }}" required>
+                  <input type="number" id="kuota" min="1" class="form-control" name="kuota" value="{{ instansi.kuota }}"
+                    required>
                 </div>
                 <div class="form-group">
                   <label for="gender">Gender <em class="text-muted">(Penerimaan berdasarkan Gender)</em></label>
@@ -69,14 +77,40 @@
       </div>
     </div>
     <div class="col-md-6">
-      <div class="alert alert-warning shadow">
-        <h2>Infomari</h2>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium hic sapiente nesciunt pariatur excepturi
-        aut, quaerat nulla explicabo consequatur doloribus ea neque quas tempora, molestiae iusto, optio magnam
-        voluptates incidunt!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur velit laboriosam eveniet nobis fuga error
-        nesciunt, autem provident quisquam neque possimus! Nemo molestiae ea rerum itaque. Officia architecto provident
-        iste?
+      <div class="card shadow mb-5">
+        <!-- <div class="card-header alert-warning">
+          
+        </div> -->
+        <div class="card-body">
+          <h5>{{ instansi.nama }}</h5>
+          {% if instansi.kuota == instansi.slot %}
+          Terisi: <span class="p-1 text-danger rounded">Penuh</span>
+          {% else %}
+          <span class="text-muted p-1">Terisi: {{ instansi.slot }} dari {{ instansi.kuota }}</span>
+          {% endif %}
+          <table class="table table-bordered">
+            <thead class="bg-dark text-white">
+              <tr align="center">
+                <th>NAMA</th>
+                <th>KELAS</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if pkl|length > 0 %}
+              {% for data in pkl %}
+              <tr>
+                <td>{{ data.nama_siswa }}</td>
+                <td>{{ data.nama_siswa.kelas }}</td>
+              </tr>
+              {% endfor %}
+              {% else %}
+              <tr>
+                <td colspan="2" align="center">Belum terisi</td>
+              </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
