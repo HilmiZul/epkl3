@@ -11,8 +11,11 @@ from django.contrib import messages
 
 @login_required(login_url=settings.LOGIN_URL)
 def pengajuan_judul(request):
+  # judul = SubmissionJudul.objects.filter(
+  #   Q(pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(pembimbing__pembimbing_dua__nama=request.session['nama']) 
+  # )
   judul = SubmissionJudul.objects.filter(
-    Q(pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(pembimbing__pembimbing_dua__nama=request.session['nama']) 
+    Q(pembimbing__pembimbing_satu__nama=request.session['nama']) 
   )
   return render(request, 'pengajuan-judul-admin.html', {'judul':judul})
 
@@ -38,8 +41,11 @@ def setuju_submission_judul(request, id):
     id_siswa = get_currnet_judul.siswa.profil.id
     Siswa.objects.filter(id=id_siswa).update(status_judul=True)
 
+    # judul = SubmissionJudul.objects.filter(
+    #   Q(pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(pembimbing__pembimbing_dua__nama=request.session['nama']) 
+    # )
     judul = SubmissionJudul.objects.filter(
-      Q(pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(pembimbing__pembimbing_dua__nama=request.session['nama']) 
+      Q(pembimbing__pembimbing_satu__nama=request.session['nama'])
     )
     # return render(request, 'show-submission-judul.html', {'judul':judul})
     messages.add_message(request, messages.INFO, 'Judul Portofolio telah disetujui.')
@@ -64,8 +70,11 @@ def dikembalikan_submission_judul(request, id):
         catatan = catatan,
       )
       msg = "Judul ditolak dan telah dikembalikan."
+    # judul = SubmissionJudul.objects.filter(
+    #   Q(pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(pembimbing__pembimbing_dua__nama=request.session['nama']) 
+    # )
     judul = SubmissionJudul.objects.filter(
-      Q(pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(pembimbing__pembimbing_dua__nama=request.session['nama']) 
+      Q(pembimbing__pembimbing_satu__nama=request.session['nama'])
     )
     messages.add_message(request, messages.INFO, 'Judul Portofolio telah dikembalikan/tolak.')
     return redirect('/portofolio/pengajuan-judul/')
@@ -75,8 +84,11 @@ def dikembalikan_submission_judul(request, id):
   
 @login_required(login_url=settings.LOGIN_URL)
 def bimbingan_isi(request):
+  # contents = Bimbingan.objects.filter(
+  #   Q(judul__pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(judul__pembimbing__pembimbing_dua__nama=request.session['nama']) 
+  # ).order_by('judul__siswa', 'status', '-bab')
   contents = Bimbingan.objects.filter(
-    Q(judul__pembimbing__pembimbing_satu__nama=request.session['nama']) | Q(judul__pembimbing__pembimbing_dua__nama=request.session['nama']) 
+    Q(judul__pembimbing__pembimbing_satu__nama=request.session['nama'])
   ).order_by('judul__siswa', 'status', '-bab')
   return render(request, 'bimbingan-isi.html', {'contents':contents})
 

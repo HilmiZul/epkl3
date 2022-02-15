@@ -43,7 +43,13 @@
                     <span class="bg-danger text-white p-1 rounded">Belum</span>
                     {% endif %}
                   </td>
-                  <td>{{ peserta.pembimbing }}</td>
+                  <td>
+                    {% if peserta.pembimbing %}
+                    <span class="bg-success text-white p-1 rounded">Sudah</span>
+                    {% else %}
+                    <span class="bg-danger text-white p-1 rounded">Belum</span>
+                    {% endif %}
+                  </td>
                 </tr>
                 {% endfor %}
               </tbody>
