@@ -82,11 +82,11 @@
           
         </div> -->
         <div class="card-body">
-          <h5>{{ instansi.nama }}</h5>
+          <!-- <h5>{{ instansi.nama }}</h5> -->
           {% if instansi.kuota == instansi.slot %}
-          Terisi: <span class="p-1 text-danger rounded">Penuh</span>
+          Terisi: <h5 class="p-1 text-danger rounded">Penuh</h5>
           {% else %}
-          <span class="text-muted p-1">Terisi: {{ instansi.slot }} dari {{ instansi.kuota }}</span>
+          <h5 class="text-muted p-1">Terisi: {{ instansi.slot }} dari {{ instansi.kuota }}</h5>
           {% endif %}
           <table class="table table-bordered">
             <thead class="bg-dark text-white">

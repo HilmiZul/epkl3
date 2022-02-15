@@ -13,12 +13,11 @@ def home(request):
 @login_required(login_url=settings.LOGIN_URL)
 def dashboard(request):
   students = Siswa.objects.all()
+  instansi = Instansi.objects.all().count()
   students_rpl = Siswa.objects.filter(program_ahli='Rekayasa Perangkat Lunak').count()
-  students_tkj = Siswa.objects.filter(program_ahli='Teknik Komputer dan Jaringan').count()
 
   ready_rpl = Siswa.objects.filter(program_ahli='Rekayasa Perangkat Lunak', pkl=True).count()
-  ready_tkj = Siswa.objects.filter(program_ahli='Teknik Komputer dan Jaringan', pkl=True).count()
-  ready_pkl = ready_rpl + ready_tkj
+  ready_pkl = ready_rpl
   not_yet   = len(students) - ready_pkl
 
   students_count = len(students)
@@ -27,10 +26,9 @@ def dashboard(request):
     {
       'students_count': students_count,
       'students_count_rpl': students_rpl,
-      'students_count_tkj': students_tkj,
+      'instansi': instansi,
 
       'ready_rpl': ready_rpl,
-      'ready_tkj': ready_tkj,
       'ready_pkl': ready_pkl,
       'not_yet': not_yet,
     }
