@@ -83,7 +83,7 @@ def cetak_surat_pengantar_rpl(request, id_instansi):
   # tanggal sekarang
   tanggal = datetime.now()
   tanggal = tanggal.strftime("%d %B %Y")
-  return render(request, 'cetak-pengantar.html', 
+  return render(request, 'cetak-memo-kaprog.html', 
     {
       'surat':surat, 
       'instansi':instansi,

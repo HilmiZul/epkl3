@@ -1,0 +1,142 @@
+{% extends "layout_cetak/base.html" %}
+
+{% block content %}
+  <style>
+  html, body {
+  font-family: 'Times New Roman', Times, serif;
+  margin: 1cm;
+  }
+  .font-1 {
+    font-size: 18px;
+  }
+  .font-2 {
+    font-size: 19px;
+  }
+  .font-3 {
+    font-size: 15px;
+  }
+  .tebal.gede {
+    font-size: 20px;
+  }
+  .tebal.miring {
+    font-style: italic;
+    font-weight: bold;
+  }
+  .alamat {
+    font-size: 16px;
+  }
+  .logo {
+    width: 100px;
+  }
+  .mt {
+    margin-top: 50px;
+  }
+  .for {
+    text-align: right;
+  }
+  .underline {
+    text-decoration: underline;
+  }
+  </style>
+    <table width="100%">
+      <tr>
+        <td align="center" width="20%"><img src="/static/assets/img/prov-logo.png" class="logo"> </td>
+        <td align="center" width="75%">
+          <p class="spasi">
+            <p class="font-1">PEMERINTAH PROVINSI JAWA BARAT</p>
+            <p class="font-1">DINAS PENDIDIKAN</p>
+            <p class="tebal gede">SMK NEGERI 4 TASIKMALAYA</p>
+            <p class="alamat">Jl. Depok Kel. Sukamenak Kec. Purbaratu (0265) 312059</p>
+            <p class="alamat">Website : www.smkn4-tsm.sch.id Email : info@smkn4-tsm.sch.id</p>
+            <p class="alamat">Kota Tasikmalaya 46196</p>
+          </p>
+        </td>
+        <td align="center" width="5%">&nbsp;</td>
+      </tr>
+      <tr>
+        <td colspan="3"><div class="line">&nbsp;</div></td>
+      </tr>
+    </table>
+
+    <h3 align="center" class="underline">MEMO KEPALA PROGRAM KEAHLIAN RPL</h3>
+    <!-- <table width="50%">
+      <tr>
+        <td >Nomor</td>
+        <td>:</td>
+        <td>420/877/SMKN.4.Cabdin.Wil-XII</td>
+      </tr>
+      <tr>
+        <td>Lampiran</td>
+        <td>:</td>
+        <td>-</td>
+      </tr>
+      <tr>
+        <td>Perihal</td>
+        <td>:</td>
+        <td>Pengiriman Siswa PKL</td>
+      </tr>
+    </table> -->
+
+    <div class="for">
+      <div>Yth.Bapak/Ibu Sekretariat PKL</div>
+      <div>SMK Negeri 4 Tasikmalaya</div>
+      <div>di</div>
+      <div>Tempat</div>
+    </div>
+
+    <div class="konten">
+      <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Menindak lanjuti siswa/i yang telah melakukan konsultasi dan mengajukan tempat PKL di<br>
+        Perusahaan: {{ instansi.nama }} <br>
+        Alamat: {{ instansi.alamat }}
+      </p>
+
+      <p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Bahwa nama tersebut dibawah ini telah memenuhi segala persyaratan/kewajiban, untuk itu mohon kiranya diberi surat pengantar.
+        Dan persyaratan lainnya atas nama:
+      </p>
+
+      <table class="tabel-peserta">
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Nama</th>
+            <th>NIS</th>
+            <th>Program Keahlian</th>
+            <th>Tgl.Keberangkatan</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for peserta in surat %}
+            <tr>
+              <td align="center">{{ forloop.counter }}.</td>
+              <td align="left" class="nama">{{ peserta.nama_siswa |upper }}</td>
+              <td align="center">{{ peserta.nama_siswa.NIS }}</td>
+              <td>{{ peserta.nama_siswa.program_ahli }}</td>
+              <td rowspan="{{ surat.length }}">25 Juli 2022</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <p class="penutup">Demikian atas kerja sama yang baik diucapkan terimakasih.</p>
+      <br><br><br><br><br><br><br>
+      <table class="footer mt">
+        <tr>
+          <td width="73%">
+            <p>Mengetahui:</p>
+            <p>Ketua Pelaksana</p>
+            <br><br><br><br><br><br>
+            <span class="tebal">ISEP WARTIMAN, S.Pd.</span><br>
+            NIP. 19730903 200003 1 005
+          </td>
+          <td width="35%" align="left">
+            <p>Tasikmalaya, {{ tanggal }}</p>
+            <p>Kepala Program Keahlian RPL,</p>
+            <br><br><br><br><br><br>
+            <span class="tebal">TAUFIK HIDAYAT, S.Kom.</span>
+            &nbsp;
+          </td>
+        </tr>
+      </table>
+{% endblock %}
