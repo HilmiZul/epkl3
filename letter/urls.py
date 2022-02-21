@@ -20,7 +20,8 @@ urlpatterns = [
   # path('rpl/ubah/<int:id_surat>', ubah_surat_rpl),
   path('rpl/cetak/ready', cetak_pkl_rpl, name='cetak_pkl_rpl'),
   path('rpl/export/xls', export_instansi_rpl, name='export_instansi_siswa_rpl'),
-  path('rpl/cetak/pengantar/<int:id_instansi>', cetak_surat_pengantar_rpl, name='cetak_surat_pengantar_rpl'),
+  # path('rpl/cetak/pengantar/<int:id_instansi>', cetak_surat_pengantar_rpl, name='cetak_surat_pengantar_rpl'),
+  path('rpl/cetak/memo/<int:id_instansi>', cetak_memo_rpl, name='cetak_memo_rpl'),
 
   path('tkj/cetak/<int:id_instansi>', cetak_surat_tkj),
   path('tkj/', surat_tkj, name='surat_tkj'),

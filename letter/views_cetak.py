@@ -77,7 +77,7 @@ def cetak_rpl_belum_pkl(request):
 
 
 @login_required(login_url=settings.LOGIN_URL)
-def cetak_surat_pengantar_rpl(request, id_instansi):
+def cetak_memo_rpl(request, id_instansi):
   surat = Permohonan.objects.filter(nama_instansi__id=id_instansi)
   instansi = Instansi.objects.get(id=id_instansi)
   # tanggal sekarang
