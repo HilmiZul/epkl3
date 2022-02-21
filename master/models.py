@@ -9,17 +9,17 @@ class Siswa(models.Model):
             ('XII.RPL-3', 'XII.RPL-3'),
             ('XII.RPL-4', 'XII.RPL-4'),
         )),
-        ('TKJ', (
-            ('XII.TKJ-1', 'XII.TKJ-1'),
-            ('XII.TKJ-2', 'XII.TKJ-2'),
-            ('XII.TKJ-3', 'XII.TKJ-3'),
-            ('XII.TKJ-4', 'XII.TKJ-4'),
-        )),
+        # ('TKJ', (
+        #     ('XII.TKJ-1', 'XII.TKJ-1'),
+        #     ('XII.TKJ-2', 'XII.TKJ-2'),
+        #     ('XII.TKJ-3', 'XII.TKJ-3'),
+        #     ('XII.TKJ-4', 'XII.TKJ-4'),
+        # )),
     )
 
     program_choices = (
-        ('Teknik Komputer dan Jaringan', 'Teknik Komputer dan Jaringan'),
         ('Rekayasa Perangkat Lunak', 'Rekayasa Perangkat Lunak'),
+        # ('Teknik Komputer dan Jaringan', 'Teknik Komputer dan Jaringan'),
     )
     jk_choices = (
       ('L', 'L'),
@@ -40,8 +40,8 @@ class Siswa(models.Model):
 
 class Instansi(models.Model):
     program_keahlian_choices = (
-        ('TKJ', 'TKJ'),
         ('RPL', 'RPL'),
+        # ('TKJ', 'TKJ'),
     )
     gender_choices = (
       ('Semua', 'Semua'),
@@ -71,8 +71,8 @@ class Instansi(models.Model):
 
 class Pembimbing(models.Model):
     jurusan_choices = (
-        ('TKJ', 'TKJ'),
         ('RPL', 'RPL'),
+        # ('TKJ', 'TKJ'),
     )
 
     nama = models.CharField(max_length=40)
