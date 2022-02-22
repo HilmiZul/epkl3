@@ -6,6 +6,7 @@ from dashboard.views import dashboard_siswa
 urlpatterns = [
   path('home/', dashboard_siswa),
   
+  path('', masuk),
   path('masuk/', masuk),
   path('keluar/', keluar),
   
