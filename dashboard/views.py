@@ -1,3 +1,4 @@
+from asyncore import read
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
@@ -8,7 +9,27 @@ from karya_ilmiah.models import SubmissionJudul
 
 
 def home(request):
-  return render(request, 'home.html')
+  students = Siswa.objects.all()
+  instansi = Instansi.objects.all().count()
+  ready_pkl = Siswa.objects.filter(pkl=True).count()
+  not_yet   = len(students) - ready_pkl
+  students_count = len(students)
+
+  prosentase_ready = (ready_pkl / students_count) * 100
+  prosentase_ready = round(prosentase_ready, 2)
+
+  prosentase_not_ready = (not_yet / students_count) * 100
+  prosentase_not_ready = round(prosentase_not_ready, 2)
+  return render(request, 'home.html',
+    {
+      'jumlah_peserta': students_count,
+      'jumlah_instansi': instansi,
+      'ready_pkl': ready_pkl,
+      'not_yet': not_yet,
+      'prosentase_ready': prosentase_ready,
+      'prosentase_not_ready': prosentase_not_ready
+    }
+  )
 
 @login_required(login_url=settings.LOGIN_URL)
 def dashboard(request):
