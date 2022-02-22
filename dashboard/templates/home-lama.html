@@ -1,0 +1,112 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>e-PKL (R P L) SMK Negeri 4 Tasikmalaya</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'assets/css/style.main.css' %}">
+</head>
+<body>
+  <section class="header">
+    <div class="container">
+      <div class="row pt-5 pb-5">
+        <div class="col-md-2 text-center">
+          <img src="https://upload.wikimedia.org/wikipedia/id/9/9e/Logo_SMK_Negeri_4_Tasikmalaya.png" style="width: 100px">
+        </div>
+        <div class="col-md-10 text-white ">
+          <h1 class="prototype">Portal PKL <em class="avenir">(R P L)</em></h1>
+          <h3 class="prototype">SMK Negeri 4 Tasikmalaya</h3>
+          <p>Jl. Depok Sukamenak - Purbaratu</p>
+        </div>
+      </div>
+      <div class="row pb-5">
+        <div class="col-md-6">
+          <div class="card shadow-lg mb-5">
+            <div class="card-body">
+              <h3 class="prototype">Apa itu PKL?</h3>
+              <p>Praktik Kerja Lapangan (PKL) adalah salah satu bentuk emplementasi secara sistematis dan sinkron antara program pendidikan di sekolah dengan program penguasaan keahlian yang diperoleh melalui kegiatan kerja secara langsung di dunia kerja untuk mencapai tingkat keahlian tertentu.</p>
+
+              <h3 class="prototype">Manfaat</h3>
+              <p>Ada banyak manfaat dari dilaksanakannya Praktek Kerja Lapangan, baik manfaat bagi peserta PKL, sekolah dan Perusahaan tempat dilaksanakannya PKL. manfaat PKL diantaranya sebagai berikut:</p>
+              <ol type="A">
+                <li>Bagi Siswa</li>
+                <ul>
+                  <li>Menghasilkan Sumber Daya Manusia yang profesional</li>
+                  <li>mengenalkan siswa-siswi pada pekerjaan lapangan baik di perusahaan maupun di industri</li>
+                  <li>menambah pengalaman</li>
+                  <li>menambah ilmu, karena ilmu yang tidak didapatkan di sekolah bisa di dapatkan di tempat PKL</li>
+                  <li>melatih siswa menjadi lebih disiplin dan bertanggung jawab</li>
+                </ul>
+                <li>Bagi Sekolah</li>
+                <ul>
+                  <li>Memberikan kontribusi dan tenaga kerja bagi perusahaan</li>
+                  <li>Dapat menyesuakan program pendidikan dengan kebutuhan lapangan kerja</li>
+                  <li>Tujuan pendidikan tercapai</li>
+                </ul>
+                <li>Bagi Instansi/Perusahaan</li>
+                <ul>
+                  <li>Dapat mengenal persis kualitas siswa yang berlatih di instansi</li>
+                  <li>Mendukung program pemerintah</li>
+                  <li>Mendapatkan tenaga kerja sementar</li>
+                </ul>
+              </ol>
+            </div>
+          </div>
+        </div> <!-- ./col-6 -->
+        <div class="col-md-6">
+          <div class="card mb-5 shadow-lg">
+            <div class="card-body">
+              <!-- <h3 class="prototype">Bimbingan Daring</h3>
+              <p>
+                Bimbingan daring (dalam jaringan) atau kita kenal dengan istilah <em>online</em>, merupakan <em>trend</em> bimbingan
+                masa kini yang dilakukan antara siswa dengan Pembimbing secara <em>online</em> menggunakan App tertentu 
+                dalam melakukan diskusi Portofoli/makalah tanpa ada batasan waktu.
+              </p>
+              <p>
+                Siswa dapat mengirimkan <em>draft</em> portofolio berupa <em>softfile</em> kepada Pembimbing tanpa harus bertemu langsung. 
+                Ini bisa memangkas waktu kita yang habis dalam perjalanan.
+              </p>
+              <h3 class="prototype">Workflow</h3> Login
+              <i class="fa fa-arrow-right"></i> Submit Judul
+              <i class="fa fa-arrow-right"></i> Submit Portofolio per BAB
+              <i class="fa fa-arrow-right"></i> Selesai -->
+              <h3 class="prototype">Statistik.</h3>
+              <table class="table table-bordered">
+                <tr>
+                  <th width="30%">peserta</th>
+                  <td width="5%">:</td>
+                  <td>{{ jumlah_peserta }} siswa</td>
+                </tr>
+                <tr>
+                  <th>instansi</th>
+                  <td>:</td>
+                  <td>{{ jumlah_instansi }}</td>
+                </tr>
+                <tr>
+                  <th>siap praktik</th>
+                  <td>:</td>
+                  <td>{{ ready_pkl }} dari {{ jumlah_peserta }} siswa <strong>({{ prosentase_ready }}%)</strong></td>
+                </tr>
+                <tr>
+                  <th>belum siap</th>
+                  <td>:</td>
+                  <td>{{ not_yet }} dari {{ jumlah_peserta }} siswa <strong>({{ prosentase_not_ready }}%)</strong></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+          <!-- <h3 class="prototype text-white">Ayo Mulai Bimbingan!</h3>
+          <a href="/siswa/login" class="mb-3 btn btn-primary btn-block btn-lg"><i class="fa fa-child"></i> LOGIN</a> -->
+          <a href="/akun/masuk" class="mb-3 btn btn-primary btn-block btn-lg"><i class="fa fa-user"></i> LOGIN</a>
+        </div>
+      </div> <!-- ./row -->
+
+    </div> <!-- ./container -->
+  </section>
+</body>
+</html>
