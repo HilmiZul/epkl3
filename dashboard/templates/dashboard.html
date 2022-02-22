@@ -9,6 +9,7 @@
       <h1>Statistik.</h1>
       <div class="row mt-3 mb-5">
         <div class="col-md-3">
+          <a href="{% url 'get_master_instansi' %}" class="btn btn-block text-left">
           <div class="card shadow text-white bg-primary mb-3">
             <div class="card-body">
               <span class="float-right">
@@ -18,8 +19,10 @@
               Instansi
             </div>
           </div>
+          </a>
         </div>
         <div class="col-md-3">
+          <a href="{% url 'get_master_peserta' %}" class="btn btn-block text-left">
           <div class="card shadow text-white bg-success mb-3">
             <div class="card-body">
               <span class="float-right">
@@ -29,8 +32,10 @@
               Siswa RPL
             </div>
           </div>
+          </a>
         </div>
         <div class="col-md-3">
+          <a href="{% url 'get_surat_permohonan' %}" class="btn btn-block text-left">
           <div class="card shadow mb-3 text-white bg-info">
             <div class="card-body">
               <span class="float-right">
@@ -40,8 +45,10 @@
               Siap PKL
             </div>
           </div>
+          </a>
         </div>
         <div class="col-md-3">
+          <a href="#" class="btn btn-block text-left">
           <div class="card shadow text-white bg-danger mb-3">
             <div class="card-body">
               <span class="float-right">
@@ -51,6 +58,7 @@
               Belum Siap
             </div>
           </div>
+          </a>
         </div>
       </div>
     </div>
