@@ -22,6 +22,19 @@ def home(request):
   prosentase_not_ready = round(prosentase_not_ready, 2)
 
   ready = Permohonan.objects.all().order_by('nama_instansi')
+  ready_rpl1 = Siswa.objects.filter(kelas='XII.RPL-1', pkl=True).count()
+  count_rpl1 = Siswa.objects.filter(kelas='XII.RPL-1').count()
+  ready_rpl2 = Siswa.objects.filter(kelas='XII.RPL-2', pkl=True).count()
+  count_rpl2 = Siswa.objects.filter(kelas='XII.RPL-2').count()
+  ready_rpl3 = Siswa.objects.filter(kelas='XII.RPL-3', pkl=True).count()
+  count_rpl3 = Siswa.objects.filter(kelas='XII.RPL-3').count()
+
+  prosentase_ready_rpl1 = (ready_rpl1 / count_rpl1) * 100
+  prosentase_ready_rpl1 = round(prosentase_ready_rpl1, 2)
+  prosentase_ready_rpl2 = (ready_rpl2 / count_rpl2) * 100
+  prosentase_ready_rpl2 = round(prosentase_ready_rpl2, 2)
+  prosentase_ready_rpl3 = (ready_rpl3 / count_rpl3) * 100
+  prosentase_ready_rpl3 = round(prosentase_ready_rpl3, 2)
   return render(request, 'home.html',
     {
       'jumlah_peserta': students_count,
@@ -31,6 +44,12 @@ def home(request):
       'prosentase_ready': prosentase_ready,
       'prosentase_not_ready': prosentase_not_ready,
       'ready': ready,
+      'ready_rpl1': ready_rpl1,
+      'ready_rpl2': ready_rpl2,
+      'ready_rpl3': ready_rpl3,
+      'prosentase_ready_rpl1': prosentase_ready_rpl1,
+      'prosentase_ready_rpl2': prosentase_ready_rpl2,
+      'prosentase_ready_rpl3': prosentase_ready_rpl3
     }
   )
 

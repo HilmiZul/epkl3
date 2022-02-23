@@ -47,22 +47,46 @@
                     <tr>
                       <th width="40%">Peserta</th>
                       <td width="5%">:</td>
-                      <td>{{ jumlah_peserta }} siswa</td>
+                      <td colspan="2">{{ jumlah_peserta }} siswa</td>
                     </tr>
                     <tr>
                       <th>DU/DI</th>
                       <td>:</td>
-                      <td>{{ jumlah_instansi }}</td>
+                      <td colspan="2">{{ jumlah_instansi }}</td>
                     </tr>
                     <tr>
                       <th>Siap praktik</th>
                       <td>:</td>
-                      <td>{{ ready_pkl }} <strong>({{ prosentase_ready }}%)</strong></td>
+                      <td>{{ ready_pkl }}</td>
+                      <td>{{ prosentase_ready }}%</td>
                     </tr>
                     <tr>
                       <th>Belum siap</th>
                       <td>:</td>
-                      <td>{{ not_yet }} <strong>({{ prosentase_not_ready }}%)</strong></td>
+                      <td>{{ not_yet }}</td>
+                      <td>{{ prosentase_not_ready }}%</td>
+                    </tr>
+                  </table>
+                  <hr>
+                  <div class="prototype mt-4 mb-3">Berdasarkan Kelas</div>
+                  <table class="table">
+                    <tr>
+                      <th width="40%">RPL-1</th>
+                      <td width="5%">:</td>
+                      <td>{{ ready_rpl1 }}</td>
+                      <td>{{ prosentase_ready_rpl1 }}%</td>
+                    </tr>
+                    <tr>
+                      <th>RPL-2</th>
+                      <td>:</td>
+                      <td>{{ ready_rpl2 }}</td>
+                      <td>{{ prosentase_ready_rpl2 }}%</td>
+                    </tr>
+                    <tr>
+                      <th>RPL-3</th>
+                      <td>:</td>
+                      <td>{{ ready_rpl3 }}</td>
+                      <td>{{ prosentase_ready_rpl3 }}%</td>
                     </tr>
                   </table>
                 </div>
