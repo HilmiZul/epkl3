@@ -8,6 +8,7 @@
   <title>e-PKL (R P L) SMK Negeri 4 Tasikmalaya</title>
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{% static 'assets/css/style.main.css' %}">
 </head>
@@ -40,7 +41,6 @@
                   <canvas id="pie-chart"></canvas>
                 </div>
                 <div class="col-md-6">
-                  <h3 class="prototype">Rincian.</h3>
                   <table class="table">
                     <tr>
                       <th width="40%">Peserta</th>
@@ -63,14 +63,42 @@
                       <td>{{ not_yet }} <strong>({{ prosentase_not_ready }}%)</strong></td>
                     </tr>
                   </table>
-                  <em>*siap: telah mendapat tempat praktik</em><br>
+                  <em>*siap: sudah mendapat tempat praktik</em><br>
                   <em>*belum: belum mendapat tempat praktik</em>
                 </div>
               </div>
             </div>
           </div>
         </div> <!-- ./col-6 -->
-        
+        <div class="col-md-12">
+          <div class="card shadow-lg mb-5">
+            <div class="card-header">
+              <h4 class="prototype">Peserta yang siap.</h4>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-striped" id="myTable">
+                  <thead>
+                    <tr>
+                      <th>NAMA</th>
+                      <th>KELAS</th>
+                      <th>DU/DI</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for r in ready %}
+                    <tr>
+                      <td>{{ r.nama_siswa.nama }}</td>
+                      <td>{{ r.nama_siswa.kelas }}</td>
+                      <td>{{ r.nama_instansi.nama }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div> <!-- ./row -->
 
       <div class="row">
@@ -84,6 +112,10 @@
     </div> <!-- ./container -->
   </section>
 
+  <script src="/static/vendor/jquery-3.3.1.min.js"></script>
+  <script src="/static/vendor/bs/bootstrap.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
   <script>
 
@@ -109,6 +141,12 @@
       window.myPie = new Chart(ctx, config);
     };
 
+    // dataTable
+    $(document).ready(function () {
+    // dataTable
+      $('#myTable').DataTable();
+    });
   </script>
+  
 </body>
 </html>

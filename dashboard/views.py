@@ -20,6 +20,8 @@ def home(request):
 
   prosentase_not_ready = (not_yet / students_count) * 100
   prosentase_not_ready = round(prosentase_not_ready, 2)
+
+  ready = Permohonan.objects.all().order_by('nama_instansi')
   return render(request, 'home.html',
     {
       'jumlah_peserta': students_count,
@@ -27,7 +29,8 @@ def home(request):
       'ready_pkl': ready_pkl,
       'not_yet': not_yet,
       'prosentase_ready': prosentase_ready,
-      'prosentase_not_ready': prosentase_not_ready
+      'prosentase_not_ready': prosentase_not_ready,
+      'ready': ready,
     }
   )
 
