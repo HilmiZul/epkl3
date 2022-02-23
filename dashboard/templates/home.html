@@ -73,24 +73,24 @@
         <div class="col-md-12">
           <div class="card shadow-lg mb-5">
             <div class="card-header">
-              <h4 class="prototype">Peserta yang siap.</h4>
+              <h4 class="prototype">Keterserapan DU/DI.</h4>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-striped" id="myTable">
                   <thead>
                     <tr>
+                      <th>DU/DI</th>
                       <th>NAMA</th>
                       <th>KELAS</th>
-                      <th>DU/DI</th>
                     </tr>
                   </thead>
                   <tbody>
                     {% for r in ready %}
                     <tr>
+                      <td>{{ r.nama_instansi.nama }}</td>
                       <td>{{ r.nama_siswa.nama }}</td>
                       <td>{{ r.nama_siswa.kelas }}</td>
-                      <td>{{ r.nama_instansi.nama }}</td>
                     </tr>
                     {% endfor %}
                   </tbody>
