@@ -26,8 +26,8 @@
                 <tr align="center">
                   <th width="5%">NO.</th>
                   <th width="40%">NAMA</th>
-                  <th width="17%">PEMBIMBING</th>
-                  <th width="10%">NO.KONTAK</th>
+                  <!-- <th width="17%">PEMBIMBING</th>
+                  <th width="10%">NO.KONTAK</th> -->
                   <th width="7%">KUOTA</th>
                   <th width="7%">TERISI</th>
                   <th width="5%">AKSI</th>
@@ -38,9 +38,9 @@
                 <tr>
                   <td align="center">{{ forloop.counter }}.</td>
                   <td><a href="/master/instansi/ubah/{{ company.id }}">{{ company.nama }}</a></td>
-                  <td>{{ company.pembimbing }}</td>
+                  <!-- <td>{{ company.pembimbing }}</td>
                   <td>{{ company.kontak }}</td>
-                  <!-- <td><a href="https://www.google.com/maps/search/?api=1&query={{ company.alamat }}" target="_blank"
+                  <td><a href="https://www.google.com/maps/search/?api=1&query={{ company.alamat }}" target="_blank"
                       class="modal-trigger tooltipped" data-position="bottom" data-tooltip="Lihat peta">{{ company.alamat|slice:40 }}...</a>
                   </td> -->
                   <td align="center">{{ company.kuota }}</td>
