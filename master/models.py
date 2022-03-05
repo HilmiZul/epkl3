@@ -7,19 +7,19 @@ class Siswa(models.Model):
             ('XII.RPL-1', 'XII.RPL-1'),
             ('XII.RPL-2', 'XII.RPL-2'),
             ('XII.RPL-3', 'XII.RPL-3'),
-            ('XII.RPL-4', 'XII.RPL-4'),
+            # ('XII.RPL-4', 'XII.RPL-4'),
         )),
-        # ('TKJ', (
-        #     ('XII.TKJ-1', 'XII.TKJ-1'),
-        #     ('XII.TKJ-2', 'XII.TKJ-2'),
-        #     ('XII.TKJ-3', 'XII.TKJ-3'),
-        #     ('XII.TKJ-4', 'XII.TKJ-4'),
-        # )),
+        ('TKJ', (
+            ('XII.TKJ-1', 'XII.TKJ-1'),
+            ('XII.TKJ-2', 'XII.TKJ-2'),
+            ('XII.TKJ-3', 'XII.TKJ-3'),
+            ('XII.TKJ-4', 'XII.TKJ-4'),
+        )),
     )
 
     program_choices = (
         ('Rekayasa Perangkat Lunak', 'Rekayasa Perangkat Lunak'),
-        # ('Teknik Komputer dan Jaringan', 'Teknik Komputer dan Jaringan'),
+        ('Teknik Komputer dan Jaringan', 'Teknik Komputer dan Jaringan'),
     )
     jk_choices = (
       ('L', 'L'),
@@ -41,7 +41,7 @@ class Siswa(models.Model):
 class Instansi(models.Model):
     program_keahlian_choices = (
         ('RPL', 'RPL'),
-        # ('TKJ', 'TKJ'),
+        ('TKJ', 'TKJ'),
     )
     gender_choices = (
       ('Semua', 'Semua'),
