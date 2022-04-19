@@ -11,7 +11,7 @@ from rest_framework import routers
 router = routers.DefaultRouter()
 router.register('siswa', SiswaViewset)
 router.register('instansi', InstansiViewset)
-router.register('permohonan', PermohonanViewset)
+# router.register('permohonan', PermohonanViewset)
 
 
 urlpatterns = [
