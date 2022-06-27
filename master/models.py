@@ -1,3 +1,5 @@
+from statistics import mode
+from turtle import ondrag
 from django.db import models
 
 # Create your models here.
@@ -85,7 +87,8 @@ class Pembimbing(models.Model):
 class PembimbingSiswa(models.Model):
     pembimbing_satu = models.ForeignKey(Pembimbing, related_name="pembimbing_satu", null=True, on_delete=models.CASCADE)
     # pembimbing_dua = models.ForeignKey(Pembimbing, related_name="pembimbing_dua", null=True, on_delete=models.CASCADE)
-    siswa = models.ForeignKey(Siswa, on_delete=models.CASCADE)
+    # siswa = models.ForeignKey(Siswa, on_delete=models.CASCADE)
+    instansi = models.ForeignKey(Instansi, ondrag=models.CASCADE)
 
     def __str__(self):
         return self.pembimbing_satu.nama
