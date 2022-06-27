@@ -29,9 +29,9 @@ class PembimbingAdmin(admin.ModelAdmin):
     list_per_page = 20
 
 class PembimbingSiswaAdmin(admin.ModelAdmin):
-    list_display = ['pembimbing_satu', 'siswa']
-    list_filter = ('siswa__kelas', 'siswa__program_ahli',)
-    search_fields = ['pembimbing_satu', 'siswa']
+    list_display = ['pembimbing_satu', 'instansi']
+    list_filter = ('instansi__program_keahlian',)
+    search_fields = ['pembimbing_satu', 'instansi']
     list_per_page = 20
 
 class KDAdmin(admin.ModelAdmin):
