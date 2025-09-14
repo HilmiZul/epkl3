@@ -12,13 +12,13 @@ def masuk(request):
     if user is not None:
       if user.is_active:
         try:
-          akun = AkunPembimbing.objects.get(username=user.id)
+          akun = AkunPembimbing.objects.get(username__id=user.id)
           login(request, user)
 
           # bikin sesi
           request.session['uname'] = request.POST['uname']
           request.session['nama'] = akun.profil.nama
-          request.session['jurusan'] = akun.profil.jurusan
+          request.session['jurusan'] = akun.profil.program_keahlian.nama
           request.session['id'] = akun.id
           request.session['level'] = akun.level
         except:
