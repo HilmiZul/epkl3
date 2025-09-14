@@ -25,7 +25,8 @@
               <thead class="prototype">
                 <tr align="center">
                   <th width="5%">NO.</th>
-                  <th width="40%">NAMA</th>
+                  <th width="30%">NAMA</th>
+                  <th width="10%">PROGRAM</th>
                   <!-- <th width="17%">PEMBIMBING</th>
                   <th width="10%">NO.KONTAK</th> -->
                   <th width="7%">KUOTA</th>
@@ -43,6 +44,7 @@
                   <td><a href="https://www.google.com/maps/search/?api=1&query={{ company.alamat }}" target="_blank"
                       class="modal-trigger tooltipped" data-position="bottom" data-tooltip="Lihat peta">{{ company.alamat|slice:40 }}...</a>
                   </td> -->
+                  <td align="center">{{ company.program_keahlian }}</td>
                   <td align="center">{{ company.kuota }}</td>
                   <td align="center">
                     {% if company.slot == company.kuota %}

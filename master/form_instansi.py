@@ -5,7 +5,7 @@ from .models import Instansi
 class FormTambahInstansi(ModelForm):
   class Meta:
     model = Instansi
-    exclude = ['slot', 'program_keahlian']
+    exclude = ['slot']
 
     widgets = {
       'nama': forms.TextInput(attrs={
@@ -52,8 +52,8 @@ class FormTambahInstansi(ModelForm):
         'required':'required',
         'type': 'number',
       }),
-      'gender': forms.Select(attrs={
-        'id': 'gender',
+      'jk': forms.Select(attrs={
+        'id': 'jk',
         'class': 'validate this-select form-control',
         'required': 'required',
       }),

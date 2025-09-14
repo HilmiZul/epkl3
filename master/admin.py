@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Siswa, Instansi, Pembimbing, PembimbingSiswa, KompetensiDasar
+from .models import *
 
 
 # Register your models here.
@@ -22,10 +22,21 @@ class InstansiAdmin(admin.ModelAdmin):
     search_fields = ['nama', 'alamat']
     list_per_page = 20
 
+class KelasAdmin(admin.ModelAdmin):
+  list_display = ['nama']
+  search_fields = ['nama']
+  list_per_page = 20
+
+class ProgramKeahlianAdmin(admin.ModelAdmin):
+  list_display = ['nama', 'alias']
+  list_filter = ('nama',)
+  search_fields = ['nama', 'alias']
+  list_per_page = 10
+
 class PembimbingAdmin(admin.ModelAdmin):
-    list_display = ['nama', 'jurusan']
-    list_filter = ('jurusan',)
-    search_fields = ['nama', 'jurusan']
+    list_display = ['nama', 'program_keahlian']
+    list_filter = ('program_keahlian',)
+    search_fields = ['nama', 'program_keahlian']
     list_per_page = 20
 
 class PembimbingSiswaAdmin(admin.ModelAdmin):
@@ -35,9 +46,9 @@ class PembimbingSiswaAdmin(admin.ModelAdmin):
     list_per_page = 20
 
 class KDAdmin(admin.ModelAdmin):
-    list_display = ['kode', 'nama', 'jurusan']
-    list_filter = ('jurusan',)
-    search_fields = ['kode', 'nama', 'jurusan']
+    list_display = ['kode', 'nama', 'program_keahlian']
+    list_filter = ('program_keahlian',)
+    search_fields = ['kode', 'nama', 'program_keahlian']
     list_per_page = 20
 
 admin.site.register(Siswa, SiswaAdmin)
@@ -45,3 +56,5 @@ admin.site.register(Instansi, InstansiAdmin)
 admin.site.register(Pembimbing, PembimbingAdmin)
 admin.site.register(PembimbingSiswa, PembimbingSiswaAdmin)
 admin.site.register(KompetensiDasar, KDAdmin)
+admin.site.register(Kelas, KelasAdmin)
+admin.site.register(ProgramKeahlian, ProgramKeahlianAdmin)

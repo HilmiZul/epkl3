@@ -2,7 +2,7 @@ from django.conf import settings
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Pembimbing, PembimbingSiswa, Siswa
+from .models import Pembimbing, PembimbingSiswa, ProgramKeahlian, Siswa
 from .form_pembimbing import FormPembimbing, FormPembimbingSiswa
 
 
@@ -14,7 +14,7 @@ def tambah_pembimbing(request):
       form.save()
       msg = "Data Berhasil disimpan"
       form = FormPembimbing()
-      return render(request, 'tambah-pembimbing.html', 
+      return render(request, 'tambah-pembimbing.html',
         {
           'msg':msg,
           'form':form,
@@ -36,16 +36,18 @@ def ubah_pembimbing(request, id):
   if request.POST:
     Pembimbing.objects.filter(id=id).update(
       nama = request.POST['nama'],
-      jurusan = request.POST['jurusan'],
+      program_keahlian = request.POST['program_keahlian'],
     )
     msg = "Data berhasil diperbaharui."
     messages.success(request, msg)
     return redirect('ubah_pembimbing', id)
   else:
+    program_keahlian = ProgramKeahlian.objects.all()
     pembimbing = Pembimbing.objects.get(id=id)
     form = FormPembimbing()
-  return render(request, 'ubah-pembimbing.html', 
+  return render(request, 'ubah-pembimbing.html',
     {
+      'program_keahlian':program_keahlian,
       'pembimbing':pembimbing,
       'form': form,
     }
@@ -77,7 +79,7 @@ def tambah_pembimbing_siswa(request):
     pembimbing = Pembimbing.objects.all().order_by('nama')
     siswa = Siswa.objects.filter(pembimbing=False).order_by('kelas')
     form = FormPembimbingSiswa()
-  return render(request, 'tambah-pembimbing-siswa.html', 
+  return render(request, 'tambah-pembimbing-siswa.html',
     {
       'siswa': siswa,
       'pembimbing': pembimbing,
@@ -98,11 +100,11 @@ def hapus_pembimbing_siswa(request, id):
   pembimbing = PembimbingSiswa.objects.get(id=id)
   # ubah status pembimbing siswa menjadi false
   Siswa.objects.filter(id=pembimbing.siswa.id).update(pembimbing=False)
-  
+
   # hapus
   PembimbingSiswa.objects.filter(id=id).delete()
   msg = "Data berhasil dihapus."
-  messages.success(request, msg)  
+  messages.success(request, msg)
   return redirect('pembimbing_siswa')
 
 # UBAH.DATA.PEMBIMBING.SISWA
@@ -121,7 +123,7 @@ def hapus_pembimbing_siswa(request, id):
 #     )
 #     msg = "Data berhasil diperbaharui."
 
-#     # ubah status pembimbing siswa kalau siswa diubah 
+#     # ubah status pembimbing siswa kalau siswa diubah
 #     if get_siswa:
 #       pass
 
@@ -129,7 +131,7 @@ def hapus_pembimbing_siswa(request, id):
 #     pembimbing = PembimbingSiswa.objects.get(id=id)
 #     pembimbing_jamak = PembimbingSiswa.objects.filter(id=id)
 #     siswa = Siswa.objects.all().order_by('kelas')
-#     return render(request, 'ubah-pembimbing-siswa.html', 
+#     return render(request, 'ubah-pembimbing-siswa.html',
 #       {
 #         'msg': msg,
 #         'pembimbing': pembimbing,
@@ -141,7 +143,7 @@ def hapus_pembimbing_siswa(request, id):
 #     pembimbing_jamak = PembimbingSiswa.objects.filter(id=id)
 #     pembimbing = PembimbingSiswa.objects.get(id=id)
 #     siswa = Siswa.objects.all().order_by('kelas')
-#   return render(request, 'ubah-pembimbing-siswa.html', 
+#   return render(request, 'ubah-pembimbing-siswa.html',
 #     {
 #       'pembimbing_jamak': pembimbing_jamak,
 #       'pembimbing': pembimbing,

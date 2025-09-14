@@ -27,14 +27,14 @@ def tambah_surat_permohonan(request):
     Instansi.objects.filter(id=instansi_temp.id).update(slot=cur_slot)
 
     messages.success(request, "Data berhaisl ditambahkan.")
-    students_rpl_1 = Siswa.objects.filter(kelas='XII.RPL-1', pkl=False).order_by('kelas')
-    students_rpl_2 = Siswa.objects.filter(kelas='XII.RPL-2', pkl=False).order_by('kelas')
-    students_rpl_3 = Siswa.objects.filter(kelas='XII.RPL-3', pkl=False).order_by('kelas')
-    students_rpl_4 = Siswa.objects.filter(kelas='XII.RPL-4', pkl=False).order_by('kelas')
-    students_tkj_1 = Siswa.objects.filter(kelas='XII.TKJ-1', pkl=False).order_by('kelas')
-    students_tkj_2 = Siswa.objects.filter(kelas='XII.TKJ-2', pkl=False).order_by('kelas')
-    students_tkj_3 = Siswa.objects.filter(kelas='XII.TKJ-3', pkl=False).order_by('kelas')
-    students_tkj_4 = Siswa.objects.filter(kelas='XII.TKJ-4', pkl=False).order_by('kelas')
+    students_rpl_1 = Siswa.objects.filter(kelas__id='1', pkl=False).order_by('kelas')
+    students_rpl_2 = Siswa.objects.filter(kelas__id='2', pkl=False).order_by('kelas')
+    students_rpl_3 = Siswa.objects.filter(kelas__id='3', pkl=False).order_by('kelas')
+    # students_rpl_4 = Siswa.objects.filter(kelas='XII.RPL-4', pkl=False).order_by('kelas')
+    students_tkj_1 = Siswa.objects.filter(kelas__id='4', pkl=False).order_by('kelas')
+    students_tkj_2 = Siswa.objects.filter(kelas__id='5', pkl=False).order_by('kelas')
+    students_tkj_3 = Siswa.objects.filter(kelas__id='6', pkl=False).order_by('kelas')
+    students_tkj_4 = Siswa.objects.filter(kelas__id='7', pkl=False).order_by('kelas')
     instansi_temp = Instansi.objects.all().order_by('nama')
     for ins in instansi_temp:
       # filter instansi, hanya menampilkan yang limit-nya <= kuota
@@ -54,14 +54,14 @@ def tambah_surat_permohonan(request):
     #   }
     # )
   else:
-    students_rpl_1 = Siswa.objects.filter(kelas='XII.RPL-1', pkl=False).order_by('kelas')
-    students_rpl_2 = Siswa.objects.filter(kelas='XII.RPL-2', pkl=False).order_by('kelas')
-    students_rpl_3 = Siswa.objects.filter(kelas='XII.RPL-3', pkl=False).order_by('kelas')
-    students_rpl_4 = Siswa.objects.filter(kelas='XII.RPL-4', pkl=False).order_by('kelas')
-    students_tkj_1 = Siswa.objects.filter(kelas='XII.TKJ-1', pkl=False).order_by('kelas')
-    students_tkj_2 = Siswa.objects.filter(kelas='XII.TKJ-2', pkl=False).order_by('kelas')
-    students_tkj_3 = Siswa.objects.filter(kelas='XII.TKJ-3', pkl=False).order_by('kelas')
-    students_tkj_4 = Siswa.objects.filter(kelas='XII.TKJ-4', pkl=False).order_by('kelas')
+    students_rpl_1 = Siswa.objects.filter(kelas='1', pkl=False).order_by('kelas')
+    students_rpl_2 = Siswa.objects.filter(kelas__id='2', pkl=False).order_by('kelas')
+    students_rpl_3 = Siswa.objects.filter(kelas__id='3', pkl=False).order_by('kelas')
+    students_tkj_1 = Siswa.objects.filter(kelas__id='4', pkl=False).order_by('kelas')
+    students_tkj_2 = Siswa.objects.filter(kelas__id='5', pkl=False).order_by('kelas')
+    students_tkj_3 = Siswa.objects.filter(kelas__id='6', pkl=False).order_by('kelas')
+    students_tkj_4 = Siswa.objects.filter(kelas__id='7', pkl=False).order_by('kelas')
+    # students_tkj_4 = Siswa.objects.filter(kelas__id='8', pkl=False).order_by('kelas')
     instansi = Instansi.objects.all().order_by('nama')
     # for ins in instansi_temp:
       # filter instansi yang limit-nya kurang <= 5
@@ -71,7 +71,6 @@ def tambah_surat_permohonan(request):
       'students_rpl_1':students_rpl_1,
       'students_rpl_2':students_rpl_2,
       'students_rpl_3':students_rpl_3,
-      'students_rpl_4':students_rpl_4,
       'students_tkj_1':students_tkj_1,
       'students_tkj_2':students_tkj_2,
       'students_tkj_3':students_tkj_3,

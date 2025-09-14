@@ -23,7 +23,7 @@
                 <tr>
                   <th width="30">NO.</th>
                   <th>NAMA</th>
-                  <th>JURUSAN</th>
+                  <th>PROGRAM KEAHLIAN</th>
                   <th width="30">AKSI</th>
                 </tr>
               </thead>
@@ -32,7 +32,7 @@
                 <tr>
                   <td>{{ forloop.counter }}.</td>
                   <td><a href="/master/pembimbing/ubah/{{ mentor.id }}">{{ mentor.nama }}</a></td>
-                  <td>{{ mentor.jurusan }}</td>
+                  <td>{{ mentor.program_keahlian }}</td>
                   <td>
                     <button type="button" data-toggle="modal" data-target="#mentor-{{ mentor.id }}" class="btn btn-danger">
                       <i class="fa fa-trash"></i>

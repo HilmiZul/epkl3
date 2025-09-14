@@ -22,12 +22,12 @@ def home(request):
   prosentase_not_ready = round(prosentase_not_ready, 2)
 
   ready = Permohonan.objects.all().order_by('nama_instansi')
-  ready_rpl1 = Siswa.objects.filter(kelas='XII.RPL-1', pkl=True).count()
-  count_rpl1 = Siswa.objects.filter(kelas='XII.RPL-1').count()
-  ready_rpl2 = Siswa.objects.filter(kelas='XII.RPL-2', pkl=True).count()
-  count_rpl2 = Siswa.objects.filter(kelas='XII.RPL-2').count()
-  ready_rpl3 = Siswa.objects.filter(kelas='XII.RPL-3', pkl=True).count()
-  count_rpl3 = Siswa.objects.filter(kelas='XII.RPL-3').count()
+  ready_rpl1 = Siswa.objects.filter(kelas__nama='XII.RPL-1', pkl=True).count()
+  count_rpl1 = Siswa.objects.filter(kelas__nama='XII.RPL-1').count()
+  ready_rpl2 = Siswa.objects.filter(kelas__nama='XII.RPL-2', pkl=True).count()
+  count_rpl2 = Siswa.objects.filter(kelas__nama='XII.RPL-2').count()
+  ready_rpl3 = Siswa.objects.filter(kelas__nama='XII.RPL-3', pkl=True).count()
+  count_rpl3 = Siswa.objects.filter(kelas__nama='XII.RPL-3').count()
 
   prosentase_ready_rpl1 = (ready_rpl1 / count_rpl1) * 100
   prosentase_ready_rpl1 = round(prosentase_ready_rpl1, 2)
@@ -57,9 +57,9 @@ def home(request):
 def dashboard(request):
   students = Siswa.objects.all()
   instansi = Instansi.objects.all().count()
-  students_rpl = Siswa.objects.filter(program_ahli='Rekayasa Perangkat Lunak').count()
+  students_rpl = Siswa.objects.filter(program_ahli__nama='RPL').count()
 
-  ready_rpl = Siswa.objects.filter(program_ahli='Rekayasa Perangkat Lunak', pkl=True).count()
+  ready_rpl = Siswa.objects.filter(program_ahli__nama='RPL', pkl=True).count()
   ready_pkl = ready_rpl
   not_yet   = len(students) - ready_pkl
 

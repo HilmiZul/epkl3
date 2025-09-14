@@ -5,11 +5,11 @@ from .models import Pembimbing, PembimbingSiswa
 class FormPembimbing(ModelForm):
   class Meta:
     model = Pembimbing
-    fields = ['nama', 'jurusan']
+    fields = ['nama', 'program_keahlian']
 
     labels = {
       'nama': 'Nama',
-      'jurusan': 'Jurusan',
+      'program_keahlian': 'Program Keahlian',
     }
 
     widgets = {
@@ -18,8 +18,8 @@ class FormPembimbing(ModelForm):
         'class':'validate form-control',
         'required':'required',
       }),
-      'jurusan': forms.Select(attrs={
-        'id': 'jurusan',
+      'program_keahlian': forms.Select(attrs={
+        'id': 'program_keahlian',
         'class': 'validate this-select form-control',
         'required': 'required',
       }),

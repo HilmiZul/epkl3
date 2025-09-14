@@ -8,7 +8,7 @@ from .form_instansi import FormTambahInstansi
 
 @login_required(login_url=settings.LOGIN_URL)
 def get_master_peserta(request):
-  data = Siswa.objects.all().order_by('NIS')
+  data = Siswa.objects.all().order_by('kelas')
   template = 'master-peserta.html'
   context = {
     'data': data
@@ -53,7 +53,7 @@ def master_ubah_instansi(request, id_instansi):
       kontak = request.POST['kontak'],
       email = request.POST['email'],
       kuota = request.POST['kuota'],
-      gender = request.POST['gender']
+      jk = request.POST['gender']
     )
     msg = "Data berhasil diperbaharui."
     messages.success(request, msg)
