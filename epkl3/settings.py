@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'epkl3.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db-epkl3-2022.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db-epkl3-2023.sqlite3'),
     }
 }
 
@@ -143,5 +143,5 @@ STATICFILES_DIRS = (
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+SESSION_SAVE_EVERY_REQUEST = True
+# DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
